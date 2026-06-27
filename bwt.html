@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Better Work Together — Case Study | Renato Waru</title>
+<meta name="description" content="A manifesto about distributed work — designed by a team that was itself distributed across 5 continents. Art direction and editorial design for the Enspiral Foundation.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* BWT palette — extracted from the book's real color system */
+  --bwt-deep:      #15314b;   /* deep navy — cover background */
+  --bwt-mid:       #2a5a7e;   /* mid teal-blue */
+  --bwt-sky:       #8bb8d4;   /* sky — cover gradient top */
+  --bwt-ink:       #0d1f2f;   /* near-black for body */
+  --bwt-paper:     #f6f3ec;   /* warm off-white, the paper of the book */
+  --bwt-cream:     #efeadf;   /* slightly deeper paper */
+  --bwt-pink:      #d8276a;   /* essay pink — from p.3 mockup */
+  --bwt-yellow:    #f6d347;   /* essay yellow — from p.4 mockup */
+  --bwt-cyan:      #1f9bd4;   /* essay cyan — from p.4 mockup */
+  --bwt-orange:    #e27145;   /* essay orange — from p.6 mockup */
+  --bwt-rule:      rgba(21,49,75,0.16);
+  --bwt-muted:     #5a6b7a;
+
+  --max:           1180px;
+  --ff-display:    'Fraunces', 'Times New Roman', serif;
+  --ff-body:       'Inter', system-ui, sans-serif;
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--bwt-ink);
+  background: var(--bwt-paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* =========  NAV  ========= */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(246,243,236,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--bwt-rule);
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto;
+  padding: 18px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 24px;
+}
+.logo {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+.logo span { color: var(--bwt-pink); }
+.contact-pills { display: flex; gap: 20px; font-size: 14px; color: var(--bwt-muted); }
+.contact-pills a:hover { color: var(--bwt-ink); }
+@media (max-width: 700px) {
+  .contact-pills { display: none; }
+}
+
+/* =========  RED TAG  ========= */
+.tag {
+  display: inline-flex; align-items: center;
+  gap: 10px;
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 600;
+  color: var(--bwt-pink);
+}
+.tag::before {
+  content: ''; width: 22px; height: 2px; background: var(--bwt-pink);
+}
+
+/* =========  HERO  ========= */
+.hero {
+  padding: 80px 32px 30px;
+  max-width: var(--max); margin: 0 auto;
+}
+.hero-title {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 24px 0 32px;
+  max-width: 22ch;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--bwt-pink);
+  font-weight: 400;
+}
+.hero-dek {
+  font-family: var(--ff-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--bwt-muted);
+  max-width: 58ch;
+  margin-bottom: 28px;
+}
+
+/* The cover image presentation */
+.hero-cover {
+  position: relative;
+  margin: 0;
+  max-width: 100%;
+}
+.hero-cover img {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========  META STRIP  ========= */
+.meta {
+  max-width: var(--max); margin: 0 auto;
+  padding: 64px 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  border-bottom: 1px solid var(--bwt-rule);
+}
+.meta-item dt {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bwt-muted); font-weight: 600;
+  margin-bottom: 10px;
+}
+.meta-item dd {
+  font-family: var(--ff-display);
+  font-size: 1.3rem; line-height: 1.3;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 780px) {
+  .meta { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+}
+
+/* =========  SECTION BASICS  ========= */
+.section { padding: 100px 32px; }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.section-head { margin-bottom: 48px; max-width: 780px; }
+.section-label {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bwt-muted); font-weight: 600;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.section-title em { font-style: italic; color: var(--bwt-pink); }
+
+/* =========  RESULTS  ========= */
+.results { background: var(--bwt-cream); }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+.stat {
+  padding: 32px 0;
+  border-top: 2px solid var(--bwt-ink);
+}
+.stat-num {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+.stat-num sup {
+  font-size: 0.4em;
+  font-weight: 600;
+  color: var(--bwt-pink);
+  margin-left: 4px;
+  top: -1.2em;
+}
+.stat-label {
+  font-size: 13px; line-height: 1.4;
+  color: var(--bwt-muted);
+}
+@media (max-width: 780px) {
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+
+/* =========  CHALLENGE — editorial pull  ========= */
+.challenge {
+  background: var(--bwt-deep);
+  color: var(--bwt-paper);
+  position: relative;
+}
+.challenge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('assets/images/bwt/bwt_flock.webp') center / cover no-repeat;
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.challenge .section-inner { position: relative; z-index: 1; }
+.challenge .section-label { color: rgba(246,243,236,0.6); }
+.challenge-body {
+  font-family: var(--ff-display);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  line-height: 1.35;
+  max-width: 24ch;
+}
+.challenge-body strong {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--bwt-sky);
+}
+
+/* =========  THINKING — three-line manifesto  ========= */
+.thinking {
+  background: #ffffff;
+  padding: 140px 32px;
+}
+.thinking-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  text-align: center;
+}
+.thinking-inner .section-label { margin-bottom: 24px; }
+.thinking-principle {
+  font-family: var(--ff-display);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-bottom: 80px;
+}
+.thinking-principle .line { display: block; }
+.thinking-principle .line:nth-child(1) { color: var(--bwt-ink); }
+.thinking-principle .line:nth-child(2) { color: var(--bwt-pink); font-style: italic; }
+.thinking-principle .line:nth-child(3) { color: var(--bwt-mid); }
+.thinking-image {
+  width: 100%;
+  border-radius: 40px;
+}
+
+/* =========  BIRD — the key visual story  ========= */
+.bird {
+  background: linear-gradient(180deg, var(--bwt-paper) 0%, var(--bwt-cream) 100%);
+  padding: 120px 32px;
+  text-align: center;
+}
+.bird-inner { max-width: 960px; margin: 0 auto; }
+.bird-caption {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--bwt-muted);
+  margin-top: 32px;
+  max-width: 52ch;
+  line-height: 1.5;
+}
+.bird-inner { text-align: left; }
+.bird-maori {
+  max-width: 360px;
+  margin: 40px 0 0;
+  border-radius: 40px;
+}
+.bird-crossfade {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 620px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 40px;
+}
+.bird-crossfade img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  animation: birdFade 10s infinite;
+}
+.bird-crossfade img:nth-child(1) { animation-delay: 0s; }
+.bird-crossfade img:nth-child(2) { animation-delay: 5s; }
+@keyframes birdFade {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  45%  { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* =========  SYSTEM IN ACTION  ========= */
+.system { background: var(--bwt-cream); }
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.system-block { margin-bottom: 80px; }
+.system-block h3 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.system-block p {
+  font-size: 15px;
+  color: var(--bwt-muted);
+  max-width: 48ch;
+  margin-bottom: 24px;
+}
+.system-block .tag { margin-bottom: 16px; font-size: 11px; }
+
+.block-cover { grid-column: 1 / -1; }
+.block-spread {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.block-spread img {
+  border-radius: 40px;
+}
+.block-essays-text { grid-column: 1 / span 4; }
+.block-essays-imgs {
+  grid-column: 5 / -1;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 40px;
+}
+.block-essays-imgs img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1);
+  animation: crossfade 22.5s infinite;
+}
+.block-essays-imgs img:nth-child(1) { animation-delay: 0s; }
+.block-essays-imgs img:nth-child(2) { animation-delay: 4.5s; }
+.block-essays-imgs img:nth-child(3) { animation-delay: 9s; }
+.block-essays-imgs img:nth-child(4) { animation-delay: 13.5s; }
+.block-essays-imgs img:nth-child(5) { animation-delay: 18s; }
+
+@keyframes crossfade {
+  0%      { opacity: 0; transform: scale(1); }
+  4%      { opacity: 1; }
+  21%     { opacity: 1; transform: scale(1.03); }
+  28%     { opacity: 0; transform: scale(1.03); }
+  100%    { opacity: 0; transform: scale(1); }
+}
+.block-pink    { grid-column: 1 / span 6; }
+.block-bread   { grid-column: 7 / -1; }
+
+.spread-img { border-radius: 2px; }
+
+@media (max-width: 900px) {
+  .system-grid { grid-template-columns: 1fr; gap: 40px; }
+  .block-essays-text,
+  .block-essays-imgs,
+  .block-pink,
+  .block-bread { grid-column: 1 / -1; }
+  .block-essays-imgs { aspect-ratio: 4 / 3; }
+  .block-spread { grid-template-columns: 1fr; }
+}
+
+/* =========  THE LATTICE — the money shot  ========= */
+.lattice {
+  background: var(--bwt-deep);
+  color: var(--bwt-paper);
+  padding: 120px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.lattice::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 60%, rgba(139,184,212,0.14) 0%, transparent 40%);
+  pointer-events: none;
+}
+.lattice-inner {
+  max-width: var(--max); margin: 0 auto;
+  position: relative;
+}
+.lattice .section-label { color: rgba(246,243,236,0.6); }
+.lattice-title {
+  font-family: var(--ff-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  max-width: 20ch;
+}
+.lattice-title em { font-style: italic; color: var(--bwt-sky); font-weight: 400; }
+.lattice-dek {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.25rem;
+  color: var(--bwt-sky);
+  max-width: 50ch;
+  margin-bottom: 56px;
+}
+.lattice-map {
+  background: #ffffff;
+  border-radius: 40px;
+  padding: 40px 20px;
+  margin-top: 40px;
+}
+.lattice-map img {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.lattice-legend {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(246,243,236,0.15);
+}
+.legend-item {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.legend-flag {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.legend-country {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--bwt-sky);
+  margin-bottom: 4px;
+}
+.legend-role {
+  color: rgba(246,243,236,0.7);
+  font-size: 13px;
+}
+.legend-item.self .legend-country { color: var(--bwt-pink); }
+.legend-item.self { position: relative; }
+.legend-item.self::before {
+  content: '◉';
+  position: absolute;
+  top: -28px; left: 0;
+  color: var(--bwt-pink);
+  font-size: 20px;
+}
+@media (max-width: 780px) {
+  .lattice-legend { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+
+/* =========  TESTIMONIAL  ========= */
+.testimonial {
+  background: var(--bwt-paper);
+  padding: 140px 32px;
+  text-align: center;
+}
+.testimonial-inner { max-width: 820px; margin: 0 auto; }
+.testimonial blockquote {
+  font-family: var(--ff-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--bwt-ink);
+  position: relative;
+}
+.testimonial blockquote::before {
+  content: '“';
+  font-family: var(--ff-display);
+  font-size: 6rem;
+  line-height: 0;
+  color: var(--bwt-pink);
+  position: absolute;
+  top: 0.3em; left: 50%;
+  transform: translateX(-50%) translateY(-120%);
+  opacity: 0.6;
+}
+.testimonial cite {
+  display: block;
+  margin-top: 40px;
+  font-style: normal;
+  font-family: var(--ff-body);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--bwt-muted);
+}
+.testimonial cite strong {
+  display: block;
+  color: var(--bwt-ink);
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+/* =========  FOOTER NAV  ========= */
+.case-nav {
+  background: var(--bwt-cream);
+  padding: 40px 32px;
+  border-top: 1px solid var(--bwt-rule);
+}
+.case-nav-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px;
+}
+.case-nav a {
+  color: var(--bwt-muted);
+  transition: color 0.2s;
+}
+.case-nav a:hover { color: var(--bwt-pink); }
+.case-nav a strong {
+  display: block;
+  font-family: var(--ff-display);
+  font-size: 18px;
+  color: var(--bwt-ink);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* =========  SITE FOOTER  ========= */
+.footer {
+  background: var(--bwt-ink);
+  color: var(--bwt-paper);
+  padding: 80px 32px 40px;
+  text-align: center;
+}
+.footer-cta {
+  font-family: var(--ff-display);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.footer-cta em { color: var(--bwt-pink); font-style: italic; }
+.footer-email {
+  font-size: 17px;
+  color: var(--bwt-sky);
+  margin-bottom: 40px;
+  display: inline-block;
+}
+.footer-links {
+  display: flex; justify-content: center; gap: 28px;
+  font-size: 13px; color: rgba(246,243,236,0.6);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.footer-copy {
+  margin-top: 60px;
+  font-size: 12px;
+  color: rgba(246,243,236,0.4);
+}
+
+/* =========  REVEAL ON SCROLL  ========= */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in { opacity: 1; transform: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- =========  NAV  ========= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/index.html" class="logo">Renato <span>Waru</span></a>
+    <div class="contact-pills">
+      <a href="mailto:renato@waru.com.br">renato@waru.com.br</a>
+      <a href="tel:+5511996293050">+55 11 996 293 050</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =========  HERO  ========= -->
+<header class="hero">
+  <div class="tag">Editorial · Case Study</div>
+  <h1 class="hero-title">
+    A manifesto about <em>distributed work</em> — designed by a team that was itself distributed across <em>five&nbsp;continents.</em>
+  </h1>
+  <p class="hero-dek">
+    Art direction and editorial design for the Enspiral Foundation's flagship book on the future of work. The medium had to be the message.
+  </p>
+</header>
+
+<div class="hero-cover">
+  <img src="assets/images/bwt/bwt_spread.webp" alt="Better Work Together book cover and back cover laid flat, showing the illustrated bird spanning the full spread">
+</div>
+
+<!-- =========  META  ========= -->
+<dl class="meta">
+  <div class="meta-item">
+    <dt>Client</dt>
+    <dd>Enspiral Foundation</dd>
+  </div>
+  <div class="meta-item">
+    <dt>Industry</dt>
+    <dd>Future of Work · Publishing</dd>
+  </div>
+  <div class="meta-item">
+    <dt>Role</dt>
+    <dd>Creative Director &amp; Art Director</dd>
+  </div>
+  <div class="meta-item">
+    <dt>Foreword</dt>
+    <dd>Douglas Rushkoff</dd>
+  </div>
+</dl>
+
+<!-- =========  CHALLENGE  ========= -->
+<section class="section challenge">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">The Challenge</div>
+    </div>
+    <p class="challenge-body">
+      A book preaching <strong>decentralized collaboration</strong> could not be made by a committee locked in one room. The production had to prove the thesis.
+    </p>
+  </div>
+</section>
+
+<!-- =========  RESULTS  ========= -->
+<section class="section results">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">The Results</div>
+      <h2 class="section-title">One book, held together by a <em>collective mind</em> — from five continents.</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">11</div>
+        <div class="stat-label">authors woven into a single editorial voice</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5<sup>continents</sup></div>
+        <div class="stat-label">Brazil · New Zealand · USA · Australia · India · Germany</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========  THE LATTICE  ========= -->
+<section class="lattice">
+  <div class="lattice-inner">
+    <div class="section-label">The Lattice</div>
+    <h2 class="lattice-title">Five time zones. <em>One vision.</em></h2>
+    <p class="lattice-dek">
+      The production itself was the proof. From São Paulo, I held the structure that connected writers, artists, publishers, and printers on five continents — the sun never set on this book.
+    </p>
+
+    <div class="lattice-map">
+      <img src="assets/images/bwt/bwt_map.webp" alt="World map showing collaboration nodes: art direction in Brazil, content and producing in New Zealand and Australia, key visual in India, foreword in USA, printing in Germany">
+    </div>
+
+    <div class="lattice-legend">
+      <div class="legend-item self">
+        <div class="legend-flag">🇧🇷</div>
+        <div class="legend-country">Brazil</div>
+        <div class="legend-role">Art direction &amp; editorial system — the hub</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-flag">🇳🇿🇦🇺</div>
+        <div class="legend-country">NZ &amp; Australia</div>
+        <div class="legend-role">Producing authors &amp; content team</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-flag">🇮🇳</div>
+        <div class="legend-country">India</div>
+        <div class="legend-role">Key visual — cover illustration</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-flag">🇺🇸</div>
+        <div class="legend-country">USA</div>
+        <div class="legend-role">Foreword by Douglas Rushkoff</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-flag">🇩🇪</div>
+        <div class="legend-country">Germany</div>
+        <div class="legend-role">Final production &amp; printing, Berlin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========  THINKING  ========= -->
+<section class="section thinking">
+  <div class="thinking-inner">
+    <div class="section-label">The Thinking</div>
+    <div class="thinking-principle">
+      <span class="line">One flexible grid.</span>
+      <span class="line">One visual language.</span>
+      <span class="line">One bird.</span>
+    </div>
+    <img class="thinking-image" src="assets/images/bwt/bwt_essay2.webp" alt="Essay spreads from Better Work Together showing the editorial system">
+  </div>
+</section>
+
+<!-- =========  THE BIRD  ========= -->
+<section class="bird">
+  <div class="bird-inner">
+    <div class="tag">The Key Visual</div>
+    <h2 class="section-title" style="margin: 24px 0 48px; max-width: none;">A flock assembled into <em>one body.</em></h2>
+    <div class="bird-crossfade">
+      <img src="assets/images/bwt/bwt_bird.webp" alt="Detailed black-and-white illustration of a bird composed of hundreds of smaller fragments, symbols, and hand-drawn elements">
+      <img src="assets/images/bwt/bwt_slices.webp" alt="Diagram showing how each fragment of the bird illustration becomes the opening visual for an individual essay chapter">
+    </div>
+    <img class="bird-maori" src="assets/images/bwt/bwt_maori.webp" alt="Māori visual reference — interlocking traditional patterns that inspired the bird illustration">
+    <p class="bird-caption">
+      Rooted in Māori visual traditions — where identity is carried through intricate, interlocking patterns — the bird on the cover was hand-drawn entirely by artist Mukund Yier in India. Each fragment of the bird becomes the opening illustration for an individual essay — the whole contains the parts, and the parts build the whole. Up close: eleven distinct voices. At distance: a single creature in flight.
+    </p>
+  </div>
+</section>
+
+<!-- =========  SYSTEM IN ACTION  ========= -->
+<section class="section system">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">The System in Action</div>
+      <h2 class="section-title">One spine. Eleven voices. <em>No drift.</em></h2>
+    </div>
+
+    <div class="system-grid">
+
+      <!-- Full cover spread -->
+      <div class="system-block block-spread">
+        <img class="spread-img" src="assets/images/bwt/bwt_girl2.jpg" alt="Open layout showing front and back cover of Better Work Together">
+        <div>
+          <div class="tag">Cover System</div>
+          <h3>The bird spans the full spread</h3>
+          <p>Front cover, spine, back cover — the illustration stretches uninterrupted across all three surfaces. The circular title lockup on the right mirrors the dark aperture of the back cover, turning the book into a single continuous object whether shelved or open.</p>
+        </div>
+      </div>
+
+      <!-- Essay color system: text left, two images right -->
+      <div class="system-block block-essays-text">
+        <div class="tag">Special Chapters</div>
+        <h3>Color, spent where it lands hardest</h3>
+        <p>To keep the budget honest, the eleven essays run in only two colors — black and magenta. A dozen special chapters break into full color, marking shifts in rhythm and giving the book its visual punctuation. Restraint made the color count.</p>
+      </div>
+      <div class="system-block block-essays-imgs">
+        <img src="assets/images/bwt/bwt_pink.webp" alt="Pink essay opener spread with a quote on a saturated color page facing body text on white">
+        <img src="assets/images/bwt/bwt_cyan.webp" alt="Cyan and yellow essay opener spread with stylized headline typography">
+        <img src="assets/images/bwt/bwt_recipe.webp" alt="Recipe-themed editorial spread from Better Work Together">
+        <img src="assets/images/bwt/bwt_book.webp" alt="Better Work Together book detail">
+        <img src="assets/images/bwt/bwt_essay4.jpg" alt="Essay opener spread from Better Work Together">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========  TESTIMONIAL  ========= -->
+<section class="testimonial">
+  <div class="testimonial-inner">
+    <blockquote>
+      Creative director Renato went above and beyond to express the collective, creative spirit of this work, and together with artist Mukund transformed text into a wonderful piece of art.
+    </blockquote>
+    <cite>
+      <strong>Anthony Cabraal</strong>
+      Editor, Better Work Together · Enspiral Foundation
+    </cite>
+  </div>
+</section>
+
+<!-- =========  CASE NAV  ========= -->
+<nav class="case-nav">
+  <div class="case-nav-inner">
+    <a href="/index.html">← <strong>Back to Portfolio</strong></a>
+    <a href="/waru-piracaia.html">Next Case <strong>Waru Piracaia →</strong></a>
+  </div>
+</nav>
+
+<!-- =========  FOOTER  ========= -->
+<footer class="footer">
+  <p class="footer-cta">Let's <em>work together.</em></p>
+  <a href="mailto:renato@waru.com.br" class="footer-email">renato@waru.com.br</a>
+  <div class="footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">Behance</a>
+    <a href="#">Instagram</a>
+  </div>
+  <p class="footer-copy">© 2026 Renato Waru Design. All rights reserved.</p>
+</footer>
+
+<script>
+// Scroll reveal — high-impact, single pass
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section-title, .stat, .system-block, .bird-img, .lattice-map, blockquote, .challenge-body, .thinking-principle, .thinking-copy').forEach(el => {
+  el.classList.add('reveal');
+  io.observe(el);
+});
+</script>
+
+</body>
+</html>

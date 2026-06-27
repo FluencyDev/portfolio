@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Father Wind — A Flauta Nativa como caminho de autoconhecimento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8dfd2;
+    --sand-light: #f0e9dd;
+    --sand-deep: #d4c5ad;
+    --terra: #a85f3d;
+    --terra-deep: #6b3520;
+    --moss: #3d4a2f;
+    --moss-deep: #232b1c;
+    --ink: #1a1612;
+    --ink-soft: #3d3530;
+    --bone: #f7f2e8;
+    --whisper: rgba(26, 22, 18, 0.08);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 17px;
+    overflow-x: hidden;
+  }
+
+  /* Noise overlay para textura orgânica */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.06;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .container-narrow {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--moss-deep) 0%, var(--moss) 60%, #4a4a32 100%);
+    color: var(--bone);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(168, 95, 61, 0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 80px 0 120px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    animation: fadeUp 1s ease-out;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--terra);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    max-width: 14ch;
+    animation: fadeUp 1.2s ease-out 0.2s backwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sand-deep);
+    font-weight: 400;
+  }
+
+  .hero-sub {
+    font-size: 21px;
+    line-height: 1.5;
+    max-width: 52ch;
+    opacity: 0.85;
+    margin-bottom: 56px;
+    font-weight: 300;
+    animation: fadeUp 1.2s ease-out 0.4s backwards;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 36px;
+    background: var(--terra);
+    color: var(--bone);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 2px;
+    animation: fadeUp 1.2s ease-out 0.6s backwards;
+  }
+
+  .hero-cta:hover {
+    background: var(--terra-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  .hero-cta::after {
+    content: '→';
+    transition: transform 0.3s ease;
+  }
+
+  .hero-cta:hover::after {
+    transform: translateX(6px);
+  }
+
+  /* Element decorativo - linha vertical */
+  .hero-deco {
+    position: absolute;
+    right: 5%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, rgba(232, 223, 210, 0.2) 30%, rgba(232, 223, 210, 0.2) 70%, transparent 100%);
+    z-index: 1;
+  }
+
+  .hero-deco-text {
+    position: absolute;
+    right: calc(5% + 20px);
+    top: 50%;
+    transform: rotate(90deg) translateX(-50%);
+    transform-origin: left top;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    opacity: 0.4;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ SECTION: O CONVITE ============ */
+  .invite {
+    background: var(--bone);
+    padding: 160px 0;
+    position: relative;
+  }
+
+  .invite-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .invite-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    position: sticky;
+    top: 80px;
+  }
+
+  .invite-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 40px;
+    color: var(--ink);
+  }
+
+  .invite-text h2 em {
+    font-style: italic;
+    color: var(--terra);
+  }
+
+  .invite-text p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    max-width: 56ch;
+  }
+
+  .invite-text p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ============ SECTION: PARA QUEM ============ */
+  .for-whom {
+    background: var(--sand-light);
+    padding: 140px 0;
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    max-width: 20ch;
+    margin: 0 auto;
+  }
+
+  .section-header h2 em {
+    font-style: italic;
+    color: var(--terra-deep);
+  }
+
+  .for-whom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--whisper);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .for-whom-item {
+    background: var(--sand-light);
+    padding: 48px 40px;
+    position: relative;
+  }
+
+  .for-whom-item::before {
+    content: attr(data-number);
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--terra);
+    opacity: 0.6;
+  }
+
+  .for-whom-item h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--ink);
+    max-width: 18ch;
+  }
+
+  .for-whom-item p {
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 30ch;
+  }
+
+  /* ============ SECTION: O QUE VOCÊ APRENDE ============ */
+  .learn {
+    background: var(--bone);
+    padding: 160px 0;
+  }
+
+  .learn-list {
+    max-width: 800px;
+    margin: 0 auto;
+    border-top: 1px solid var(--whisper);
+  }
+
+  .learn-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--whisper);
+    align-items: start;
+    transition: padding 0.4s ease;
+  }
+
+  .learn-item:hover {
+    padding-left: 16px;
+  }
+
+  .learn-number {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--terra);
+    line-height: 1;
+  }
+
+  .learn-content h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .learn-content p {
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  /* ============ SECTION: SOBRE O LIPE ============ */
+  .about {
+    background: var(--moss-deep);
+    color: var(--bone);
+    padding: 160px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 80%, rgba(168, 95, 61, 0.2) 0%, transparent 50%);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-image {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--terra-deep) 0%, var(--moss) 100%);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 32px;
+  }
+
+  .about-image::after {
+    content: '[ foto do Lipe tocando a flauta nativa ]';
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    opacity: 0.5;
+  }
+
+  .about-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  .about-text h2 em {
+    font-style: italic;
+    color: var(--sand-deep);
+  }
+
+  .about-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    opacity: 0.85;
+    margin-bottom: 24px;
+    max-width: 50ch;
+  }
+
+  .about-credentials {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(232, 223, 210, 0.15);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .credential {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .credential-value {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--sand-deep);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .credential-label {
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  /* ============ SECTION: DEPOIMENTO ============ */
+  .testimonial {
+    background: var(--sand);
+    padding: 160px 0;
+  }
+
+  .testimonial-quote {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.3;
+    color: var(--ink);
+    max-width: 24ch;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  .testimonial-quote::before {
+    content: '"';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 100px;
+    color: var(--terra);
+    opacity: 0.4;
+    line-height: 1;
+    font-family: 'Fraunces', serif;
+  }
+
+  .testimonial-author {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .testimonial-author strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 18px;
+    letter-spacing: 0;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  /* ============ SECTION: OFERTA ============ */
+  .offer {
+    background: var(--bone);
+    padding: 160px 0;
+  }
+
+  .offer-card {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--sand-light);
+    padding: 80px 60px;
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid var(--whisper);
+  }
+
+  .offer-card::before {
+    content: 'father wind · curso completo';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bone);
+    padding: 0 20px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--terra);
+    text-transform: uppercase;
+  }
+
+  .offer-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.15;
+    text-align: center;
+    margin-bottom: 48px;
+    letter-spacing: -0.01em;
+  }
+
+  .offer-title em {
+    font-style: italic;
+    color: var(--terra);
+  }
+
+  .offer-includes {
+    list-style: none;
+    margin-bottom: 56px;
+  }
+
+  .offer-includes li {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--whisper);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .offer-includes li::before {
+    content: '✦';
+    color: var(--terra);
+    font-size: 14px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .offer-price {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .offer-price-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .offer-price-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 64px;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .offer-price-value .currency {
+    font-size: 28px;
+    vertical-align: top;
+    margin-right: 4px;
+    color: var(--ink-soft);
+  }
+
+  .offer-price-note {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+
+  .offer-cta {
+    display: block;
+    width: 100%;
+    padding: 24px;
+    background: var(--ink);
+    color: var(--bone);
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    font-family: inherit;
+  }
+
+  .offer-cta:hover {
+    background: var(--terra);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(168, 95, 61, 0.3);
+  }
+
+  .offer-guarantee {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+
+  /* ============ SECTION: FAQ ============ */
+  .faq {
+    background: var(--sand-light);
+    padding: 160px 0;
+  }
+
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--whisper);
+    padding: 32px 0;
+    cursor: pointer;
+  }
+
+  .faq-question {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 21px;
+    color: var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 24px;
+    color: var(--terra);
+    transition: transform 0.3s ease;
+    font-weight: 300;
+  }
+
+  .faq-item.open .faq-question::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, margin-top 0.4s ease;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    margin-top: 20px;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: var(--moss-deep);
+    color: var(--bone);
+    padding: 200px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(168, 95, 61, 0.25) 0%, transparent 70%);
+  }
+
+  .final-cta-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .final-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1.1;
+    margin-bottom: 48px;
+    letter-spacing: -0.015em;
+    max-width: 16ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-cta p {
+    font-size: 19px;
+    opacity: 0.8;
+    max-width: 48ch;
+    margin: 0 auto 56px;
+    line-height: 1.6;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.6;
+  }
+
+  footer .footer-brand {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    opacity: 1;
+    letter-spacing: 0.05em;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    .container, .container-narrow {
+      padding: 0 24px;
+    }
+
+    .hero {
+      min-height: auto;
+      padding: 100px 0 80px;
+    }
+
+    .hero-content {
+      padding: 0;
+    }
+
+    .hero-deco, .hero-deco-text {
+      display: none;
+    }
+
+    .invite, .for-whom, .learn, .about, .testimonial, .offer, .faq {
+      padding: 100px 0;
+    }
+
+    .invite-grid, .about-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .invite-label {
+      position: static;
+    }
+
+    .for-whom-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-image {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .about-credentials {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .learn-item {
+      grid-template-columns: 60px 1fr;
+      gap: 24px;
+    }
+
+    .offer-card {
+      padding: 60px 32px;
+    }
+
+    .final-cta {
+      padding: 120px 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-deco-text">father wind · curso</div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">um curso de Lipe Araujo</div>
+      <h1>A flauta como <em>caminho</em> de volta para si.</h1>
+      <p class="hero-sub">Aprenda a tocar a Flauta Nativa Norte-Americana como ferramenta terapêutica de autoconhecimento — mesmo que você nunca tenha tocado um instrumento.</p>
+      <a href="#oferta" class="hero-cta">Conhecer o curso</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O CONVITE ============ -->
+<section class="invite">
+  <div class="container">
+    <div class="invite-grid">
+      <div class="invite-label">o convite</div>
+      <div class="invite-text">
+        <h2>Existe um som dentro de você esperando para <em>respirar.</em></h2>
+        <p>A Flauta Nativa Norte-Americana é, ao mesmo tempo, um dos instrumentos mais simples e mais antigos do mundo. Ela não pede técnica. Pede <strong>presença</strong>.</p>
+        <p>Não é sobre se tornar músico. É sobre redescobrir uma forma de expressão que mora em você desde sempre — e que talvez tenha ficado em silêncio por muito tempo.</p>
+        <p>O Father Wind nasceu da prática de mais de uma década com a flauta como ferramenta terapêutica. Já formou seis turmas. E o método continua o mesmo: simples, direto, respeitoso com o tempo de cada um.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARA QUEM ============ -->
+<section class="for-whom">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">para quem é</span>
+      <h2>O curso é para quem <em>sente</em>, antes de saber explicar.</h2>
+    </div>
+    <div class="for-whom-grid">
+      <div class="for-whom-item" data-number="01">
+        <h3>Quem busca autoconhecimento por caminhos não-verbais</h3>
+        <p>Você já tentou meditar, terapia, leitura — e sente que falta algo que passe pelo corpo, pela respiração, pelo som.</p>
+      </div>
+      <div class="for-whom-item" data-number="02">
+        <h3>Quem nunca tocou um instrumento</h3>
+        <p>Você acha que "não tem ouvido" ou que é tarde demais. A flauta nativa começa do zero, com respiração. Não tem partitura, não tem teoria.</p>
+      </div>
+      <div class="for-whom-item" data-number="03">
+        <h3>Terapeutas e facilitadores</h3>
+        <p>Você trabalha com práticas integrativas — yoga, meditação, sound healing — e quer adicionar uma ferramenta sonora simples e poderosa ao seu trabalho.</p>
+      </div>
+      <div class="for-whom-item" data-number="04">
+        <h3>Quem sente vontade de criar sem saber por onde</h3>
+        <p>Você tem algo querendo sair, mas não sabe a forma. A flauta nativa é uma porta — uma das mais gentis que existem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O QUE VOCÊ APRENDE ============ -->
+<section class="learn">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">o que você aprende</span>
+      <h2>Cinco módulos, <em>um caminho</em>.</h2>
+    </div>
+    <div class="learn-list">
+      <div class="learn-item">
+        <div class="learn-number">01</div>
+        <div class="learn-content">
+          <h3>A respiração como fundamento</h3>
+          <p>Antes da nota, o ar. Você vai conhecer a relação direta entre respiração consciente e o som que sai do instrumento — e como isso já é, em si, prática terapêutica.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <div class="learn-number">02</div>
+        <div class="learn-content">
+          <h3>O instrumento e sua história</h3>
+          <p>De onde vem a flauta nativa, por que ela é afinada do jeito que é, e por que praticamente qualquer pessoa consegue tocar algo bonito nos primeiros minutos.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <div class="learn-number">03</div>
+        <div class="learn-content">
+          <h3>Primeiras notas e exercícios essenciais</h3>
+          <p>Postura, embocadura, digitação. Exercícios simples que você pode fazer todo dia em 15 minutos. Sem pressa, sem cobrança.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <div class="learn-number">04</div>
+        <div class="learn-content">
+          <h3>Improvisação e expressão livre</h3>
+          <p>Como sair do "estou aprendendo" para "estou tocando o que sinto". A escala pentatônica e o porquê dela tornar a improvisação acessível mesmo pra iniciantes.</p>
+        </div>
+      </div>
+      <div class="learn-item">
+        <div class="learn-number">05</div>
+        <div class="learn-content">
+          <h3>A flauta como prática diária</h3>
+          <p>Como integrar o instrumento na sua rotina como ferramenta de presença, regulação emocional e expressão. O que fazer quando travar. Como manter a prática viva.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE O LIPE ============ -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image"></div>
+      <div class="about-text">
+        <h2>Quem te <em>guia</em>.</h2>
+        <p>Lipe Araujo é músico instrumentista, especializado em instrumentos étnicos e música para estados ampliados de consciência. Encontrou a Flauta Nativa em 2009, em um momento de busca espiritual — e desde então faz dela ferramenta central de seu trabalho.</p>
+        <p>Toca em retiros, vivências, espaços de wellness e conduziu jornadas sonoras na Amazônia, em SESCs e em ambientes corporativos. O Father Wind é a sistematização de mais de uma década de prática.</p>
+        <div class="about-credentials">
+          <div class="credential">
+            <span class="credential-value">15+</span>
+            <span class="credential-label">anos com a flauta nativa</span>
+          </div>
+          <div class="credential">
+            <span class="credential-value">6</span>
+            <span class="credential-label">turmas formadas no Father Wind</span>
+          </div>
+          <div class="credential">
+            <span class="credential-value">∞</span>
+            <span class="credential-label">jornadas sonoras conduzidas</span>
+          </div>
+          <div class="credential">
+            <span class="credential-value">1</span>
+            <span class="credential-label">caminho — o seu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTO ============ -->
+<section class="testimonial">
+  <div class="container-narrow">
+    <p class="testimonial-quote">A flauta me trouxe de volta para um lugar dentro de mim que eu não sabia que existia.</p>
+    <div class="testimonial-author">
+      <strong>[ Nome do(a) aluno(a) ]</strong>
+      Turma 04 · São Paulo
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFERTA ============ -->
+<section class="offer" id="oferta">
+  <div class="container">
+    <div class="offer-card">
+      <h2 class="offer-title">Comece sua <em>jornada</em> hoje.</h2>
+      <ul class="offer-includes">
+        <li>5 módulos completos em vídeo, no seu ritmo</li>
+        <li>Mais de [X] aulas práticas, sem enrolação</li>
+        <li>Material de apoio para download</li>
+        <li>Exercícios diários estruturados</li>
+        <li>Acesso vitalício à plataforma</li>
+        <li>Atualizações futuras incluídas</li>
+      </ul>
+      <div class="offer-price">
+        <div class="offer-price-label">investimento único</div>
+        <div class="offer-price-value"><span class="currency">R$</span>[ valor ]</div>
+        <div class="offer-price-note">ou em até [X] vezes sem juros</div>
+      </div>
+      <a href="#" class="offer-cta">Quero começar agora →</a>
+      <div class="offer-guarantee">7 dias de garantia incondicional</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq">
+  <div class="container-narrow">
+    <div class="section-header">
+      <span class="section-eyebrow">perguntas frequentes</span>
+      <h2>Antes de <em>começar</em>.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Preciso ter experiência musical?</div>
+        <div class="faq-answer"><p>Não. O curso é desenhado pra quem nunca tocou nada. A flauta nativa é um dos instrumentos mais acessíveis que existem — você produz som no primeiro dia.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Preciso comprar uma flauta?</div>
+        <div class="faq-answer"><p>Sim. No primeiro módulo eu te indico onde comprar uma flauta de qualidade, em diferentes faixas de preço. Você não precisa investir alto pra começar.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Quanto tempo leva pra concluir o curso?</div>
+        <div class="faq-answer"><p>O curso é seu, no seu ritmo. Algumas pessoas concluem em 4 semanas, outras em 4 meses. O importante não é a velocidade — é a prática diária, ainda que pequena.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">É um curso religioso ou espiritual?</div>
+        <div class="faq-answer"><p>Não é religioso. A flauta nativa tem origem em tradições indígenas norte-americanas e o respeito a essa origem é parte do curso. Mas a prática em si é aberta a qualquer pessoa, com qualquer fé ou nenhuma.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">E se eu não gostar?</div>
+        <div class="faq-answer"><p>Você tem 7 dias pra explorar o conteúdo. Se não fizer sentido pra você, devolvo o valor integral, sem perguntas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="container-narrow">
+    <div class="final-cta-content">
+      <h2>O vento sempre soube o caminho.</h2>
+      <p>Talvez você só precise de uma flauta nas mãos pra começar a escutar.</p>
+      <a href="#oferta" class="hero-cta">Quero começar</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">father wind</div>
+    <p>um curso de Lipe Araujo · © 2026</p>
+  </div>
+</footer>
+
+<script>
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>

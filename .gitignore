@@ -1,0 +1,16 @@
+# Backups
+bkp/
+backup/
+*.bak
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Node (se usar no futuro)
+node_modules/
