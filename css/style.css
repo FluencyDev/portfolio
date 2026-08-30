@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #FAF7F2;
+  background: #efeae2;
   color: #545454;
   min-height: 100vh;
   overflow-x: hidden;
@@ -130,7 +130,7 @@ main {
 
 /* Wall of Trust */
 .wall-of-trust {
-  background: #FAF7F2;
+  background: #efeae2;
   padding: 80px 40px;
 }
 
@@ -461,7 +461,7 @@ main {
 
 /* Quick Wins */
 .quickwins-section {
-  background: #FAF7F2;
+  background: #efeae2;
   padding: 50px 40px 60px;
 }
 
@@ -743,7 +743,7 @@ main {
 }
 
 .case-block-light {
-  background: #FAF7F2;
+  background: #efeae2;
 }
 
 .case-block-inner {
@@ -975,7 +975,7 @@ main {
   font-weight: 700;
   font-size: 14px;
   color: #3a3a3a;
-  background: #FAF7F2;
+  background: #efeae2;
   text-transform: none;
   letter-spacing: 0;
 }
@@ -999,7 +999,7 @@ main {
 /* Case Results */
 .case-results {
   padding: 80px 40px;
-  background: #FAF7F2;
+  background: #efeae2;
 }
 
 .case-results-inner {
