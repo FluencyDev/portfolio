@@ -130,8 +130,8 @@ main {
 
 /* Wall of Trust */
 .wall-of-trust {
-  background: #ffeee5;
-  padding: 60px 40px;
+  background: #FAF7F2;
+  padding: 80px 40px;
 }
 
 .wall-of-trust-inner {
@@ -461,7 +461,7 @@ main {
 
 /* Quick Wins */
 .quickwins-section {
-  background: #f3eeeb;
+  background: #FAF7F2;
   padding: 50px 40px 60px;
 }
 
@@ -738,11 +738,12 @@ main {
 
 /* Case Content Blocks (Challenge, Thinking) */
 .case-block {
-  padding: 60px 40px;
+  padding: 80px 40px;
+  background: #FFFFFF;
 }
 
 .case-block-light {
-  background: #f7f7f7;
+  background: #FAF7F2;
 }
 
 .case-block-inner {
@@ -794,7 +795,8 @@ main {
 
 /* Touchpoints Grid */
 .case-touchpoints {
-  padding: 60px 40px;
+  padding: 80px 40px;
+  background: #FFFFFF;
 }
 
 .case-touchpoints-inner {
@@ -860,43 +862,17 @@ main {
   object-fit: contain;
 }
 
-/* Touchpoint Carousel (scroll-snap, no JS) */
-.touchpoint-carousel {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  padding: 4px 0 16px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-}
-
-.touchpoint-carousel::-webkit-scrollbar {
-  height: 6px;
-}
-.touchpoint-carousel::-webkit-scrollbar-track {
-  background: transparent;
-}
-.touchpoint-carousel::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.18);
-  border-radius: 999px;
-}
-
-.touchpoint-carousel-slide {
-  flex: 0 0 88%;
-  max-width: 900px;
-  scroll-snap-align: center;
-}
-
-.touchpoint-carousel-slide img {
-  width: 100%;
-  height: 460px;
-  object-fit: cover;
-  border-radius: 16px;
+/* Touchpoint Gallery (full-width stacked images, natural aspect ratios) */
+.touchpoint-gallery img {
   display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 16px;
+}
+
+.touchpoint-gallery img:last-child {
+  margin-bottom: 0;
 }
 
 /* Logo Reveal */
@@ -999,7 +975,7 @@ main {
   font-weight: 700;
   font-size: 14px;
   color: #3a3a3a;
-  background: #fafafa;
+  background: #FAF7F2;
   text-transform: none;
   letter-spacing: 0;
 }
@@ -1022,7 +998,8 @@ main {
 
 /* Case Results */
 .case-results {
-  padding: 60px 40px;
+  padding: 80px 40px;
+  background: #FAF7F2;
 }
 
 .case-results-inner {
@@ -1196,6 +1173,14 @@ main {
     padding-right: 20px;
   }
 
+  .case-block,
+  .case-touchpoints,
+  .case-results,
+  .wall-of-trust {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
   .results-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1221,14 +1206,6 @@ main {
 
   .touchpoint-group-infographics .touchpoint-grid img {
     height: auto;
-  }
-
-  .touchpoint-carousel-slide {
-    flex: 0 0 90%;
-  }
-
-  .touchpoint-carousel-slide img {
-    height: 280px;
   }
 
   .case-nav {
