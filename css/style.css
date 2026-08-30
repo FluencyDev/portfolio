@@ -1,5 +1,20 @@
 /* Waru Portfolio - Main Stylesheet */
 
+:root {
+  --site-paper:  #f6f3ec;
+  --site-cream:  #efeadf;
+  --site-deep:   #15314b;
+  --site-accent: #d8276a;
+  --site-ink:    #0d1f2f;
+  --site-muted:  #5a6b7a;
+  --site-rule:   rgba(21,49,75,0.16);
+  --ff-display:  'Fraunces', 'Times New Roman', serif;
+  --ff-body:     'Inter', system-ui, sans-serif;
+  --max:         1200px;
+}
+
+html { scroll-behavior: smooth; }
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -28,36 +43,40 @@ body {
   padding-right: max(40px, calc((100% - 1200px) / 2));
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 16px;
+/* =========  SITE HEADER  ========= */
+.site-header {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(246,243,236,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--site-rule);
 }
-
-.logo {
-  height: 50px;
-  width: auto;
+.site-header-inner {
+  max-width: var(--max); margin: 0 auto;
+  padding: 16px 40px;
+  display: flex; justify-content: space-between; align-items: center;
 }
-
-.contact {
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: #797979;
-  text-align: right;
-  letter-spacing: -0.36px;
-  white-space: nowrap;
-}
-
-.contact a {
-  color: inherit;
+.site-wordmark {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  color: var(--site-deep);
   text-decoration: none;
 }
-
-.contact a:hover {
-  text-decoration: underline;
+.site-nav {
+  display: flex; gap: 32px;
+}
+.site-nav a {
+  font-family: var(--ff-body);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--site-deep);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a:hover {
+  color: var(--site-accent);
 }
 
 main {
@@ -608,66 +627,60 @@ main {
   color: #b82b2b;
 }
 
-/* Footer */
+/* =========  SITE FOOTER  ========= */
 .site-footer {
-  background: #1a1a1a;
-  padding: 70px 40px 50px;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+  background: var(--site-deep);
+  padding: 80px 40px 48px;
   text-align: center;
 }
-
-.footer-cta {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: #999999;
-  margin-bottom: 12px;
+.site-footer-inner {
+  max-width: var(--max); margin: 0 auto;
 }
-
+.footer-cta {
+  font-family: var(--ff-display);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  color: var(--site-paper);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.footer-cta em {
+  font-style: italic;
+  color: var(--site-accent);
+}
 .footer-email {
   display: inline-block;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: clamp(20px, 2.5vw, 28px);
-  color: #ffffff;
+  font-family: var(--ff-body);
+  font-size: clamp(16px, 2vw, 22px);
+  color: rgba(246,243,236,0.8);
   text-decoration: none;
   margin-bottom: 40px;
   transition: color 0.2s;
 }
-
 .footer-email:hover {
-  color: #e8a423;
+  color: var(--site-accent);
 }
-
-.footer-social {
+.footer-links {
   display: flex;
   justify-content: center;
-  gap: 32px;
-  margin-bottom: 40px;
+  gap: 40px;
+  margin-bottom: 48px;
 }
-
-.footer-social a {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: #ffffff;
+.footer-links a {
+  font-family: var(--ff-body);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(246,243,236,0.6);
   text-decoration: none;
   transition: color 0.2s;
 }
-
-.footer-social a:hover {
-  color: #e8a423;
+.footer-links a:hover {
+  color: var(--site-accent);
 }
-
 .footer-copy {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  color: #888888;
+  font-size: 12px;
+  color: rgba(246,243,236,0.35);
 }
 
 /* ============================================
@@ -1140,14 +1153,11 @@ main {
     padding: 16px 20px;
   }
 
-  header {
-    flex-direction: column;
-    align-items: flex-start;
+  .site-header-inner {
+    padding: 14px 20px;
   }
-
-  .contact {
-    text-align: left;
-    font-size: 14px;
+  .site-nav {
+    gap: 20px;
   }
 
   main {
