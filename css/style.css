@@ -857,11 +857,18 @@ main {
   object-fit: contain;
 }
 
-.touchpoint-group-infographics {
+/* Infographics — full-width cream band */
+.infographics-section {
   background: #efedea;
+  padding: 80px 40px;
 }
 
-.touchpoint-group-infographics .touchpoint-grid img {
+.infographics-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.infographics-section .touchpoint-grid img {
   height: auto;
   object-fit: contain;
 }
@@ -1172,7 +1179,8 @@ main {
   .case-block,
   .case-touchpoints,
   .case-results,
-  .case-nav {
+  .case-nav,
+  .infographics-section {
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -1180,7 +1188,8 @@ main {
   .case-block,
   .case-touchpoints,
   .case-results,
-  .wall-of-trust {
+  .wall-of-trust,
+  .infographics-section {
     padding-top: 60px;
     padding-bottom: 60px;
   }
@@ -1208,7 +1217,7 @@ main {
     height: 240px;
   }
 
-  .touchpoint-group-infographics .touchpoint-grid img {
+  .infographics-section .touchpoint-grid img {
     height: auto;
   }
 
