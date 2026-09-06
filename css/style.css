@@ -1426,20 +1426,22 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .quickwins-images img {
-    height: 220px;
-  }
-
+  /* Mobile: portfolio images stack full-width em altura natural, sem crop de object-fit */
+  .quickwins-images img,
   .quickwins-images-1 img {
-    height: 280px;
+    height: auto;
   }
 
   .craft-section {
     padding: 40px 20px;
   }
 
+  .craft-gallery {
+    grid-template-columns: 1fr;
+  }
+
   .craft-item img {
-    height: 200px;
+    height: auto;
   }
 
   .wall-of-trust {
@@ -1452,5 +1454,20 @@ main {
 
   .testimonial-arrow {
     font-size: 32px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Mobile: links sociais do rodapé quebram linha em vez de estourar a viewport,
+     com área de toque maior */
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+  .footer-links a {
+    padding: 12px 8px;
+  }
+  .footer-email {
+    padding: 10px 8px;
   }
 }
