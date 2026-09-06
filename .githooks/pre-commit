@@ -1,0 +1,30 @@
+#!/bin/sh
+# Propaga partials/header.html e partials/footer.html para as paginas (build.py)
+# antes de cada commit, e re-adiciona as paginas alteradas ao commit.
+#
+# Filosofia: nao atrapalhar. So roda quando o commit mexe em partials/, .html
+# ou build.py. Se python3 nao existir, apenas avisa e deixa o commit seguir.
+# So bloqueia se o proprio build.py quebrar (sinal de bug real, nao de esquecimento).
+
+git diff --cached --name-only | grep -Eq '^partials/|\.html$|^build\.py$' || exit 0
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "pre-commit: python3 nao encontrado - pulei o build dos partials." >&2
+  exit 0
+fi
+
+out=$(python3 build.py 2>&1)
+status=$?
+if [ $status -ne 0 ]; then
+  echo "$out" >&2
+  echo "pre-commit: build.py falhou (veja acima). Commit abortado." >&2
+  exit 1
+fi
+
+echo "$out" | awk '/^updated /{print $2}' | while IFS= read -r f; do
+  [ -n "$f" ] || continue
+  git add "$f"
+  echo "pre-commit: partial propagado -> $f (re-staged)"
+done
+
+exit 0
