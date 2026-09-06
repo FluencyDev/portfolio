@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Aquaponics: Case Study | Renato Waru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    /* aquaponia.html - estilos locais: bloco "About the project" colapsavel + creditos
+       discretos. Sem cor nova: reaproveita os tons ja usados no style.css. */
+    .about-project {
+      max-width: 760px;
+      margin: 0 auto;
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc;
+    }
+    .about-project > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #3a3a3a;
+    }
+    .about-project > summary::-webkit-details-marker { display: none; }
+    .about-project > summary::after {
+      content: '+';
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 1;
+      color: #b82b2b;
+    }
+    .about-project[open] > summary::after { content: '\2212'; } /* sinal de menos, nao e travessao */
+    .about-project-body { padding-bottom: 28px; }
+    .about-project-body p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #5a5a5a;
+      margin-bottom: 16px;
+    }
+    .about-project-body p:last-child { margin-bottom: 0; }
+
+    .case-credits {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #999999;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .case-credits strong { color: #5a5a5a; font-weight: 700; }
+
+    /* espacamento entre paragrafos .case-block-body consecutivos (nao existe no style.css) */
+    .case-block-body + .case-block-body { margin-top: 18px; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER:START - gerado de partials/header.html - nao edite aqui; rode: python3 build.py -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-wordmark">Renato Waru</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <!-- NAV: gerado em 2026-09-06, ver prompts-ajustes-site-renatowaru.md item 1 -->
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<!-- HEADER:END -->
+
+  <!-- 1. Case Hero -->
+  <section class="case-hero">
+    <div class="case-hero-inner">
+      <div class="featured-label">
+        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
+        <span>Case Study</span>
+      </div>
+      <h1 class="case-hero-title">
+        Introduction to Aquaponics: Designing a Book That Grows Fish, Plants, and a Community
+      </h1>
+      <figure class="case-hero-image">
+        <!-- TODO: mockup de hero de assets/images/aquaponia/ - escolher o mais limpo entre a
+             capa dura na mao (fundo azul, peixe e morango) e o flat-lay na mesa de madeira;
+             full-width, sem crop -->
+        <!-- <img src="assets/images/aquaponia/aquaponia-hero.webp" alt="Introduction to Aquaponics book cover mockup"> -->
+      </figure>
+      <dl class="case-meta">
+        <div><dt>Client</dt><dd>Self-published</dd></div>
+        <div><dt>Category</dt><dd>Editorial &middot; Publishing</dd></div>
+        <div><dt>Role</dt><dd>Full editorial direction</dd></div>
+        <div><dt>Scope</dt><dd>Writing, diagrams, layout, print, crowdfunding</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 2. The Project -->
+  <section class="case-block">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">The Project</h2>
+      <p class="case-block-lead">
+        A first book for people teaching themselves to grow fish and plants together.
+      </p>
+      <p class="case-block-body">
+        Introduction to Aquaponics (Introdu&ccedil;&atilde;o &agrave; Aquaponia) explains how to run a closed loop where fish and plants feed each other, written for readers starting from zero. Renato directed it end to end, from the first outline to the printed copies that went out to the people who backed it.
+      </p>
+      <p class="case-block-body">
+        Aquaponics sits between aquaculture and hydroponics, and the beginner material fell into two camps: too academic to act on, or too casual to trust. In Portuguese there was almost nothing at an introductory level. The book was scoped to be the missing first step, clear for a newcomer and still correct for someone about to build a real system.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. About the project (collapsible) -->
+  <section class="case-block case-block-light">
+    <div class="case-block-inner">
+      <details class="about-project">
+        <summary>About the project</summary>
+        <div class="about-project-body">
+          <p>
+            The project began with a practical problem. The people teaching themselves aquaponics in Brazil had no single introductory book to start from, only scattered forum threads and papers written for a different audience. Renato had been running small systems and kept meeting the same beginners asking the same questions.
+          </p>
+          <p>
+            The gap was specific. Technical writing assumed a background most readers did not have, and hobbyist material skipped the biology that keeps a system alive. The book had to respect the reader without demanding a degree, and it had to be solid enough to build from.
+          </p>
+          <p>
+            Renato ran the full editorial direction. He wrote part of the manuscript and interviewed technical specialists to check the parts outside his own experience. He created the content illustrations and diagrams: the autosiphon, the nitrogen cycling loop, and the system layout options. He handled the page design and the print production, and he ran the crowdfunding campaign and the direct sales that carried the book to its readers.
+          </p>
+          <p>
+            The pedagogical section was written with Maga Miranda, shaping how the material is taught rather than only what it covers. Claudio Alfaro co-authored the book and verified the technical accuracy of every system it describes.
+          </p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 4. Infographics & Content Design -->
+  <section class="case-block">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">Infographics &amp; Content Design</h2>
+      <p class="case-block-body">
+        The diagrams carry the teaching: the autosiphon that drains a grow bed on its own, the nitrogen cycle that turns fish waste into plant food, and the layout options for building a system at home.
+      </p>
+      <div class="touchpoint-gallery">
+        <!-- TODO: spreads recortados sem mao segurando (os mais limpos), full-width, sem crop -->
+        <!-- <img src="assets/images/aquaponia/aquaponia-diagram-autosiphon.webp" alt="Autosiphon diagram spread from Introduction to Aquaponics">
+        <img src="assets/images/aquaponia/aquaponia-diagram-nitrogen-cycle.webp" alt="Nitrogen cycling diagram spread from Introduction to Aquaponics">
+        <img src="assets/images/aquaponia/aquaponia-diagram-system-layout.webp" alt="System layout diagram spread from Introduction to Aquaponics"> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Credits (discreet, case footer) -->
+  <section class="case-block case-block-light">
+    <div class="case-block-inner">
+      <p class="case-credits">
+        <strong>Credits.</strong> Co-authored with Claudio Alfaro, technical lead, who verified every system described, and Maga Miranda, who co-wrote the pedagogical section.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. Case nav -->
+  <nav class="case-nav">
+    <div class="case-nav-inner">
+      <a href="bwt.html">&larr; Back: Better Work Together</a>
+      <a href="index.html#work">All Work &rarr;</a>
+    </div>
+  </nav>
+
+<!-- FOOTER:START - gerado de partials/footer.html - nao edite aqui; rode: python3 build.py -->
+<footer class="site-footer" id="contact">
+  <div class="site-footer-inner">
+    <p class="footer-cta">Let's <em>work together.</em></p>
+    <a href="mailto:renato@waru.com.br" class="footer-email">renato@waru.com.br</a>
+    <nav class="footer-links">
+      <a href="https://wa.me/5511996293050" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/renatowaru" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://substack.com/@renatowaru" target="_blank" rel="noopener">Substack</a>
+      <a href="https://www.linkedin.com/in/renato-waru/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Renato Waru Design</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+
+  <script src="js/main.js?v=1"></script>
+</body>
+</html>
