@@ -1276,8 +1276,9 @@ main {
     padding-bottom: 60px;
   }
 
+  /* Mobile: uma coluna - os numeros grandes (#12 -> #3) nao cabem em 2 colunas a 375px */
   .results-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .case-meta {
@@ -1305,6 +1306,11 @@ main {
 
   .case-nav-inner {
     flex-direction: column;
+    gap: 4px;
+  }
+  /* Mobile: area de toque confortavel nos links de navegacao entre cases */
+  .case-nav a {
+    padding: 12px 0;
   }
 
   /* Abstraction slideshow: swap wide image for animated single circle */
