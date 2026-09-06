@@ -531,6 +531,15 @@ a { color: inherit; text-decoration: none; }
   .reveal.in { opacity: 1; transform: none; }
 }
 
+/* =========  MOBILE PASS (375/414px)  ========= */
+@media (max-width: 768px) {
+  /* imagem de referência Māori tinha max-width fixo de 360px e estourava a viewport */
+  .bird-maori { max-width: 100%; }
+  /* labels de 11px sobem para 12px - legível sem zoom no celular */
+  .section-label,
+  .meta-item dt { font-size: 12px; }
+}
+
 </style>
 </head>
 <body>
