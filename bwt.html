@@ -509,9 +509,6 @@ a { color: inherit; text-decoration: none; }
   background: var(--bwt-cream);
   padding: 40px 32px;
   border-top: 1px solid var(--bwt-rule);
-  display: block;
-  max-width: none;
-  margin: 0;
 }
 .case-nav-inner {
   max-width: var(--max); margin: 0 auto;
@@ -523,14 +520,6 @@ a { color: inherit; text-decoration: none; }
   transition: color 0.2s;
 }
 .case-nav a:hover { color: var(--bwt-pink); }
-.case-nav a strong {
-  display: block;
-  font-family: var(--ff-display);
-  font-size: 18px;
-  color: var(--bwt-ink);
-  margin-top: 4px;
-  font-weight: 500;
-}
 
 /* =========  REVEAL ON SCROLL  ========= */
 @media (prefers-reduced-motion: no-preference) {
@@ -757,10 +746,10 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <!-- =========  CASE NAV  ========= -->
+<!-- padrão canônico (ver prompts-ajustes-site-renatowaru.md); "Next Case" volta no passo 7b -->
 <nav class="case-nav">
   <div class="case-nav-inner">
-    <a href="/index.html">← <strong>Back to Portfolio</strong></a>
-    <a href="/waru-piracaia.html">Next Case <strong>Waru Piracaia →</strong></a>
+    <a href="index.html">← Back to Portfolio</a>
   </div>
 </nav>
 

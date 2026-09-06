@@ -1178,13 +1178,16 @@ main {
 
 /* Case Navigation */
 .case-nav {
+  padding: 40px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.case-nav-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  border-top: 1px solid #e5e5e5;
 }
 
 .case-nav a {
@@ -1300,7 +1303,7 @@ main {
     height: auto;
   }
 
-  .case-nav {
+  .case-nav-inner {
     flex-direction: column;
   }
 
