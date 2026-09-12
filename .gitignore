@@ -14,3 +14,6 @@ Thumbs.db
 
 # Node (se usar no futuro)
 node_modules/
+
+# Notas internas de trabalho (nao publicar)
+md/
