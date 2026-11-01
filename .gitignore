@@ -17,3 +17,6 @@ node_modules/
 
 # Notas internas de trabalho (nao publicar)
 md/
+
+# Originais de trabalho das imagens mobile (pasta de origem, nao publicar)
+assets/mobile-src/
