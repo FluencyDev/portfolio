@@ -371,6 +371,12 @@ main {
   max-width: 560px;
 }
 
+/* Resumo curto do Featured Project: escondido por padrao, aparece so no
+   mobile (ver @media max-width:768px), onde substitui o .project-desc-full. */
+.project-desc-short {
+  display: none;
+}
+
 .featured-details {
   flex-shrink: 0;
 }
@@ -1275,6 +1281,62 @@ main {
   .case-footer-inner {
     flex-direction: column;
     gap: 24px;
+  }
+
+  /* ---------- Featured Project no mobile ---------- */
+
+  /* o header fica fixo (sticky), entao a ancora #work precisa de folga
+     para o label nao parar atras dele ao tocar em "Work" no menu */
+  .featured-project {
+    scroll-margin-top: 72px;
+  }
+
+  /* etiqueta discreta: sem bandeirinha, caixa alta, branco a 70% */
+  .featured-project .featured-tag {
+    display: none;
+  }
+
+  .featured-project .featured-label span {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* titulo: a quebra manual do desktop atrapalha em tela estreita */
+  .featured-title br {
+    display: none;
+  }
+
+  .featured-title {
+    text-wrap: balance;
+  }
+
+  /* foto de ponta a ponta, sem cantos arredondados, recorte 4/3 central.
+     Troque --featured-image-width por calc(100% - 40px) para alinhar a
+     imagem ao texto do header/footer em vez de sangrar. */
+  .featured-image {
+    --featured-image-width: 100%;
+    width: var(--featured-image-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .featured-image img {
+    border-radius: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* troca o paragrafo longo pelo resumo curto */
+  .project-desc-full {
+    display: none;
+  }
+
+  .project-desc-short {
+    display: block;
   }
 
   .case-hero,
