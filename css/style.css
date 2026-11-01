@@ -1234,8 +1234,22 @@ main {
 
   main {
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 20px;   /* era 40px - hero 20px mais perto do header no mobile */
     align-items: flex-start;
+  }
+
+  /* Hero headline: 3 linhas, cada uma sem quebra.
+     --headline-size esta calibrado para a linha mais longa ("Consistency
+     Everywhere") ocupar a largura util (viewport - 40px de padding do
+     .container) sem estourar. Ao trocar a fonte do headline, reajuste
+     SO este valor. */
+  .headline {
+    --headline-size: clamp(22px, 7.2vw, 32px);
+    font-size: var(--headline-size);
+  }
+
+  .headline > div {
+    white-space: nowrap;
   }
 
   .illustration {
