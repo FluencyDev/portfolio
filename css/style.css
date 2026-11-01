@@ -293,6 +293,10 @@ main {
 .featured-project {
   background: #283224;
   color: #ffffff;
+  /* O header e sticky, entao a ancora #work pararia com o label atras dele.
+     Medido: header de 58px no desktop e 69px no mobile - 68px cobre os dois
+     com folga (o .featured-header ainda soma 40px de padding-top). */
+  scroll-margin-top: 68px;
 }
 
 .featured-header {
@@ -1284,12 +1288,6 @@ main {
   }
 
   /* ---------- Featured Project no mobile ---------- */
-
-  /* o header fica fixo (sticky), entao a ancora #work precisa de folga
-     para o label nao parar atras dele ao tocar em "Work" no menu */
-  .featured-project {
-    scroll-margin-top: 72px;
-  }
 
   /* etiqueta discreta: sem bandeirinha, caixa alta, branco a 70% */
   .featured-project .featured-tag {
