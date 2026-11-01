@@ -1337,6 +1337,16 @@ main {
     display: block;
   }
 
+  /* Industry / Scale / Challenge no mesmo corpo e ritmo do .project-desc-short.
+     O clamp e o mesmo de .featured-description de proposito: se o corpo do
+     paragrafo mudar, estas tres linhas acompanham. Escopado em
+     .featured-project porque .featured-details tambem serve outras secoes.
+     Os rotulos seguem em negrito pelo <strong> (.featured-details strong). */
+  .featured-project .featured-details p {
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.7;
+  }
+
   .case-hero,
   .case-block,
   .case-touchpoints,
