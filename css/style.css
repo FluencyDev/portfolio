@@ -1470,6 +1470,20 @@ main {
     height: auto;
   }
 
+  /* Oculta a Wall of Trust do index.html no mobile.
+     O :has(.testimonial-wrapper) e necessario porque riza.html REUSA
+     .wall-of-trust para o depoimento do case, e lah ele deve continuar
+     visivel - a versao do index e a unica com .testimonial-wrapper
+     (as setas) e .wall-of-trust-title. HTML e JS intactos.
+     display:none remove a caixa inteira, inclusive o padding, entao nao
+     sobra vao: o espaco do polvo ate o Featured Project continua em 56px
+     (16px de padding-bottom do .container no mobile + 40px de
+     padding-top do .featured-header), exatamente o que havia antes
+     entre o polvo e o titulo da Wall of Trust. Medido em 390px. */
+  .wall-of-trust:has(.testimonial-wrapper) {
+    display: none;
+  }
+
   .wall-of-trust {
     padding: 40px 20px;
   }
