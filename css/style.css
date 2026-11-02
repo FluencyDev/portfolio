@@ -1315,8 +1315,7 @@ main {
     color: rgba(255, 255, 255, 0.7);
   }
 
-  .case-enspiral .featured-label span,
-  .case-aquaponia .featured-label span {
+  .case-enspiral .featured-label span {
     color: rgba(58, 58, 58, 0.7);
   }
 
@@ -1383,6 +1382,27 @@ main {
   .case-aquaponia .case-details p {
     font-size: clamp(14px, 1.4vw, 16px);
     line-height: 1.7;
+  }
+
+  /* ---------- fundo areia do Aquaponia (so mobile) ----------
+     Troque --aquaponia-bg para testar outro tom. As cores de texto abaixo
+     foram escolhidas para passar de 4.5:1 SOBRE ESTE FUNDO - se mudar o
+     fundo, remeca o contraste. */
+  .case-aquaponia {
+    --aquaponia-bg: #cfc6b3;
+    background: var(--aquaponia-bg);
+  }
+
+  /* texto corrido: o #5a5a5a herdado da sa 4.07:1 no areia, abaixo do minimo.
+     #4a4a4a sobe para 5.2:1 mantendo a hierarquia com os titulos. */
+  .case-aquaponia .case-description p,
+  .case-aquaponia .case-details p {
+    color: #4a4a4a;
+  }
+
+  /* etiqueta: a 70% de opacidade o areia da 3.5:1. 85% sobe para 4.8:1. */
+  .case-aquaponia .featured-label span {
+    color: rgba(58, 58, 58, 0.85);
   }
 
   .case-hero,
