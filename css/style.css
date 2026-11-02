@@ -1287,21 +1287,23 @@ main {
     gap: 24px;
   }
 
-  /* ---------- Featured Project + case Editorial no mobile ----------
+  /* ---------- Featured Project + cases Editorial e Aquaponia no mobile ----------
      Os dois recebem o mesmo tratamento, entao os seletores vao agrupados
      onde o estilo e identico. Tudo escopado em .featured-project /
      .case-enspiral porque .featured-label, .featured-tag, .case-title,
      .case-image e .case-details sao reusados por Craft, Quick Wins,
-     Services e pelo case Aquaponia, que seguem intocados. */
+     Services, que seguem intocados. */
 
   /* etiqueta discreta: sem bandeirinha, caixa alta */
   .featured-project .featured-tag,
-  .case-enspiral .featured-tag {
+  .case-enspiral .featured-tag,
+  .case-aquaponia .featured-tag {
     display: none;
   }
 
   .featured-project .featured-label span,
-  .case-enspiral .featured-label span {
+  .case-enspiral .featured-label span,
+  .case-aquaponia .featured-label span {
     font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
@@ -1313,18 +1315,21 @@ main {
     color: rgba(255, 255, 255, 0.7);
   }
 
-  .case-enspiral .featured-label span {
+  .case-enspiral .featured-label span,
+  .case-aquaponia .featured-label span {
     color: rgba(58, 58, 58, 0.7);
   }
 
   /* titulo: a quebra manual do desktop atrapalha em tela estreita */
   .featured-title br,
-  .case-enspiral .case-title br {
+  .case-enspiral .case-title br,
+  .case-aquaponia .case-title br {
     display: none;
   }
 
   .featured-title,
-  .case-enspiral .case-title {
+  .case-enspiral .case-title,
+  .case-aquaponia .case-title {
     text-wrap: balance;
   }
 
@@ -1333,7 +1338,8 @@ main {
      imagens ao texto em vez de sangrar (separe a regra se quiser mudar
      so uma das duas secoes). */
   .featured-image,
-  .case-enspiral .case-image {
+  .case-enspiral .case-image,
+  .case-aquaponia .case-image {
     --featured-image-width: 100%;
     width: var(--featured-image-width);
     margin-left: auto;
@@ -1341,15 +1347,19 @@ main {
   }
 
   .featured-image img,
-  .case-enspiral .case-image img {
+  .case-enspiral .case-image img,
+  .case-aquaponia .case-image img {
     border-radius: 0;
   }
 
-  /* recorte 4/3 SO na foto do Riza: ali o corte central preserva a logo e o
-     complexo. Na foto do Better Work Together o 4/3 cortaria as pontas do
-     livro (o titulo da capa e a logo Enspiral ficam de fora), entao ela
-     sangra na proporcao original. */
-  .featured-image img {
+  /* recorte 4/3 no Riza e no Aquaponia. No Riza o corte central preserva a
+     logo e o complexo; no Aquaponia a imagem servida ja e um 4/3 recortado
+     na origem (aquaponia-card-mobile.webp), entao o cover nao corta nada.
+     O Better Work Together fica de fora: la o 4/3 cortaria as pontas do
+     livro (titulo da capa e logo Enspiral), entao sangra na proporcao
+     original. */
+  .featured-image img,
+  .case-aquaponia .case-image img {
     aspect-ratio: 4 / 3;
     object-fit: cover;
     object-position: center center;
@@ -1369,7 +1379,8 @@ main {
      proposito: se o corpo do paragrafo mudar, estas linhas acompanham.
      Os rotulos seguem em negrito pelo <strong> de cada secao. */
   .featured-project .featured-details p,
-  .case-enspiral .case-details p {
+  .case-enspiral .case-details p,
+  .case-aquaponia .case-details p {
     font-size: clamp(14px, 1.4vw, 16px);
     line-height: 1.7;
   }
