@@ -663,6 +663,56 @@ main {
   margin-bottom: 40px;
 }
 
+/* Work in Brief: itens em largura total (etiqueta, nome, frase, faixa, link) */
+.brief-item {
+  margin-bottom: 48px;
+}
+
+.brief-item:last-child {
+  margin-bottom: 0;
+}
+
+.brief-cat {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  /* 0.85 e nao 0.7: sobre o #efedea desta secao, 70% fica em 4.0:1,
+     abaixo do minimo de 4.5:1 */
+  color: rgba(58, 58, 58, 0.85);
+  margin-bottom: 6px;
+}
+
+.brief-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #3a3a3a;
+  margin-bottom: 6px;
+}
+
+.brief-line {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.7;
+  color: #5a5a5a;
+  max-width: 560px;
+  margin-bottom: 16px;
+}
+
+.brief-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #3a3a3a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .quickwins-case {
   margin-bottom: 48px;
 }
