@@ -550,6 +550,11 @@ main {
   object-fit: cover;
 }
 
+/* Titulo exclusivo do mobile na Timeless Craft (ver @media max-width:768px) */
+.craft-title {
+  display: none;
+}
+
 .craft-text {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -1297,13 +1302,15 @@ main {
   /* etiqueta discreta: sem bandeirinha, caixa alta */
   .featured-project .featured-tag,
   .case-enspiral .featured-tag,
-  .case-aquaponia .featured-tag {
+  .case-aquaponia .featured-tag,
+  .craft-section .featured-tag {
     display: none;
   }
 
   .featured-project .featured-label span,
   .case-enspiral .featured-label span,
-  .case-aquaponia .featured-label span {
+  .case-aquaponia .featured-label span,
+  .craft-section .featured-label span {
     font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
@@ -1311,7 +1318,8 @@ main {
   }
 
   /* a cor muda: fundo escuro no Featured Project, claro no Editorial */
-  .featured-project .featured-label span {
+  .featured-project .featured-label span,
+  .craft-section .featured-label span {
     color: rgba(255, 255, 255, 0.7);
   }
 
@@ -1328,7 +1336,8 @@ main {
 
   .featured-title,
   .case-enspiral .case-title,
-  .case-aquaponia .case-title {
+  .case-aquaponia .case-title,
+  .craft-title {
     text-wrap: balance;
   }
 
@@ -1590,12 +1599,33 @@ main {
     padding: 40px 20px;
   }
 
-  .craft-gallery {
-    grid-template-columns: 1fr;
+  /* titulo so-mobile, mesmo desenho dos titulos dos outros cases,
+     em branco por causa do fundo vinho */
+  .craft-title {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.3;
+    color: #ffffff;
+    margin-top: 12px;
   }
 
+  /* galeria de ponta a ponta: as margens negativas furam os 20px de
+     padding lateral da secao. 6px de respiro entre as imagens, onde o
+     vinho do fundo aparece. */
+  .craft-gallery {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  /* height:auto + width:100% preserva a proporcao original de cada
+     imagem (sem recorte); o object-fit da regra base fica inerte. */
   .craft-item img {
     height: auto;
+    border-radius: 0;
   }
 
   /* Oculta a Wall of Trust do index.html no mobile.
