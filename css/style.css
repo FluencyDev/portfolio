@@ -558,9 +558,7 @@ main {
 .craft-text {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  /* 14px/1.7 = 23.8px, o mesmo corpo dos paragrafos curtos dos outros
-     cases - aqui fixo, vale no desktop e no mobile */
-  font-size: 14px;
+  font-size: clamp(14px, 1.4vw, 16px);
   line-height: 1.7;
   color: #d4d4d4;
   max-width: 420px;
@@ -1647,6 +1645,14 @@ main {
   .craft-item img {
     height: auto;
     border-radius: 0;
+  }
+
+  /* corpo do texto igual ao dos paragrafos curtos dos outros cases.
+     O clamp da regra base ja resolve para 14px nesta faixa; a regra
+     aqui e explicita para o valor nao escorregar se o clamp mudar. */
+  .craft-text {
+    font-size: 14px;
+    line-height: 1.7;
   }
 
   /* Oculta a Wall of Trust do index.html no mobile.
