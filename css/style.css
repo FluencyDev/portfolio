@@ -558,11 +558,32 @@ main {
 .craft-text {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: clamp(14px, 1.4vw, 16px);
+  /* 14px/1.7 = 23.8px, o mesmo corpo dos paragrafos curtos dos outros
+     cases - aqui fixo, vale no desktop e no mobile */
+  font-size: 14px;
   line-height: 1.7;
   color: #d4d4d4;
   max-width: 420px;
   margin-top: 24px;
+}
+
+/* Link discreto para o Instagram. inline-flex + min-height garantem
+   area de toque de 44px sem aumentar o tamanho do texto. */
+.craft-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.craft-link:hover {
+  text-decoration-thickness: 2px;
 }
 
 /* Quick Wins */
