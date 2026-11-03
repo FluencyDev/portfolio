@@ -14,16 +14,12 @@
   var nav = header.querySelector('.site-nav');
   if (!toggle || !nav) return;
 
-  var savedScrollY = 0;
-
   function isOpen() {
     return nav.classList.contains('is-open');
   }
 
   function openNav() {
-    savedScrollY = window.scrollY || window.pageYOffset || 0;
     nav.classList.add('is-open');
-    document.body.classList.add('nav-open');   /* trava o scroll do body (overflow:hidden) */
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close menu');
     document.addEventListener('click', onOutsideClick, true);
@@ -32,13 +28,10 @@
 
   function closeNav() {
     nav.classList.remove('is-open');
-    document.body.classList.remove('nav-open');   /* destrava o scroll do body */
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open menu');
     document.removeEventListener('click', onOutsideClick, true);
     document.removeEventListener('keydown', onKeydown);
-    // restaura a posição caso o browser tenha zerado o scroll durante o overflow:hidden
-    window.scrollTo(0, savedScrollY);
   }
 
   toggle.addEventListener('click', function (e) {

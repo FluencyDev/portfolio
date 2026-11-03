@@ -4,6 +4,7 @@
   --site-paper:  #f6f3ec;
   --site-cream:  #efeadf;
   --site-deep:   #15314b;
+  --site-dark:   #272624;   /* fundo do header e do footer */
   --site-accent: #d8276a;
   --site-ink:    #0d1f2f;
   --site-muted:  #5a6b7a;
@@ -45,10 +46,9 @@ body {
 
 /* =========  SITE HEADER  ========= */
 .site-header {
-  position: sticky; top: 0; z-index: 200;
-  background: rgba(246,243,236,0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--site-rule);
+  position: sticky; top: 0; z-index: 200;   /* desktop: fixo no topo; no mobile rola junto (ver @media) */
+  background: var(--site-dark);
+  border-bottom: 1px solid rgba(246,243,236,0.12);
 }
 .site-header-inner {
   max-width: var(--max); margin: 0 auto;
@@ -56,12 +56,15 @@ body {
   display: flex; justify-content: space-between; align-items: center;
 }
 .site-wordmark {
-  font-family: var(--ff-display);
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  color: var(--site-deep);
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
+}
+/* Monograma RW (assets/images/logo-rw.png, 300x186): 36px de altura no desktop */
+.site-wordmark img {
+  display: block;
+  height: 36px;
+  width: auto;
 }
 .site-nav {
   display: flex; gap: 32px;
@@ -71,7 +74,7 @@ body {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--site-deep);
+  color: var(--site-paper);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -79,7 +82,7 @@ body {
   color: var(--site-accent);
 }
 .site-nav a.is-current {
-  color: var(--site-accent);
+  color: #f06292;   /* rosa mais claro que o --site-accent: contraste AA sobre o --site-dark */
   font-weight: 700;
 }
 
@@ -96,7 +99,7 @@ body {
   background: none;
   border: 0;
   cursor: pointer;
-  color: var(--site-deep);
+  color: var(--site-paper);
 }
 .nav-toggle-bar {
   display: block;
@@ -116,34 +119,34 @@ body {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* trava o scroll da página enquanto o drawer mobile está aberto */
-body.nav-open { overflow: hidden; }
-
 @media (max-width: 768px) {
   .nav-toggle { display: flex; }
 
+  /* Mobile: o header nao fica fixo, rola junto com a pagina */
+  .site-header {
+    position: relative;
+  }
+
+  /* Painel do menu ancorado na base do proprio header, largura total */
   .site-nav {
     display: none;               /* fechado por padrão */
-    position: fixed;
-    top: 100%;                   /* base do header (containing block = .site-header, via backdrop-filter) */
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
-    height: calc(100vh - 100%);  /* fallback: header-bottom -> fim da viewport */
-    height: calc(100dvh - 100%);
     flex-direction: column;
     gap: 0;
     padding: 8px 20px 24px;
-    background: #efedea;         /* bege padrão do site, opaco: nada sangra por trás */
-    border-top: 1px solid var(--site-rule);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    background: var(--site-dark);   /* opaco: nada sangra por trás */
+    border-top: 1px solid rgba(246,243,236,0.12);
+    border-bottom: 1px solid rgba(246,243,236,0.12);
   }
   .site-nav.is-open { display: flex; }
 
   .site-nav a {
     padding: 16px 2px;
     font-size: 13px;
-    border-bottom: 1px solid var(--site-rule);
+    border-bottom: 1px solid rgba(246,243,236,0.12);
   }
   .site-nav a:last-child { border-bottom: 0; }
 }
@@ -884,7 +887,7 @@ main {
 
 /* =========  SITE FOOTER  ========= */
 .site-footer {
-  background: var(--site-deep);
+  background: var(--site-dark);
   padding: 80px 40px 48px;
   text-align: center;
 }
@@ -921,7 +924,7 @@ main {
 .footer-cta:focus-visible {
   background: var(--site-paper);
   border-color: var(--site-paper);
-  color: var(--site-deep);
+  color: var(--site-dark);
 }
 .footer-cta:focus-visible {
   outline: 2px solid var(--site-accent);
@@ -1446,6 +1449,13 @@ main {
 
   .site-header-inner {
     padding: 14px 20px;
+  }
+  .site-wordmark img {
+    height: 30px;
+  }
+  /* Sem header fixo no mobile, a ancora #work nao precisa mais de folga no topo */
+  .featured-project {
+    scroll-margin-top: 0;
   }
   .site-nav {
     gap: 20px;
