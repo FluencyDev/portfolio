@@ -293,6 +293,47 @@ main {
   color: #bd3939;
 }
 
+/* Carrossel da Wall of Trust (so no index: o riza.html reusa .testimonial-quote
+   sem o .testimonial-wrapper, e la nada muda). */
+.testimonial-wrapper .testimonial-content {
+  display: grid;
+  max-width: 680px;
+}
+.testimonial-slide {
+  grid-area: 1 / 1;          /* todos na mesma celula: altura do mais alto */
+  align-self: center;        /* o mais curto fica centrado, alinhado com as setas */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+.testimonial-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-slide,
+  .testimonial-slide.is-active {
+    transition: none;
+  }
+}
+/* Texto mais leve: a Libre Baskerville italica so tem um peso,
+   entao a leveza vem do tamanho e da cor (#626262 = 5.22:1 sobre #efedea) */
+.testimonial-wrapper .testimonial-quote {
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  line-height: 1.65;
+  color: #626262;
+}
+.testimonial-wrapper .testimonial-author {
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.6;
+}
+.testimonial-arrow:focus-visible {
+  outline: 2px solid #b82b2b;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 /* Featured Project */
 .featured-project {
   background: #283224;
@@ -526,7 +567,7 @@ main {
 
 /* Timeless Craft */
 .craft-section {
-  background: #441f21;
+  background: #ffffff;
   padding: 50px 40px 60px;
 }
 
@@ -536,7 +577,7 @@ main {
 }
 
 .craft-section .featured-label span {
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 .craft-gallery {
@@ -564,7 +605,7 @@ main {
   font-weight: 400;
   font-size: clamp(14px, 1.4vw, 16px);
   line-height: 1.7;
-  color: #d4d4d4;
+  color: #5a5a5a;
   max-width: 420px;
   margin-top: 24px;
 }
@@ -579,7 +620,7 @@ main {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.7;
-  color: #ffffff;
+  color: #3a3a3a;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -820,7 +861,7 @@ main {
 /* Services */
 .services-section {
   background: var(--site-dark);
-  padding: 50px 40px 70px;
+  padding: 50px 40px 60px;   /* igual a Selected Brands e Timeless Craft */
 }
 
 .services-inner {
@@ -1416,9 +1457,6 @@ main {
   .featured-project {
     scroll-margin-top: 0;
   }
-  .site-nav {
-    gap: 20px;
-  }
 
   main {
     flex-direction: column;
@@ -1496,7 +1534,6 @@ main {
 
   /* a cor muda: fundo escuro no Featured Project, claro no Editorial */
   .featured-project .featured-label span,
-  .craft-section .featured-label span,
   .services-section .featured-label span {
     color: rgba(255, 255, 255, 0.7);
   }
@@ -1508,7 +1545,8 @@ main {
   /* 0.85 e nao 0.7: sobre o #efedea e o #e4e1da destas duas secoes,
      70% cai para ~4.0:1, abaixo do minimo de 4.5:1 */
   .work-brief .featured-label span,
-  .brands-section .featured-label span {
+  .brands-section .featured-label span,
+  .craft-section .featured-label span {
     color: rgba(58, 58, 58, 0.85);
   }
 
@@ -1769,7 +1807,7 @@ main {
   }
 
   .services-section {
-    padding: 40px 20px 50px;
+    padding: 40px 20px;
   }
 
   .services-cards {
@@ -1825,20 +1863,20 @@ main {
   }
 
   /* titulo so-mobile, mesmo desenho dos titulos dos outros cases,
-     em branco por causa do fundo vinho */
+     em cinza sobre o fundo branco */
   .craft-title {
     display: block;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: clamp(24px, 3vw, 34px);
     line-height: 1.3;
-    color: #ffffff;
+    color: #3a3a3a;
     margin-top: 12px;
   }
 
   /* galeria de ponta a ponta: as margens negativas furam os 20px de
      padding lateral da secao. 6px de respiro entre as imagens, onde o
-     vinho do fundo aparece. */
+     branco do fundo aparece. */
   .craft-gallery {
     grid-template-columns: 1fr;
     gap: 6px;
@@ -1902,5 +1940,74 @@ main {
   .footer-email {
     margin: 0 0 40px;
     padding: 0 8px;
+  }
+}
+
+/* ---------  VOLTAR AO TOPO (so mobile)  ---------
+   O botao vem com hidden; o main.js remove o hidden e controla .is-visible.
+   z-index 150: abaixo do header/painel do menu (200).
+   Circulo visivel de 42px; o ::after amplia a area de toque para 48px.
+   right/bottom de 19px: a area de toque de 48px fica a 16px das bordas
+   e o centro do botao nao muda em relacao a versao de 48px. */
+.back-to-top {
+  display: none;
+}
+@media (max-width: 768px) {
+  .back-to-top:not([hidden]) {
+    position: fixed;
+    right: 19px;
+    bottom: calc(19px + env(safe-area-inset-bottom, 0px));
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid rgba(246, 243, 236, 0.28);
+    border-radius: 50%;
+    background: rgba(39, 38, 36, 0.45);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.12s ease, visibility 0s linear 0.2s;
+  }
+  .back-to-top::after {
+    content: "";
+    position: absolute;
+    inset: -4px;   /* 42px + borda: -4px leva a caixa de toque a 48px */
+    border-radius: 50%;
+    background: transparent;
+  }
+  .back-to-top svg {
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.35));
+  }
+  .back-to-top svg path {
+    stroke: #F6F3EC;
+    stroke-width: 1.5px;
+  }
+  .back-to-top.is-visible {
+    opacity: 0.9;
+    visibility: visible;
+    transition: opacity 0.2s ease, transform 0.12s ease, visibility 0s;
+  }
+  .back-to-top.is-visible:active {
+    opacity: 1;
+    transform: scale(0.96);
+  }
+  .back-to-top:focus-visible {
+    outline: 2px solid var(--site-paper);
+    outline-offset: 3px;
+  }
+}
+@supports not ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  @media (max-width: 768px) {
+    .back-to-top:not([hidden]) {
+      background: rgba(39, 38, 36, 0.7);
+    }
   }
 }

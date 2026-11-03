@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20">
+  <link rel="stylesheet" href="css/style.css?v=25">
 </head>
 <body>
 <!-- HEADER:START - gerado de partials/header.html - nao edite aqui; rode: python3 build.py -->
@@ -34,7 +34,6 @@
     <nav class="site-nav" id="site-nav">
       <!-- NAV: gerado em 2026-09-06, ver prompts-ajustes-site-renatowaru.md item 1 -->
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <a href="index.html#work">Work</a>
       <a href="index.html#contact">Contact</a>
     </nav>
@@ -67,16 +66,28 @@
     <div class="wall-of-trust-inner">
       <h2 class="wall-of-trust-title">Wall of Trust</h2>
       <div class="testimonial-wrapper">
-        <button class="testimonial-arrow testimonial-prev" aria-label="Previous testimonial">&lsaquo;</button>
-        <div class="testimonial-content">
-          <blockquote class="testimonial-quote">
-            "Renato introduced a distinctive thinking framework that significantly strengthened our brand. Across all our units, his visual language ensures everything aligns with our core purpose. He captured our essence and translated it into a cohesive, impactful identity. I confidently recommend his ability to deliver strategic design solutions."
-          </blockquote>
-          <p class="testimonial-author">
-            <strong>Régis Ferreira, President,</strong> <span class="highlight">Riza Sementes</span>
-          </p>
+        <button type="button" class="testimonial-arrow testimonial-prev" aria-label="Previous testimonial">&lsaquo;</button>
+        <!-- Depoimentos empilhados na mesma celula do grid: a altura e a do mais alto,
+             entao a secao nao muda de tamanho ao trocar. O main.js alterna .is-active. -->
+        <div class="testimonial-content" aria-live="polite">
+          <div class="testimonial-slide is-active">
+            <blockquote class="testimonial-quote">
+              "Renato introduced a distinctive thinking framework that significantly strengthened our brand. Across all our units, his visual language ensures everything aligns with our core purpose. He captured our essence and translated it into a cohesive, impactful identity. I confidently recommend his ability to deliver strategic design solutions."
+            </blockquote>
+            <p class="testimonial-author">
+              <strong>Régis Ferreira, President,</strong> <span class="highlight">Riza Sementes</span>
+            </p>
+          </div>
+          <div class="testimonial-slide">
+            <blockquote class="testimonial-quote">
+              "Creative director Renato went above and beyond to express the collective, creative spirit of this work, and together with artist Mukund transformed text into a wonderful piece of art."
+            </blockquote>
+            <p class="testimonial-author">
+              <strong>Ants Cabraal, Editor, Better Work Together</strong> &middot; <span class="highlight">Enspiral Foundation</span>
+            </p>
+          </div>
         </div>
-        <button class="testimonial-arrow testimonial-next" aria-label="Next testimonial">&rsaquo;</button>
+        <button type="button" class="testimonial-arrow testimonial-next" aria-label="Next testimonial">&rsaquo;</button>
       </div>
     </div>
   </section>
@@ -87,7 +98,7 @@
       <div class="featured-header-inner">
         <div class="featured-label">
           <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
-          <span>Featured Project</span>
+          <span>Brand System &middot; Agribusiness</span>
         </div>
         <h2 class="featured-title">Visual Consistency across a massive <br>range of physical and digital touchpoints</h2>
       </div>
@@ -119,7 +130,7 @@
       <div class="case-header-inner">
         <div class="featured-label">
           <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
-          <span>Editorial</span>
+          <span>Art Direction &middot; Remote Team</span>
         </div>
         <h2 class="case-title">Joining talents across 5 continents <br>to deliver one unified vision</h2>
         <img src="assets/images/img_flags.png" alt="Flags from 5 continents" class="case-flags">
@@ -155,7 +166,7 @@
       <div class="case-header-inner">
         <div class="featured-label">
           <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
-          <span>Editorial Direction</span>
+          <span>Publishing &middot; Idea to Print</span>
         </div>
         <h2 class="case-title">Introduction to Aquaponics: every editorial step, from research to print.</h2>
       </div>
@@ -225,33 +236,6 @@
     </div>
   </section>
 
-  <!-- Case: Timeless Craft -->
-  <section class="craft-section">
-    <div class="craft-inner">
-      <div class="featured-label">
-        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
-        <span>Timeless Craft</span>
-      </div>
-      <h2 class="craft-title">The hand tunes the eye.</h2>
-      <div class="craft-gallery">
-        <div class="craft-item craft-item-1">
-          <img src="assets/images/img_craft_1.webp" alt="Octopus fine art illustration" loading="lazy">
-        </div>
-        <div class="craft-item craft-item-2">
-          <img src="assets/images/img_craft_2.webp" alt="Red-eyed tree frog pastel drawing" loading="lazy">
-        </div>
-        <div class="craft-item craft-item-3">
-          <img src="assets/images/img_craft_3.webp" alt="Renato holding grasshopper illustration" loading="lazy">
-        </div>
-        <div class="craft-item craft-item-4">
-          <img src="assets/images/img_craft_4.webp" alt="Art studio workspace with tools" loading="lazy">
-        </div>
-      </div>
-      <p class="craft-text">What I learn drawing and making by hand, every brand I design inherits.</p>
-      <a class="craft-link" href="https://www.instagram.com/renatowaru/" target="_blank" rel="noopener noreferrer">More on Instagram: @renatowaru</a>
-    </div>
-  </section>
-
   <!-- Work in Brief -->
   <section class="quickwins-section work-brief">
     <div class="quickwins-inner">
@@ -259,7 +243,7 @@
         <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
         <span>Work in Brief</span>
       </div>
-      <h2 class="quickwins-title">Different briefs, one standard.</h2>
+      <h2 class="quickwins-title">Different briefs, <span class="brief-name-line">same care.</span></h2>
 
       <!-- Open Lunar Foundation -->
       <article class="brief-item">
@@ -428,6 +412,33 @@
     </div>
   </section>
 
+  <!-- Case: Timeless Craft -->
+  <section class="craft-section">
+    <div class="craft-inner">
+      <div class="featured-label">
+        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
+        <span>Timeless Craft</span>
+      </div>
+      <h2 class="craft-title">The hand tunes the eye.</h2>
+      <div class="craft-gallery">
+        <div class="craft-item craft-item-1">
+          <img src="assets/images/img_craft_1.webp" alt="Octopus fine art illustration" loading="lazy">
+        </div>
+        <div class="craft-item craft-item-2">
+          <img src="assets/images/img_craft_2.webp" alt="Red-eyed tree frog pastel drawing" loading="lazy">
+        </div>
+        <div class="craft-item craft-item-3">
+          <img src="assets/images/img_craft_3.webp" alt="Renato holding grasshopper illustration" loading="lazy">
+        </div>
+        <div class="craft-item craft-item-4">
+          <img src="assets/images/img_craft_4.webp" alt="Art studio workspace with tools" loading="lazy">
+        </div>
+      </div>
+      <p class="craft-text">What I learn drawing and making by hand, every brand I design inherits.</p>
+      <a class="craft-link" href="https://www.instagram.com/renatowaru/" target="_blank" rel="noopener noreferrer">More on Instagram: @renatowaru</a>
+    </div>
+  </section>
+
 <!-- FOOTER:START - gerado de partials/footer.html - nao edite aqui; rode: python3 build.py -->
 <footer class="site-footer" id="contact">
   <div class="site-footer-inner">
@@ -441,8 +452,13 @@
     <p class="footer-copy">&copy; 2026 Renato Waru Design</p>
   </div>
 </footer>
+<button type="button" class="back-to-top" aria-label="Back to top" hidden>
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+    <path d="M10 16V4M4.5 9.5L10 4l5.5 5.5" stroke="#F6F3EC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
 <!-- FOOTER:END -->
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
