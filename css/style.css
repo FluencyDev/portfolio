@@ -876,17 +876,41 @@ main {
 .site-footer-inner {
   max-width: var(--max); margin: 0 auto;
 }
+/* Botao de contato: abre o e-mail com assunto; o endereco segue em texto logo abaixo */
 .footer-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 56px;
+  margin: 0 auto 20px;
+  padding: 12px 36px;
+  border: 1px solid rgba(246,243,236,0.45);
+  border-radius: 999px;
   font-family: var(--ff-display);
   font-weight: 300;
-  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.2;
   color: var(--site-paper);
-  margin-bottom: 20px;
+  text-decoration: none;
   letter-spacing: -0.02em;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 .footer-cta em {
   font-style: italic;
   color: var(--site-accent);
+  margin-left: 0.25em;
+}
+.footer-cta:hover,
+.footer-cta:focus-visible {
+  background: var(--site-paper);
+  border-color: var(--site-paper);
+  color: var(--site-deep);
+}
+.footer-cta:focus-visible {
+  outline: 2px solid var(--site-accent);
+  outline-offset: 4px;
 }
 .footer-email {
   display: inline-block;
