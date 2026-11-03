@@ -640,12 +640,16 @@ main {
     overflow-x: visible;
     scroll-snap-type: none;
   }
-  /* Nau 1500: duas garrafas 4/5 ficariam altas demais na largura total */
-  .swipe-strip--nau {
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+}
+
+/* Imagem unica de um item (ex.: Nau 1500): larga no desktop, de ponta a ponta no mobile */
+.brief-hero {
+  margin: 0 0 16px;
+}
+.brief-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Quick Wins */
@@ -1809,6 +1813,11 @@ main {
   /* Titulo do Open Lunar: "Annual Report" desce para a linha de baixo so no mobile */
   .brief-name-line {
     display: block;
+  }
+
+  .brief-hero {
+    margin-left: -20px;
+    margin-right: -20px;
   }
 
   .swipe-strip {
