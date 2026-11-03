@@ -123,7 +123,7 @@
 })();
 
 /* -----------------------------------------------------------------
-   WALL OF TRUST: setas alternam os depoimentos em loop, sem autoplay.
+   In their words (testimonials): setas alternam os depoimentos em loop, sem autoplay.
    O fade vem do CSS (desligado com prefers-reduced-motion).
    ----------------------------------------------------------------- */
 (function () {

@@ -64,7 +64,7 @@ body {
 /* Monograma RW (assets/images/logo-rw.png, 300x186): 36px de altura no desktop */
 .site-wordmark img {
   display: block;
-  height: 36px;
+  height: 30.6px;   /* 36px -15% */
   width: auto;
 }
 .site-nav {
@@ -223,7 +223,7 @@ main {
   z-index: 1;
 }
 
-/* Wall of Trust */
+/* In their words (testimonials) */
 .wall-of-trust {
   background: #efedea;
   padding: 80px 40px;
@@ -293,7 +293,7 @@ main {
   color: #bd3939;
 }
 
-/* Carrossel da Wall of Trust (so no index: o riza.html reusa .testimonial-quote
+/* Carrossel da In their words (testimonials) (so no index: o riza.html reusa .testimonial-quote
    sem o .testimonial-wrapper, e la nada muda). */
 .testimonial-wrapper .testimonial-content {
   display: grid;
@@ -454,6 +454,12 @@ main {
 
 .case-enspiral {
   background: #edeeee;
+}
+/* Desktop: fundo branco no BWT da home (no mobile continua #edeeee) */
+@media (min-width: 769px) {
+  .case-enspiral {
+    background: #ffffff;
+  }
 }
 
 .case-header {
@@ -675,6 +681,30 @@ main {
   outline-offset: -1px;
 }
 
+/* Par lado a lado (Rolfsen: foto + rotulo). So no desktop; no mobile o
+   segundo item some e a faixa continua como --single. */
+.swipe-strip--pair .pair-desktop-only {
+  display: none;
+}
+@media (min-width: 769px) {
+  /* flex-grow = proporcao (largura/altura) de cada imagem: com flex-basis 0,
+     as larguras saem proporcionais e as alturas ficam iguais. */
+  .swipe-strip.swipe-strip--pair {
+    display: flex;
+    align-items: flex-start;   /* sem stretch: a altura vem do aspect-ratio */
+    gap: 20px;
+  }
+  .swipe-strip--pair img,
+  .swipe-strip--pair .pair-desktop-only {
+    display: block;
+    flex: calc(var(--ratio)) 1 0;
+    min-width: 0;
+    height: auto;        /* ignora o height="897" do HTML */
+    aspect-ratio: var(--ratio);
+    object-fit: cover;   /* so absorve o arredondamento de 1px */
+  }
+}
+
 /* Desktop: a faixa vira grade de ate --strip-cols colunas */
 @media (min-width: 769px) {
   .swipe-strip {
@@ -706,7 +736,7 @@ main {
 
 /* Quick Wins */
 .quickwins-section {
-  background: #efedea;
+  background: #ffffff;
   padding: 50px 40px 60px;
 }
 
@@ -831,7 +861,7 @@ main {
 
 /* Selected Brands */
 .brands-section {
-  /* pedra mais quente, de proposito diferente do #efedea do Work in Brief
+  /* pedra mais quente, de proposito diferente do branco do Work in Brief
      para as duas secoes claras nao virarem uma faixa so */
   --brands-bg: #e4e1da;
   background: var(--brands-bg);
@@ -1451,7 +1481,7 @@ main {
     padding: 14px 20px;
   }
   .site-wordmark img {
-    height: 30px;
+    height: 25.5px;   /* 30px -15% */
   }
   /* Sem header fixo no mobile, a ancora #work nao precisa mais de folga no topo */
   .featured-project {
@@ -1899,7 +1929,7 @@ main {
     line-height: 1.7;
   }
 
-  /* Oculta a Wall of Trust do index.html no mobile.
+  /* Oculta a In their words (testimonials) do index.html no mobile.
      O :has(.testimonial-wrapper) e necessario porque riza.html REUSA
      .wall-of-trust para o depoimento do case, e lah ele deve continuar
      visivel - a versao do index e a unica com .testimonial-wrapper
@@ -1908,7 +1938,7 @@ main {
      sobra vao: o espaco do polvo ate o Featured Project continua em 56px
      (16px de padding-bottom do .container no mobile + 40px de
      padding-top do .featured-header), exatamente o que havia antes
-     entre o polvo e o titulo da Wall of Trust. Medido em 390px. */
+     entre o polvo e o titulo da In their words (testimonials). Medido em 390px. */
   .wall-of-trust:has(.testimonial-wrapper) {
     display: none;
   }

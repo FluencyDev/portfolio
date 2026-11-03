@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=25">
+  <link rel="stylesheet" href="css/style.css?v=29">
 </head>
 <body>
 <!-- HEADER:START - gerado de partials/header.html - nao edite aqui; rode: python3 build.py -->
@@ -61,10 +61,10 @@
     </main>
   </div>
 
-  <!-- Wall of Trust -->
+  <!-- In their words (testimonials) -->
   <section class="wall-of-trust">
     <div class="wall-of-trust-inner">
-      <h2 class="wall-of-trust-title">Wall of Trust</h2>
+      <h2 class="wall-of-trust-title">In their words</h2>
       <div class="testimonial-wrapper">
         <button type="button" class="testimonial-arrow testimonial-prev" aria-label="Previous testimonial">&lsaquo;</button>
         <!-- Depoimentos empilhados na mesma celula do grid: a altura e a do mais alto,
@@ -293,11 +293,20 @@
         <p class="brief-cat">Packaging</p>
         <h3 class="brief-name">Rolfsen Bier, Brand and Labels</h3>
         <p class="brief-line">A black and white identity that stands out in a category full of color.</p>
-        <div class="swipe-strip swipe-strip--single" style="--strip-ratio: 976 / 1430">
+        <!-- Desktop: foto e rotulo lado a lado, mesma altura (swipe-strip--pair).
+             Mobile: so a foto; o rotulo fica display:none e, por ser lazy, nem baixa. -->
+        <div class="swipe-strip swipe-strip--single swipe-strip--pair" style="--strip-ratio: 976 / 1430">
           <img src="assets/images/rolfsen-bottles-mobile.webp"
                srcset="assets/images/rolfsen-bottles-mobile.webp 800w, assets/images/rolfsen-bottles-desktop.webp 976w"
                sizes="(max-width: 768px) calc(100vw - 40px), 33vw"
+               style="--ratio: 976 / 1430"
                alt="Rolfsen Bier bottles with the Weiss and Wit Bier labels" loading="lazy">
+          <img class="pair-desktop-only" src="assets/images/rolfsen-label-desktop.webp"
+               srcset="assets/images/rolfsen-label-mobile.webp 900w, assets/images/rolfsen-label-desktop.webp 1800w"
+               sizes="(max-width: 1279px) 62vw, 880px"
+               width="1800" height="897"
+               style="--ratio: 1800 / 897"
+               alt="Rolfsen Bier Blonde Ale 600 ml label: black and white artwork with the Rolfsen Bier crest and wheat ears" loading="lazy">
         </div>
       </article>
 
@@ -306,11 +315,20 @@
         <p class="brief-cat">Editorial</p>
         <h3 class="brief-name">Starlight Cafe, Book Cover</h3>
         <p class="brief-line">A collage cover: every time you pick it up, you notice something new.</p>
-        <div class="swipe-strip swipe-strip--single" style="--strip-ratio: 978 / 1098">
+        <!-- Desktop: livro em pe e mockup aberto lado a lado, mesma altura (swipe-strip--pair).
+             Mobile: so o livro em pe; o mockup fica display:none e, por ser lazy, nem baixa. -->
+        <div class="swipe-strip swipe-strip--single swipe-strip--pair" style="--strip-ratio: 978 / 1098">
           <img src="assets/images/starlight-mockup-mobile.webp"
                srcset="assets/images/starlight-mockup-mobile.webp 800w, assets/images/starlight-mockup-desktop.webp 978w"
                sizes="(max-width: 768px) calc(100vw - 40px), 33vw"
+               style="--ratio: 978 / 1098"
                alt="Starlight Cafe book, printed cover shown as a 3D mockup" loading="lazy">
+          <img class="pair-desktop-only" src="assets/images/starlight-spread-desktop.webp"
+               srcset="assets/images/starlight-spread-mobile.webp 900w, assets/images/starlight-spread-desktop.webp 1800w"
+               sizes="(max-width: 1279px) 54vw, 763px"
+               width="1800" height="1105"
+               style="--ratio: 1800 / 1105"
+               alt="Starlight Cafe paperback shown open, with back cover, spine and front cover: a collage cover with a hanging cafe sign, a neon burger sign and a man in a hat" loading="lazy">
         </div>
       </article>
     </div>
