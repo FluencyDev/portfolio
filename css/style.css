@@ -640,6 +640,12 @@ main {
     overflow-x: visible;
     scroll-snap-type: none;
   }
+  /* Nau 1500: duas garrafas 4/5 ficariam altas demais na largura total */
+  .swipe-strip--nau {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* Quick Wins */
