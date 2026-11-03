@@ -813,7 +813,7 @@ main {
 
 /* Services */
 .services-section {
-  background: #441f21;
+  background: var(--site-dark);
   padding: 50px 40px 70px;
 }
 
@@ -826,19 +826,12 @@ main {
   color: #ffffff;
 }
 
-.services-intro {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #e8a423;
-  margin-top: 24px;
-}
-
 .services-title {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: clamp(28px, 3vw, 38px);
   color: #ffffff;
+  margin-top: 24px;      /* mesmo respiro que a linha laranja (removida) dava abaixo da etiqueta */
   margin-bottom: 48px;
 }
 
@@ -849,9 +842,9 @@ main {
 }
 
 .service-card {
-  background: #ffffff;
+  background: #1C1B1A;
   border-radius: 20px;
-  padding: 36px 28px;
+  padding: 28px 28px;    /* era 36px na vertical; os cartoes agora tem uma linha de texto */
   text-align: left;
 }
 
@@ -859,7 +852,7 @@ main {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 20px;
-  color: #3a3a3a;
+  color: #FFFFFF;
   margin-bottom: 14px;
 }
 
@@ -868,83 +861,43 @@ main {
   font-weight: 400;
   font-size: 15px;
   line-height: 1.7;
-  color: #5a5a5a;
-  margin-bottom: 20px;
-}
-
-.service-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.service-tags span {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  color: #b82b2b;
+  color: rgba(246,243,236,0.78);
 }
 
 /* =========  SITE FOOTER  ========= */
 .site-footer {
   background: var(--site-dark);
+  border-top: 1px solid rgba(246,243,236,0.14);   /* separa do Services, que tem o mesmo fundo */
   padding: 80px 40px 48px;
   text-align: center;
 }
 .site-footer-inner {
   max-width: var(--max); margin: 0 auto;
 }
-/* Botao de contato: abre o e-mail com assunto; o endereco segue em texto logo abaixo */
-.footer-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  max-width: 100%;
-  min-height: 56px;
-  margin: 0 auto 20px;
-  padding: 12px 36px;
-  border: 1px solid rgba(246,243,236,0.45);
-  border-radius: 999px;
-  font-family: var(--ff-display);
-  font-weight: 300;
-  font-size: clamp(1.35rem, 2.6vw, 2rem);
-  line-height: 1.2;
-  color: var(--site-paper);
-  text-decoration: none;
-  letter-spacing: -0.02em;
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-}
-.footer-cta em {
-  font-style: italic;
-  color: var(--site-accent);
-  margin-left: 0.25em;
-}
-.footer-cta:hover,
-.footer-cta:focus-visible {
-  background: var(--site-paper);
-  border-color: var(--site-paper);
-  color: var(--site-dark);
-}
-.footer-cta:focus-visible {
-  outline: 2px solid var(--site-accent);
-  outline-offset: 4px;
-}
 .footer-email {
-  /* Area de toque de 48px; as margens negativas devolvem a altura extra,
-     entao o desenho do rodape no desktop nao muda */
+  /* E-mail e o destaque do rodape: abre o e-mail com assunto. Toque minimo de 48px. */
   display: inline-flex;
   align-items: center;
   min-height: 48px;
-  margin: -11px 0 29px;
-  font-family: var(--ff-body);
-  font-size: clamp(16px, 2vw, 22px);
-  color: rgba(246,243,236,0.8);
-  text-decoration: none;
-  transition: color 0.2s;
+  margin: 0 0 40px;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--site-paper);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-thickness 0.2s;
 }
-.footer-email:hover {
-  color: var(--site-accent);
+.footer-email:hover,
+.footer-email:focus-visible {
+  text-decoration-thickness: 2px;
+}
+.footer-email:focus-visible {
+  outline: 2px solid var(--site-paper);
+  outline-offset: 6px;
 }
 .footer-links {
   display: flex;
@@ -953,7 +906,7 @@ main {
   margin-bottom: 48px;
 }
 .footer-links a {
-  /* Area de toque de 48px sem alterar o desenho no desktop (ver .footer-email) */
+  /* Area de toque de 48px; as margens negativas devolvem a altura extra, entao o desenho no desktop nao muda */
   display: inline-flex;
   align-items: center;
   min-height: 48px;
@@ -1507,8 +1460,9 @@ main {
      Os dois recebem o mesmo tratamento, entao os seletores vao agrupados
      onde o estilo e identico. Tudo escopado em .featured-project /
      .case-enspiral porque .featured-label, .featured-tag, .case-title,
-     .case-image e .case-details sao reusados por Craft, Quick Wins,
-     Services, que seguem intocados. */
+     .case-image e .case-details sao reusados por outras secoes. A etiqueta
+     (bandeirinha oculta, texto pequeno em caixa alta) tambem vale para
+     Craft, Work in Brief, Selected Brands e Services (What I Do). */
 
   /* etiqueta discreta: sem bandeirinha, caixa alta */
   .featured-project .featured-tag,
@@ -1516,7 +1470,8 @@ main {
   .case-aquaponia .featured-tag,
   .craft-section .featured-tag,
   .work-brief .featured-tag,
-  .brands-section .featured-tag {
+  .brands-section .featured-tag,
+  .services-section .featured-tag {
     display: none;
   }
 
@@ -1525,7 +1480,8 @@ main {
   .case-aquaponia .featured-label span,
   .craft-section .featured-label span,
   .work-brief .featured-label span,
-  .brands-section .featured-label span {
+  .brands-section .featured-label span,
+  .services-section .featured-label span {
     font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
@@ -1534,7 +1490,8 @@ main {
 
   /* a cor muda: fundo escuro no Featured Project, claro no Editorial */
   .featured-project .featured-label span,
-  .craft-section .featured-label span {
+  .craft-section .featured-label span,
+  .services-section .featured-label span {
     color: rgba(255, 255, 255, 0.7);
   }
 
