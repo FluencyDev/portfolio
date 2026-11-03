@@ -92,6 +92,16 @@
       color: #797979;
     }
 
+    /* Ciclagem: o arquivo tem so 683px de largura (nao ha original maior).
+       No desktop fica limitado a 760px e centralizado, para nao ampliar demais. */
+    @media (min-width: 769px) {
+      .touchpoint-gallery .gallery-narrow {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     @media (max-width: 768px) {
       .stack-figure {
         margin-top: 36px;
@@ -175,7 +185,7 @@
       <h2 class="case-block-eyebrow">The Book</h2>
       <div class="touchpoint-gallery">
         <img src="assets/images/aquaponia-mockup-sifao.webp" alt="The open book held in two hands, showing the anatomy of the bell siphon across a purple illustrated page and a text page">
-        <img src="assets/images/aquaponia-mockup-ciclagem.webp" alt="Open spread from the book explaining the cycling process that starts an aquaponic system">
+        <img class="gallery-narrow" src="assets/images/aquaponia-mockup-ciclagem.webp" alt="Open spread from the book explaining the cycling process that starts an aquaponic system">
       </div>
     </div>
   </section>
@@ -191,7 +201,7 @@
       </figure>
 
       <figure class="stack-figure">
-        <img src="assets/images/aquaponia-info-nitrgenio.webp" alt="Diagram of the nitrogen cycle in aquaponics, tracing ammonia through bacteria into nitrate taken up by plants">
+        <img src="assets/images/aquaponia-info-nitrgenio-2000.webp" alt="Diagram of the nitrogen cycle in aquaponics, tracing ammonia through bacteria into nitrate taken up by plants">
         <figcaption>How nitrogen moves through the system, from waste to nutrient.</figcaption>
       </figure>
 
