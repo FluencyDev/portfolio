@@ -642,7 +642,8 @@ main {
   }
 }
 
-/* Imagem unica de um item (ex.: Nau 1500): larga no desktop, de ponta a ponta no mobile */
+/* Imagem unica de um item (ex.: Nau 1500): largura da coluna, canto de 16px
+   no desktop e no mobile (mesmo estilo da Rolfsen no mobile) */
 .brief-hero {
   margin: 0 0 16px;
 }
@@ -650,6 +651,7 @@ main {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 16px;   /* mesmo canto das imagens do Timeless Craft */
 }
 
 /* Quick Wins */
@@ -1815,9 +1817,13 @@ main {
     display: block;
   }
 
-  .brief-hero {
-    margin-left: -20px;
-    margin-right: -20px;
+  /* Faixa com uma imagem so (ex.: Rolfsen): ocupa a coluna toda, margem
+     direita igual a esquerda, com canto arredondado */
+  .swipe-strip--single {
+    grid-auto-columns: 100%;
+  }
+  .swipe-strip--single img {
+    border-radius: 16px;
   }
 
   .swipe-strip {

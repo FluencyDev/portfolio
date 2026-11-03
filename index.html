@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=13">
 </head>
 <body>
 <!-- HEADER:START - gerado de partials/header.html - nao edite aqui; rode: python3 build.py -->
@@ -288,7 +288,6 @@
                sizes="(max-width: 768px) 78vw, 33vw"
                alt="Open Lunar Foundation Annual Report 2022, Explore Our Organisation page" loading="lazy">
         </div>
-        <a class="brief-link" href="mailto:renato@waru.com.br?subject=Request%3A%20Open%20Lunar%20Annual%20Report%202022">Full report on request</a>
       </article>
 
       <!-- Nau 1500 -->
@@ -297,11 +296,11 @@
         <h3 class="brief-name">Nau 1500, Naming and Label</h3>
         <p class="brief-line">A ship, a year and one oversized numeral, for a wine bridging Portugal and Brazil.</p>
         <figure class="brief-hero">
-          <img src="assets/images/nau-hero-mobile.webp"
-               srcset="assets/images/nau-hero-mobile.webp 800w, assets/images/nau-hero-desktop.webp 1366w"
-               sizes="(max-width: 768px) 100vw, 1200px"
-               width="1366" height="704"
-               alt="Nau 1500 red wine bottle lying on a diagonal, the oversized 1500 numeral across the label, on a dark burgundy background" loading="lazy">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/images/nau-hero-mobile.webp" width="800" height="1219">
+            <img src="assets/images/nau-hero-desktop.webp" width="1366" height="704"
+                 alt="Nau 1500 red wine bottle lying on a diagonal, the oversized 1500 numeral across the label, on a dark burgundy background" loading="lazy">
+          </picture>
         </figure>
       </article>
 
@@ -310,10 +309,10 @@
         <p class="brief-cat">Packaging</p>
         <h3 class="brief-name">Rolfsen Bier, Brand and Labels</h3>
         <p class="brief-line">A black and white identity that stands out in a category full of color.</p>
-        <div class="swipe-strip" style="--strip-ratio: 976 / 1430">
+        <div class="swipe-strip swipe-strip--single" style="--strip-ratio: 976 / 1430">
           <img src="assets/images/rolfsen-bottles-mobile.webp"
                srcset="assets/images/rolfsen-bottles-mobile.webp 800w, assets/images/rolfsen-bottles-desktop.webp 976w"
-               sizes="(max-width: 768px) 78vw, 33vw"
+               sizes="(max-width: 768px) calc(100vw - 40px), 33vw"
                alt="Rolfsen Bier bottles with the Weiss and Wit Bier labels" loading="lazy">
         </div>
       </article>
@@ -323,10 +322,10 @@
         <p class="brief-cat">Editorial</p>
         <h3 class="brief-name">Starlight Cafe, Book Cover</h3>
         <p class="brief-line">A collage cover: every time you pick it up, you notice something new.</p>
-        <div class="swipe-strip" style="--strip-ratio: 978 / 1098">
+        <div class="swipe-strip swipe-strip--single" style="--strip-ratio: 978 / 1098">
           <img src="assets/images/starlight-mockup-mobile.webp"
                srcset="assets/images/starlight-mockup-mobile.webp 800w, assets/images/starlight-mockup-desktop.webp 978w"
-               sizes="(max-width: 768px) 78vw, 33vw"
+               sizes="(max-width: 768px) calc(100vw - 40px), 33vw"
                alt="Starlight Cafe book, printed cover shown as a 3D mockup" loading="lazy">
         </div>
       </article>
