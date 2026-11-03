@@ -1597,6 +1597,15 @@ main {
     object-position: center center;
   }
 
+  /* Better Work Together: 15% mais alto que a proporcao original (2684x1336),
+     ainda de ponta a ponta. O cover corta ~13% na horizontal; o foco a 65%
+     tira mais do verso (esquerda) e preserva o titulo da capa e o passaro. */
+  .case-enspiral .case-image img {
+    aspect-ratio: 2684 / 1536;
+    object-fit: cover;
+    object-position: 65% 50%;
+  }
+
   /* troca o paragrafo longo pelo resumo curto (vale para as duas secoes) */
   .project-desc-full {
     display: none;
