@@ -625,6 +625,9 @@ main {
   aspect-ratio: var(--strip-ratio);
   object-fit: cover;
   border-radius: 0;
+  /* Contorno sutil: imagens de fundo claro (ex.: garrafa branca do Nau) nao somem no fundo da secao */
+  outline: 1px solid rgba(0,0,0,0.08);
+  outline-offset: -1px;
 }
 
 /* Desktop: a faixa vira grade de ate --strip-cols colunas */
@@ -913,12 +916,16 @@ main {
   outline-offset: 4px;
 }
 .footer-email {
-  display: inline-block;
+  /* Area de toque de 48px; as margens negativas devolvem a altura extra,
+     entao o desenho do rodape no desktop nao muda */
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin: -11px 0 29px;
   font-family: var(--ff-body);
   font-size: clamp(16px, 2vw, 22px);
   color: rgba(246,243,236,0.8);
   text-decoration: none;
-  margin-bottom: 40px;
   transition: color 0.2s;
 }
 .footer-email:hover {
@@ -931,6 +938,11 @@ main {
   margin-bottom: 48px;
 }
 .footer-links a {
+  /* Area de toque de 48px sem alterar o desenho no desktop (ver .footer-email) */
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin: -16px 0;
   font-family: var(--ff-body);
   font-size: 13px;
   text-transform: uppercase;
@@ -1876,9 +1888,11 @@ main {
     gap: 8px 24px;
   }
   .footer-links a {
-    padding: 12px 8px;
+    margin: 0;
+    padding: 0 8px;
   }
   .footer-email {
-    padding: 10px 8px;
+    margin: 0 0 40px;
+    padding: 0 8px;
   }
 }
