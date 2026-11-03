@@ -54,7 +54,11 @@ Auto-deployed from GitHub to Hostinger via webhook.
 - Warm, editorial aesthetic
 - Professional minimalism
 - Human-centered, narrative-first
-- Typography: Syne (current)
+- Typography: Inter (body text and most of the UI), Fraunces (display: wordmark,
+  footer CTA) and Libre Baskerville (italic accents) — all three loaded from
+  Google Fonts via a `<link>` in each page's `<head>`. There is no `@font-face`
+  in `css/style.css`, so typography depends on that CDN. `fonts/Syne/` is present
+  in the repo but is NOT used anywhere (no reference in HTML, CSS or JS).
 
 ### Content Pillars
 1. **Work:** Case studies with strategic depth

@@ -4,6 +4,8 @@
   --site-paper:  #f6f3ec;
   --site-cream:  #efeadf;
   --site-deep:   #15314b;
+  --site-dark:   #272624;   /* fundo do header e do footer */
+  --radius-img:  16px;      /* canto das imagens (Nau, faixas no desktop, Rolfsen/Starlight no mobile) */
   --site-accent: #d8276a;
   --site-ink:    #0d1f2f;
   --site-muted:  #5a6b7a;
@@ -45,10 +47,9 @@ body {
 
 /* =========  SITE HEADER  ========= */
 .site-header {
-  position: sticky; top: 0; z-index: 200;
-  background: rgba(246,243,236,0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--site-rule);
+  position: sticky; top: 0; z-index: 200;   /* desktop: fixo no topo; no mobile rola junto (ver @media) */
+  background: var(--site-dark);
+  border-bottom: 1px solid rgba(246,243,236,0.12);
 }
 .site-header-inner {
   max-width: var(--max); margin: 0 auto;
@@ -56,12 +57,15 @@ body {
   display: flex; justify-content: space-between; align-items: center;
 }
 .site-wordmark {
-  font-family: var(--ff-display);
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  color: var(--site-deep);
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
+}
+/* Monograma RW (assets/images/logo-rw.png, 300x186): 36px de altura no desktop */
+.site-wordmark img {
+  display: block;
+  height: 30.6px;   /* 36px -15% */
+  width: auto;
 }
 .site-nav {
   display: flex; gap: 32px;
@@ -71,7 +75,7 @@ body {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--site-deep);
+  color: var(--site-paper);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -79,7 +83,7 @@ body {
   color: var(--site-accent);
 }
 .site-nav a.is-current {
-  color: var(--site-accent);
+  color: #f06292;   /* rosa mais claro que o --site-accent: contraste AA sobre o --site-dark */
   font-weight: 700;
 }
 
@@ -96,7 +100,7 @@ body {
   background: none;
   border: 0;
   cursor: pointer;
-  color: var(--site-deep);
+  color: var(--site-paper);
 }
 .nav-toggle-bar {
   display: block;
@@ -116,34 +120,34 @@ body {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* trava o scroll da página enquanto o drawer mobile está aberto */
-body.nav-open { overflow: hidden; }
-
 @media (max-width: 768px) {
   .nav-toggle { display: flex; }
 
+  /* Mobile: o header nao fica fixo, rola junto com a pagina */
+  .site-header {
+    position: relative;
+  }
+
+  /* Painel do menu ancorado na base do proprio header, largura total */
   .site-nav {
     display: none;               /* fechado por padrão */
-    position: fixed;
-    top: 100%;                   /* base do header (containing block = .site-header, via backdrop-filter) */
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
-    height: calc(100vh - 100%);  /* fallback: header-bottom -> fim da viewport */
-    height: calc(100dvh - 100%);
     flex-direction: column;
     gap: 0;
     padding: 8px 20px 24px;
-    background: #efedea;         /* bege padrão do site, opaco: nada sangra por trás */
-    border-top: 1px solid var(--site-rule);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    background: var(--site-dark);   /* opaco: nada sangra por trás */
+    border-top: 1px solid rgba(246,243,236,0.12);
+    border-bottom: 1px solid rgba(246,243,236,0.12);
   }
   .site-nav.is-open { display: flex; }
 
   .site-nav a {
     padding: 16px 2px;
     font-size: 13px;
-    border-bottom: 1px solid var(--site-rule);
+    border-bottom: 1px solid rgba(246,243,236,0.12);
   }
   .site-nav a:last-child { border-bottom: 0; }
 }
@@ -164,6 +168,9 @@ main {
 }
 
 .headline {
+  /* Bricolage Grotesque e usada SO no headline do hero (index.html);
+     o resto do site segue em Inter. Pesos pedidos: 200 e 700. */
+  font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
   font-size: clamp(32px, 4vw, 47px);
   line-height: 1.3;
   margin-bottom: 24px;
@@ -216,7 +223,7 @@ main {
   z-index: 1;
 }
 
-/* Wall of Trust */
+/* In their words (testimonials) */
 .wall-of-trust {
   background: #efedea;
   padding: 80px 40px;
@@ -286,10 +293,55 @@ main {
   color: #bd3939;
 }
 
+/* Carrossel da In their words (testimonials) (so no index: o riza.html reusa .testimonial-quote
+   sem o .testimonial-wrapper, e la nada muda). */
+.testimonial-wrapper .testimonial-content {
+  display: grid;
+  max-width: 680px;
+}
+.testimonial-slide {
+  grid-area: 1 / 1;          /* todos na mesma celula: altura do mais alto */
+  align-self: center;        /* o mais curto fica centrado, alinhado com as setas */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+.testimonial-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-slide,
+  .testimonial-slide.is-active {
+    transition: none;
+  }
+}
+/* Texto mais leve: a Libre Baskerville italica so tem um peso,
+   entao a leveza vem do tamanho e da cor (#626262 = 5.22:1 sobre #efedea) */
+.testimonial-wrapper .testimonial-quote {
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  line-height: 1.65;
+  color: #626262;
+}
+.testimonial-wrapper .testimonial-author {
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.6;
+}
+.testimonial-arrow:focus-visible {
+  outline: 2px solid #b82b2b;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 /* Featured Project */
 .featured-project {
   background: #283224;
   color: #ffffff;
+  /* O header e sticky, entao a ancora #work pararia com o label atras dele.
+     Medido: header de 58px no desktop e 69px no mobile - 68px cobre os dois
+     com folga (o .featured-header ainda soma 40px de padding-top). */
+  scroll-margin-top: 68px;
 }
 
 .featured-header {
@@ -368,6 +420,12 @@ main {
   max-width: 560px;
 }
 
+/* Resumo curto do Featured Project: escondido por padrao, aparece so no
+   mobile (ver @media max-width:768px), onde substitui o .project-desc-full. */
+.project-desc-short {
+  display: none;
+}
+
 .featured-details {
   flex-shrink: 0;
 }
@@ -396,6 +454,12 @@ main {
 
 .case-enspiral {
   background: #edeeee;
+}
+/* Desktop: fundo branco no BWT da home (no mobile continua #edeeee) */
+@media (min-width: 769px) {
+  .case-enspiral {
+    background: #ffffff;
+  }
 }
 
 .case-header {
@@ -509,7 +573,7 @@ main {
 
 /* Timeless Craft */
 .craft-section {
-  background: #441f21;
+  background: #ffffff;
   padding: 50px 40px 60px;
 }
 
@@ -519,7 +583,7 @@ main {
 }
 
 .craft-section .featured-label span {
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 .craft-gallery {
@@ -537,19 +601,142 @@ main {
   object-fit: cover;
 }
 
+/* Titulo exclusivo do mobile na Timeless Craft (ver @media max-width:768px) */
+.craft-title {
+  display: none;
+}
+
 .craft-text {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: clamp(14px, 1.4vw, 16px);
   line-height: 1.7;
-  color: #d4d4d4;
+  color: #5a5a5a;
   max-width: 420px;
   margin-top: 24px;
 }
 
+/* Link discreto para o Instagram. inline-flex + min-height garantem
+   area de toque de 44px sem aumentar o tamanho do texto. */
+.craft-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #3a3a3a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.craft-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ============================================
+   FAIXA DESLIZAVEL (componente reutilizavel)
+   ============================================
+   scroll-snap horizontal, sem JavaScript.
+   Parametros por instancia (custom properties no HTML):
+     --strip-ratio  proporcao de cada slide (ex.: 5 / 7, 4 / 3, 16 / 9)
+     --strip-item   largura de cada slide no mobile (padrao 78%)
+     --strip-cols   colunas no desktop (padrao 3)
+   No mobile e uma faixa que sangra de ponta a ponta; no desktop vira grade. */
+.swipe-strip {
+  --strip-ratio: 4 / 3;
+  --strip-item: 78%;
+  --strip-cols: 3;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--strip-item);
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* Edge antigo */
+  margin-bottom: 16px;
+}
+
+/* sem barra de rolagem visivel */
+.swipe-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.swipe-strip > * {
+  scroll-snap-align: start;
+}
+
+.swipe-strip img {
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--strip-ratio);
+  object-fit: cover;
+  border-radius: 0;
+  /* Contorno sutil: imagens de fundo claro (ex.: garrafa branca do Nau) nao somem no fundo da secao */
+  outline: 1px solid rgba(0,0,0,0.08);
+  outline-offset: -1px;
+}
+
+/* Par lado a lado (Rolfsen: foto + rotulo). So no desktop; no mobile o
+   segundo item some e a faixa continua como --single. */
+.swipe-strip--pair .pair-desktop-only {
+  display: none;
+}
+@media (min-width: 769px) {
+  /* flex-grow = proporcao (largura/altura) de cada imagem: com flex-basis 0,
+     as larguras saem proporcionais e as alturas ficam iguais. */
+  .swipe-strip.swipe-strip--pair {
+    display: flex;
+    align-items: flex-start;   /* sem stretch: a altura vem do aspect-ratio */
+    gap: 20px;
+  }
+  .swipe-strip--pair img,
+  .swipe-strip--pair .pair-desktop-only {
+    display: block;
+    flex: calc(var(--ratio)) 1 0;
+    min-width: 0;
+    height: auto;        /* ignora o height="897" do HTML */
+    aspect-ratio: var(--ratio);
+    object-fit: cover;   /* so absorve o arredondamento de 1px */
+  }
+}
+
+/* Desktop: a faixa vira grade de ate --strip-cols colunas */
+@media (min-width: 769px) {
+  .swipe-strip {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(var(--strip-cols), 1fr);
+    grid-auto-columns: auto;
+    gap: 20px;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+  /* Desktop: todas as imagens das faixas com o mesmo canto do Nau.
+     O outline de 1px (outline-offset -1px) acompanha o border-radius. */
+  .swipe-strip img {
+    border-radius: var(--radius-img);
+  }
+}
+
+/* Imagem unica de um item (ex.: Nau 1500): largura da coluna, canto de 16px
+   no desktop e no mobile (mesmo estilo da Rolfsen no mobile) */
+.brief-hero {
+  margin: 0 0 16px;
+}
+.brief-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-img);   /* mesmo canto das imagens do Timeless Craft */
+}
+
 /* Quick Wins */
 .quickwins-section {
-  background: #efedea;
+  background: #ffffff;
   padding: 50px 40px 60px;
 }
 
@@ -569,6 +756,56 @@ main {
   line-height: 1.3;
   color: #3a3a3a;
   margin-bottom: 40px;
+}
+
+/* Work in Brief: itens em largura total (etiqueta, nome, frase, faixa, link) */
+.brief-item {
+  margin-bottom: 48px;
+}
+
+.brief-item:last-child {
+  margin-bottom: 0;
+}
+
+.brief-cat {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  /* 0.85 e nao 0.7: sobre o #efedea desta secao, 70% fica em 4.0:1,
+     abaixo do minimo de 4.5:1 */
+  color: rgba(58, 58, 58, 0.85);
+  margin-bottom: 6px;
+}
+
+.brief-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #3a3a3a;
+  margin-bottom: 6px;
+}
+
+.brief-line {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.7;
+  color: #5a5a5a;
+  max-width: 560px;
+  margin-bottom: 16px;
+}
+
+.brief-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #3a3a3a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .quickwins-case {
@@ -622,10 +859,39 @@ main {
   max-width: 560px;
 }
 
+/* Selected Brands */
+.brands-section {
+  /* pedra mais quente, de proposito diferente do branco do Work in Brief
+     para as duas secoes claras nao virarem uma faixa so */
+  --brands-bg: #e4e1da;
+  background: var(--brands-bg);
+  border-top: 1px solid #d6d2c9;
+  padding: 50px 40px 60px;
+  color: #3a3a3a;
+}
+
+.brands-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brands-section .featured-label span {
+  color: #3a3a3a;
+}
+
+.brands-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.3;
+  color: #3a3a3a;
+  margin-bottom: 40px;
+}
+
 /* Services */
 .services-section {
-  background: #441f21;
-  padding: 50px 40px 70px;
+  background: var(--site-dark);
+  padding: 50px 40px 60px;   /* igual a Selected Brands e Timeless Craft */
 }
 
 .services-inner {
@@ -637,19 +903,12 @@ main {
   color: #ffffff;
 }
 
-.services-intro {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #e8a423;
-  margin-top: 24px;
-}
-
 .services-title {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: clamp(28px, 3vw, 38px);
   color: #ffffff;
+  margin-top: 24px;      /* mesmo respiro que a linha laranja (removida) dava abaixo da etiqueta */
   margin-bottom: 48px;
 }
 
@@ -660,9 +919,9 @@ main {
 }
 
 .service-card {
-  background: #ffffff;
+  background: #1C1B1A;
   border-radius: 20px;
-  padding: 36px 28px;
+  padding: 28px 28px;    /* era 36px na vertical; os cartoes agora tem uma linha de texto */
   text-align: left;
 }
 
@@ -670,7 +929,7 @@ main {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 20px;
-  color: #3a3a3a;
+  color: #FFFFFF;
   margin-bottom: 14px;
 }
 
@@ -679,55 +938,43 @@ main {
   font-weight: 400;
   font-size: 15px;
   line-height: 1.7;
-  color: #5a5a5a;
-  margin-bottom: 20px;
-}
-
-.service-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.service-tags span {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  color: #b82b2b;
+  color: rgba(246,243,236,0.78);
 }
 
 /* =========  SITE FOOTER  ========= */
 .site-footer {
-  background: var(--site-deep);
+  background: var(--site-dark);
+  border-top: 1px solid rgba(246,243,236,0.14);   /* separa do Services, que tem o mesmo fundo */
   padding: 80px 40px 48px;
   text-align: center;
 }
 .site-footer-inner {
   max-width: var(--max); margin: 0 auto;
 }
-.footer-cta {
-  font-family: var(--ff-display);
-  font-weight: 300;
-  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
-  color: var(--site-paper);
-  margin-bottom: 20px;
-  letter-spacing: -0.02em;
-}
-.footer-cta em {
-  font-style: italic;
-  color: var(--site-accent);
-}
 .footer-email {
-  display: inline-block;
-  font-family: var(--ff-body);
-  font-size: clamp(16px, 2vw, 22px);
-  color: rgba(246,243,236,0.8);
-  text-decoration: none;
-  margin-bottom: 40px;
-  transition: color 0.2s;
+  /* E-mail e o destaque do rodape: abre o e-mail com assunto. Toque minimo de 48px. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin: 0 0 40px;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--site-paper);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-thickness 0.2s;
 }
-.footer-email:hover {
-  color: var(--site-accent);
+.footer-email:hover,
+.footer-email:focus-visible {
+  text-decoration-thickness: 2px;
+}
+.footer-email:focus-visible {
+  outline: 2px solid var(--site-paper);
+  outline-offset: 6px;
 }
 .footer-links {
   display: flex;
@@ -736,6 +983,11 @@ main {
   margin-bottom: 48px;
 }
 .footer-links a {
+  /* Area de toque de 48px; as margens negativas devolvem a altura extra, entao o desenho no desktop nao muda */
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin: -16px 0;
   font-family: var(--ff-body);
   font-size: 13px;
   text-transform: uppercase;
@@ -1228,14 +1480,35 @@ main {
   .site-header-inner {
     padding: 14px 20px;
   }
-  .site-nav {
-    gap: 20px;
+  .site-wordmark img {
+    height: 25.5px;   /* 30px -15% */
+  }
+  /* Sem header fixo no mobile, a ancora #work nao precisa mais de folga no topo */
+  .featured-project {
+    scroll-margin-top: 0;
   }
 
   main {
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 20px;   /* era 40px - hero 20px mais perto do header no mobile */
     align-items: flex-start;
+  }
+
+  /* Hero headline: 3 linhas, cada uma sem quebra.
+     --headline-size esta calibrado para a linha mais longa ("Consistency
+     Everywhere") ocupar ~90% da largura util (viewport - 40px de padding do
+     .container). Calibrado para Bricolage Grotesque como pedida no index.html
+     (wght@200;700, sem eixo opsz), cuja linha mede 11.66 x o font-size nesta
+     faixa de corpo. Ao trocar a fonte do headline, remeca esse fator e
+     reajuste SO este valor. O teto de 32px mantem a continuidade com a regra
+     desktop no breakpoint (768px -> 32px, 769px -> 32px). */
+  .headline {
+    --headline-size: clamp(22px, 6.9vw, 32px);
+    font-size: var(--headline-size);
+  }
+
+  .headline > div {
+    white-space: nowrap;
   }
 
   .illustration {
@@ -1255,6 +1528,154 @@ main {
   .case-footer-inner {
     flex-direction: column;
     gap: 24px;
+  }
+
+  /* ---------- Featured Project + cases Editorial e Aquaponia no mobile ----------
+     Os dois recebem o mesmo tratamento, entao os seletores vao agrupados
+     onde o estilo e identico. Tudo escopado em .featured-project /
+     .case-enspiral porque .featured-label, .featured-tag, .case-title,
+     .case-image e .case-details sao reusados por outras secoes. A etiqueta
+     (bandeirinha oculta, texto pequeno em caixa alta) tambem vale para
+     Craft, Work in Brief, Selected Brands e Services (What I Do). */
+
+  /* etiqueta discreta: sem bandeirinha, caixa alta */
+  .featured-project .featured-tag,
+  .case-enspiral .featured-tag,
+  .case-aquaponia .featured-tag,
+  .craft-section .featured-tag,
+  .work-brief .featured-tag,
+  .brands-section .featured-tag,
+  .services-section .featured-tag {
+    display: none;
+  }
+
+  .featured-project .featured-label span,
+  .case-enspiral .featured-label span,
+  .case-aquaponia .featured-label span,
+  .craft-section .featured-label span,
+  .work-brief .featured-label span,
+  .brands-section .featured-label span,
+  .services-section .featured-label span {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* a cor muda: fundo escuro no Featured Project, claro no Editorial */
+  .featured-project .featured-label span,
+  .services-section .featured-label span {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .case-enspiral .featured-label span {
+    color: rgba(58, 58, 58, 0.7);
+  }
+
+  /* 0.85 e nao 0.7: sobre o #efedea e o #e4e1da destas duas secoes,
+     70% cai para ~4.0:1, abaixo do minimo de 4.5:1 */
+  .work-brief .featured-label span,
+  .brands-section .featured-label span,
+  .craft-section .featured-label span {
+    color: rgba(58, 58, 58, 0.85);
+  }
+
+  /* titulo: a quebra manual do desktop atrapalha em tela estreita */
+  .featured-title br,
+  .case-enspiral .case-title br,
+  .case-aquaponia .case-title br {
+    display: none;
+  }
+
+  .featured-title,
+  .case-enspiral .case-title,
+  .case-aquaponia .case-title,
+  .craft-title,
+  .quickwins-title,
+  .brands-title {
+    text-wrap: balance;
+  }
+
+  /* fotos de ponta a ponta, sem cantos arredondados.
+     Troque --featured-image-width por calc(100% - 40px) para alinhar as
+     imagens ao texto em vez de sangrar (separe a regra se quiser mudar
+     so uma das duas secoes). */
+  .featured-image,
+  .case-enspiral .case-image,
+  .case-aquaponia .case-image {
+    --featured-image-width: 100%;
+    width: var(--featured-image-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .featured-image img,
+  .case-enspiral .case-image img,
+  .case-aquaponia .case-image img {
+    border-radius: 0;
+  }
+
+  /* recorte 4/3 no Riza e no Aquaponia. No Riza o corte central preserva a
+     logo e o complexo; no Aquaponia a imagem servida ja e um 4/3 recortado
+     na origem (aquaponia-card-mobile.webp), entao o cover nao corta nada.
+     O Better Work Together fica de fora: la o 4/3 cortaria as pontas do
+     livro (titulo da capa e logo Enspiral), entao sangra na proporcao
+     original. */
+  .featured-image img,
+  .case-aquaponia .case-image img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* Better Work Together: 15% mais alto que a proporcao original (2684x1336),
+     ainda de ponta a ponta. O cover corta ~13% na horizontal; o foco a 65%
+     tira mais do verso (esquerda) e preserva o titulo da capa e o passaro. */
+  .case-enspiral .case-image img {
+    aspect-ratio: 2684 / 1536;
+    object-fit: cover;
+    object-position: 65% 50%;
+  }
+
+  /* troca o paragrafo longo pelo resumo curto (vale para as duas secoes) */
+  .project-desc-full {
+    display: none;
+  }
+
+  .project-desc-short {
+    display: block;
+  }
+
+  /* Industry / Scale / Challenge no mesmo corpo e ritmo do .project-desc-short.
+     O clamp e o mesmo de .featured-description / .case-description p de
+     proposito: se o corpo do paragrafo mudar, estas linhas acompanham.
+     Os rotulos seguem em negrito pelo <strong> de cada secao. */
+  .featured-project .featured-details p,
+  .case-enspiral .case-details p,
+  .case-aquaponia .case-details p {
+    font-size: clamp(14px, 1.4vw, 16px);
+    line-height: 1.7;
+  }
+
+  /* ---------- fundo areia do Aquaponia (so mobile) ----------
+     Troque --aquaponia-bg para testar outro tom. As cores de texto abaixo
+     foram escolhidas para passar de 4.5:1 SOBRE ESTE FUNDO - se mudar o
+     fundo, remeca o contraste. */
+  .case-aquaponia {
+    --aquaponia-bg: #cfc6b3;
+    background: var(--aquaponia-bg);
+  }
+
+  /* texto corrido: o #5a5a5a herdado da sa 4.07:1 no areia, abaixo do minimo.
+     #4a4a4a sobe para 5.2:1 mantendo a hierarquia com os titulos. */
+  .case-aquaponia .case-description p,
+  .case-aquaponia .case-details p {
+    color: #4a4a4a;
+  }
+
+  /* etiqueta: a 70% de opacidade o areia da 3.5:1. 85% sobe para 4.8:1. */
+  .case-aquaponia .featured-label span {
+    color: rgba(58, 58, 58, 0.85);
   }
 
   .case-hero,
@@ -1416,7 +1837,7 @@ main {
   }
 
   .services-section {
-    padding: 40px 20px 50px;
+    padding: 40px 20px;
   }
 
   .services-cards {
@@ -1438,16 +1859,88 @@ main {
     height: auto;
   }
 
+  /* faixa deslizavel de ponta a ponta: as margens negativas furam os 20px
+     de padding da secao e o padding interno mantem o primeiro slide
+     alinhado com o texto */
+  /* Titulo do Open Lunar: "Annual Report" desce para a linha de baixo so no mobile */
+  .brief-name-line {
+    display: block;
+  }
+
+  /* Faixa com uma imagem so (ex.: Rolfsen): ocupa a coluna toda, margem
+     direita igual a esquerda, com canto arredondado */
+  .swipe-strip--single {
+    grid-auto-columns: 100%;
+  }
+  .swipe-strip--single img {
+    border-radius: var(--radius-img);
+  }
+
+  .swipe-strip {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    scroll-padding-left: 20px;
+  }
+
+  .brands-section {
+    padding: 40px 20px;
+  }
+
   .craft-section {
     padding: 40px 20px;
   }
 
-  .craft-gallery {
-    grid-template-columns: 1fr;
+  /* titulo so-mobile, mesmo desenho dos titulos dos outros cases,
+     em cinza sobre o fundo branco */
+  .craft-title {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin-top: 12px;
   }
 
+  /* galeria de ponta a ponta: as margens negativas furam os 20px de
+     padding lateral da secao. 6px de respiro entre as imagens, onde o
+     branco do fundo aparece. */
+  .craft-gallery {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  /* height:auto + width:100% preserva a proporcao original de cada
+     imagem (sem recorte); o object-fit da regra base fica inerte. */
   .craft-item img {
     height: auto;
+    border-radius: 0;
+  }
+
+  /* corpo do texto igual ao dos paragrafos curtos dos outros cases.
+     O clamp da regra base ja resolve para 14px nesta faixa; a regra
+     aqui e explicita para o valor nao escorregar se o clamp mudar. */
+  .craft-text {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* Oculta a In their words (testimonials) do index.html no mobile.
+     O :has(.testimonial-wrapper) e necessario porque riza.html REUSA
+     .wall-of-trust para o depoimento do case, e lah ele deve continuar
+     visivel - a versao do index e a unica com .testimonial-wrapper
+     (as setas) e .wall-of-trust-title. HTML e JS intactos.
+     display:none remove a caixa inteira, inclusive o padding, entao nao
+     sobra vao: o espaco do polvo ate o Featured Project continua em 56px
+     (16px de padding-bottom do .container no mobile + 40px de
+     padding-top do .featured-header), exatamente o que havia antes
+     entre o polvo e o titulo da In their words (testimonials). Medido em 390px. */
+  .wall-of-trust:has(.testimonial-wrapper) {
+    display: none;
   }
 
   .wall-of-trust {
@@ -1471,9 +1964,80 @@ main {
     gap: 8px 24px;
   }
   .footer-links a {
-    padding: 12px 8px;
+    margin: 0;
+    padding: 0 8px;
   }
   .footer-email {
-    padding: 10px 8px;
+    margin: 0 0 40px;
+    padding: 0 8px;
+  }
+}
+
+/* ---------  VOLTAR AO TOPO (so mobile)  ---------
+   O botao vem com hidden; o main.js remove o hidden e controla .is-visible.
+   z-index 150: abaixo do header/painel do menu (200).
+   Circulo visivel de 42px; o ::after amplia a area de toque para 48px.
+   right/bottom de 19px: a area de toque de 48px fica a 16px das bordas
+   e o centro do botao nao muda em relacao a versao de 48px. */
+.back-to-top {
+  display: none;
+}
+@media (max-width: 768px) {
+  .back-to-top:not([hidden]) {
+    position: fixed;
+    right: 19px;
+    bottom: calc(19px + env(safe-area-inset-bottom, 0px));
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid rgba(246, 243, 236, 0.28);
+    border-radius: 50%;
+    background: rgba(39, 38, 36, 0.45);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.12s ease, visibility 0s linear 0.2s;
+  }
+  .back-to-top::after {
+    content: "";
+    position: absolute;
+    inset: -4px;   /* 42px + borda: -4px leva a caixa de toque a 48px */
+    border-radius: 50%;
+    background: transparent;
+  }
+  .back-to-top svg {
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.35));
+  }
+  .back-to-top svg path {
+    stroke: #F6F3EC;
+    stroke-width: 1.5px;
+  }
+  .back-to-top.is-visible {
+    opacity: 0.9;
+    visibility: visible;
+    transition: opacity 0.2s ease, transform 0.12s ease, visibility 0s;
+  }
+  .back-to-top.is-visible:active {
+    opacity: 1;
+    transform: scale(0.96);
+  }
+  .back-to-top:focus-visible {
+    outline: 2px solid var(--site-paper);
+    outline-offset: 3px;
+  }
+}
+@supports not ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  @media (max-width: 768px) {
+    .back-to-top:not([hidden]) {
+      background: rgba(39, 38, 36, 0.7);
+    }
   }
 }

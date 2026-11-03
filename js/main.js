@@ -14,16 +14,12 @@
   var nav = header.querySelector('.site-nav');
   if (!toggle || !nav) return;
 
-  var savedScrollY = 0;
-
   function isOpen() {
     return nav.classList.contains('is-open');
   }
 
   function openNav() {
-    savedScrollY = window.scrollY || window.pageYOffset || 0;
     nav.classList.add('is-open');
-    document.body.classList.add('nav-open');   /* trava o scroll do body (overflow:hidden) */
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close menu');
     document.addEventListener('click', onOutsideClick, true);
@@ -32,13 +28,10 @@
 
   function closeNav() {
     nav.classList.remove('is-open');
-    document.body.classList.remove('nav-open');   /* destrava o scroll do body */
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open menu');
     document.removeEventListener('click', onOutsideClick, true);
     document.removeEventListener('keydown', onKeydown);
-    // restaura a posição caso o browser tenha zerado o scroll durante o overflow:hidden
-    window.scrollTo(0, savedScrollY);
   }
 
   toggle.addEventListener('click', function (e) {
@@ -91,4 +84,71 @@
       links[i].setAttribute('aria-current', 'page');
     }
   }
+})();
+
+/* -----------------------------------------------------------------
+   VOLTAR AO TOPO: so no mobile (o CSS esconde no desktop).
+   Aparece depois de 600px de rolagem; ao clicar volta ao topo
+   (suave, exceto com prefers-reduced-motion) e o foco vai para o logo.
+   ----------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  var btn = document.querySelector('.back-to-top');
+  if (!btn) return;
+  btn.hidden = false;   // sem JS o botao continua escondido
+
+  var THRESHOLD = 600;
+  var ticking = false;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function update() {
+    ticking = false;
+    btn.classList.toggle('is-visible', window.scrollY > THRESHOLD);
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  update();
+
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'instant' : 'smooth' });
+    var logo = document.querySelector('.site-wordmark');
+    if (logo) logo.focus({ preventScroll: true });
+  });
+})();
+
+/* -----------------------------------------------------------------
+   In their words (testimonials): setas alternam os depoimentos em loop, sem autoplay.
+   O fade vem do CSS (desligado com prefers-reduced-motion).
+   ----------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  var wrapper = document.querySelector('.testimonial-wrapper');
+  if (!wrapper) return;
+
+  var slides = wrapper.querySelectorAll('.testimonial-slide');
+  var prev = wrapper.querySelector('.testimonial-prev');
+  var next = wrapper.querySelector('.testimonial-next');
+  if (slides.length < 2 || !prev || !next) return;
+
+  var current = 0;
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].classList.contains('is-active')) current = i;
+  }
+
+  function show(index) {
+    current = (index + slides.length) % slides.length;
+    for (var j = 0; j < slides.length; j++) {
+      slides[j].classList.toggle('is-active', j === current);
+    }
+  }
+
+  prev.addEventListener('click', function () { show(current - 1); });
+  next.addEventListener('click', function () { show(current + 1); });
 })();
