@@ -1806,6 +1806,11 @@ main {
   /* faixa deslizavel de ponta a ponta: as margens negativas furam os 20px
      de padding da secao e o padding interno mantem o primeiro slide
      alinhado com o texto */
+  /* Titulo do Open Lunar: "Annual Report" desce para a linha de baixo so no mobile */
+  .brief-name-line {
+    display: block;
+  }
+
   .swipe-strip {
     margin-left: -20px;
     margin-right: -20px;
