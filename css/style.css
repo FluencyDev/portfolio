@@ -5,6 +5,7 @@
   --site-cream:  #efeadf;
   --site-deep:   #15314b;
   --site-dark:   #272624;   /* fundo do header e do footer */
+  --radius-img:  16px;      /* canto das imagens (Nau, faixas no desktop, Rolfsen/Starlight no mobile) */
   --site-accent: #d8276a;
   --site-ink:    #0d1f2f;
   --site-muted:  #5a6b7a;
@@ -643,6 +644,11 @@ main {
     overflow-x: visible;
     scroll-snap-type: none;
   }
+  /* Desktop: todas as imagens das faixas com o mesmo canto do Nau.
+     O outline de 1px (outline-offset -1px) acompanha o border-radius. */
+  .swipe-strip img {
+    border-radius: var(--radius-img);
+  }
 }
 
 /* Imagem unica de um item (ex.: Nau 1500): largura da coluna, canto de 16px
@@ -654,7 +660,7 @@ main {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 16px;   /* mesmo canto das imagens do Timeless Craft */
+  border-radius: var(--radius-img);   /* mesmo canto das imagens do Timeless Craft */
 }
 
 /* Quick Wins */
@@ -1799,7 +1805,7 @@ main {
     grid-auto-columns: 100%;
   }
   .swipe-strip--single img {
-    border-radius: 16px;
+    border-radius: var(--radius-img);
   }
 
   .swipe-strip {
