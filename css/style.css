@@ -2340,3 +2340,16 @@ main {
   .about-edge-hero + .about-hero { padding-top: 24px; }
   .about-quote { margin-top: 32px; }
 }
+
+/* Texto so para leitores de tela e buscadores (nome no h1 da home) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
