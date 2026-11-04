@@ -2152,8 +2152,21 @@ main {
 
   /* c) Range of Visual Thinking: nitrogenio na coluna de 1200px; as 4
      verticais em 2 colunas, sem altura fixa nem corte. */
+  /* Faixa cinza escuro de ponta a ponta (mesmo cinza do header/footer). Termina
+     no fim desta secao; os creditos e o Back/Next seguem em creme. */
+  .case-range {
+    background: #272624;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .case-range .case-block-eyebrow {
+    color: #efedea;
+  }
+  .case-range .stack-figure figcaption {
+    color: #b9b6b1;
+  }
   .case-range .stack-figure img {
-    outline: 1px solid rgba(0,0,0,0.08);
+    outline: 1px solid rgba(255,255,255,0.10);
     outline-offset: -1px;
   }
   .case-range .stack-columns {
