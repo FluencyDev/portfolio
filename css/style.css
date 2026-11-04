@@ -2203,3 +2203,46 @@ main {
     margin-right: 0;
   }
 }
+
+/* Riza: imagem do hero em largura total, sem cantos arredondados */
+.case-hero--riza .case-hero-image {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: 0;
+}
+.case-hero--riza .case-hero-image img {
+  border-radius: 0;
+}
+@media (max-width: 768px) {
+  .case-hero--riza .featured-label { display: none; }
+}
+
+/* Riza mobile: infograficos em faixa deslizavel (mesmo padrao da home) */
+@media (max-width: 768px) {
+  .infographics-section .touchpoint-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: 78%;
+    gap: 8px;
+    margin: 0 -20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .infographics-section .touchpoint-grid::-webkit-scrollbar { display: none; }
+  .infographics-section .touchpoint-grid img {
+    scroll-snap-align: start;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+}
+
+/* Riza mobile: oculta "The Results" e "Three Principles in One Mark" */
+@media (max-width: 768px) {
+  .mobile-hide { display: none; }
+}

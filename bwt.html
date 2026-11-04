@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=35">
+<link rel="stylesheet" href="css/style.css?v=43">
 
 <style>
 :root {
@@ -549,6 +549,60 @@ a { color: inherit; text-decoration: none; }
   /* labels de 11px sobem para 12px - legível sem zoom no celular */
   .section-label,
   .meta-item dt { font-size: 12px; }
+
+  /* ---- Topo: etiqueta, h1, imagem, subtitulo ----
+     O header.hero some (display: contents) e seus filhos viram itens do
+     .hero-wrap, onde o order define a sequencia. Margens explicitas porque o
+     flex nao colapsa margens. No desktop nada disso vale. */
+  .hero-wrap { display: flex; flex-direction: column; }
+  .hero-wrap > .hero { display: contents; }
+  .hero .tag { order: 1; align-self: flex-start; margin: 30px 32px 0; }
+  .hero-title { order: 2; margin: 24px 32px 24px; }
+  .hero-cover { order: 3; overflow: hidden; }
+  /* livro empilhado 15% maior, proporcional: 115% da largura, centrado; as pontas azuis sao cortadas pela tela */
+  .hero-cover img { width: 115%; max-width: none; margin-left: -7.5%; }
+  .hero-dek { order: 4; margin: 24px 32px 0; }
+  .meta { padding-top: 48px; padding-bottom: 48px; }
+
+  /* ---- Ritmo vertical das secoes ---- */
+  .section,
+  .thinking,
+  .bird,
+  .lattice { padding-top: 64px; padding-bottom: 64px; }
+  .section-head { margin-bottom: 24px; }
+  .stats { margin-top: 24px; }
+  .stat { padding: 24px 0; }
+
+  /* ---- Mapa dos colaboradores: de ponta a ponta, sem canto ---- */
+  .lattice-dek { margin-bottom: 24px; }
+  .lattice-map { margin: 24px -32px 0; padding: 24px 0; border-radius: 0; }
+  .lattice-legend { margin-top: 32px; padding-top: 32px; }
+
+  /* ---- The Thinking: livro aberto a 130%, centrado, sangrando dos dois lados ---- */
+  .thinking-principle { margin-bottom: 24px; }
+  .thinking-image-wrap { margin: 0 -32px; overflow: hidden; }
+  .thinking-image { width: 130%; max-width: none; margin-left: -15%; border-radius: 0; }
+
+  /* ---- The Key Visual ---- */
+  .bird .section-title { margin-bottom: 24px !important; }  /* inline: 48px */
+  .bird-maori { margin-top: 24px; }
+  .bird-caption { margin-top: 24px; }
+
+  /* ---- System in Action / Special Chapters ---- */
+  .system { padding-bottom: 0; }
+  .system-grid { margin-top: 0; gap: 24px; }
+  .system-block { margin-bottom: 0; }
+  .system-block p { margin-bottom: 0; }
+  .block-spread { gap: 24px; margin-bottom: 24px; }
+  .block-spread img { width: calc(100% + 64px); max-width: none; margin-left: -32px; border-radius: 0; }
+  .block-essays-imgs { width: calc(100% + 64px); margin-left: -32px; justify-self: start; aspect-ratio: auto; height: 75vw; border-radius: 0; }  /* 4:3 da largura total */
+
+  /* ---- Depoimento: aspas acima do texto, com espaco ---- */
+  .testimonial { padding: 32px 32px 64px; }
+  .testimonial blockquote::before {
+    position: static; transform: none; display: block;
+    font-size: 4rem; line-height: 1; height: 2.1rem; margin-bottom: 16px;
+  }
 }
 
 </style>
@@ -575,18 +629,23 @@ a { color: inherit; text-decoration: none; }
 <!-- HEADER:END -->
 
 <!-- =========  HERO  ========= -->
+<div class="hero-wrap">
 <header class="hero">
-  <div class="tag">Editorial · Case Study</div>
+  <div class="tag">Art Direction · Remote Team</div>
   <h1 class="hero-title">
-    A manifesto about <em>distributed work,</em> created by a team itself distributed across <em>five&nbsp;continents.</em>
+    A manifesto about <em>distributed work</em>, made by a team spread across <em>five&nbsp;continents</em>.
   </h1>
   <p class="hero-dek">
-    Art direction and editorial design for the Enspiral Foundation's flagship book on the future of work. The medium had to be the message.
+    I did the art direction and editorial design for the Enspiral Foundation's flagship book on the future of work. The medium had to be the message.
   </p>
 </header>
 
 <div class="hero-cover">
-  <img src="assets/images/bwt/bwt_spread.webp" alt="Better Work Together book cover and back cover laid flat, showing the illustrated bird spanning the full spread">
+  <picture>
+    <source media="(max-width: 768px)" srcset="assets/images/bwt/bwt_book.webp">
+    <img src="assets/images/bwt/bwt_spread.webp" alt="Better Work Together book cover and back cover laid flat, showing the illustrated bird spanning the full spread">
+  </picture>
+</div>
 </div>
 
 <!-- =========  META  ========= -->
@@ -616,7 +675,7 @@ a { color: inherit; text-decoration: none; }
       <div class="section-label">The Challenge</div>
     </div>
     <p class="challenge-body">
-      A book preaching <strong>decentralized collaboration</strong> could not be made by a committee locked in one room. The production had to prove the thesis.
+      A book preaching <strong>decentralized collaboration</strong> could not be made by a committee locked in one room. I had to make the production prove the thesis.
     </p>
   </div>
 </section>
@@ -626,7 +685,7 @@ a { color: inherit; text-decoration: none; }
   <div class="section-inner">
     <div class="section-head">
       <div class="section-label">The Results</div>
-      <h2 class="section-title">One book, held together by a <em>collective mind</em> spanning five continents.</h2>
+      <h2 class="section-title">I held one book together across a <em>collective mind</em> on five continents.</h2>
     </div>
 
     <div class="stats">
@@ -695,7 +754,9 @@ a { color: inherit; text-decoration: none; }
       <span class="line">One visual language.</span>
       <span class="line">One bird.</span>
     </div>
-    <img class="thinking-image" src="assets/images/bwt/bwt_essay2.webp" alt="Essay spreads from Better Work Together showing the editorial system">
+    <div class="thinking-image-wrap">
+      <img class="thinking-image" src="assets/images/bwt/bwt_essay2.webp" alt="Essay spreads from Better Work Together showing the editorial system">
+    </div>
   </div>
 </section>
 
@@ -710,7 +771,7 @@ a { color: inherit; text-decoration: none; }
     </div>
     <img class="bird-maori" src="assets/images/bwt/bwt_maori.webp" alt="Māori visual reference: interlocking traditional patterns that inspired the bird illustration">
     <p class="bird-caption">
-      Rooted in Māori visual traditions, where identity is carried through intricate, interlocking patterns, the bird on the cover was hand-drawn entirely by artist Mukund Yier in India. Each fragment of the bird becomes the opening illustration for an individual essay: the whole contains the parts, and the parts build the whole. Up close: eleven distinct voices. At distance: a single creature in flight.
+      Rooted in Māori visual traditions, where identity is carried through intricate, interlocking patterns, the bird on the cover was hand-drawn entirely by artist Mukund Yier in India. I made each fragment the opening illustration of an individual essay: the whole contains the parts, and the parts build the whole.
     </p>
   </div>
 </section>
@@ -731,7 +792,7 @@ a { color: inherit; text-decoration: none; }
         <div>
           <div class="tag">Cover System</div>
           <h3>The bird spans the full spread</h3>
-          <p>Front cover, spine, and back cover: the illustration stretches uninterrupted across all three surfaces. The circular title lockup on the right mirrors the dark aperture of the back cover, turning the book into a single continuous object whether shelved or open.</p>
+          <p>I stretched the illustration uninterrupted across front cover, spine and back cover. The circular title lockup on the right mirrors the dark aperture of the back cover, so the book reads as one continuous object, shelved or open.</p>
         </div>
       </div>
 
@@ -739,7 +800,7 @@ a { color: inherit; text-decoration: none; }
       <div class="system-block block-essays-text">
         <div class="tag">Special Chapters</div>
         <h3>Color, spent where it lands hardest</h3>
-        <p>To keep the budget honest, the eleven essays run in only two colors: black and magenta. A dozen special chapters break into full color, marking shifts in rhythm and giving the book its visual punctuation. Restraint made the color count.</p>
+        <p>To keep the budget honest, I ran the eleven essays in only two colors, black and magenta, and let a dozen special chapters break into full color. Restraint made the color count.</p>
       </div>
       <div class="system-block block-essays-imgs">
         <img src="assets/images/bwt/bwt_pink.webp" alt="Pink essay opener spread with a quote on a saturated color page facing body text on white">
