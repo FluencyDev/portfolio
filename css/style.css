@@ -2041,3 +2041,138 @@ main {
     }
   }
 }
+
+/* Aquaponia, hero no mobile: titulo, capa de ponta a ponta, subtitulo.
+   No desktop a ordem segue a do HTML (titulo, subtitulo, imagem). */
+@media (max-width: 768px) {
+  .case-hero.case-hero--aquaponia {
+    padding-top: 0;
+  }
+
+  .case-hero--aquaponia .case-hero-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-hero--aquaponia .case-hero-title {
+    order: 1;
+    margin: 20px 0 20px;
+  }
+
+  .case-hero--aquaponia .case-hero-image {
+    order: 2;
+    width: auto;
+    margin: 0 -20px;          /* sai do padding lateral: full bleed */
+  }
+
+  .case-hero--aquaponia .case-hero-image img {
+    width: 100%;
+    height: auto;             /* proporcao original, sem corte */
+    border-radius: 0;
+  }
+
+  .case-hero--aquaponia .case-hero-dek {
+    order: 3;
+    margin: 20px 0 32px;
+  }
+
+  .case-hero--aquaponia .case-meta {
+    order: 4;
+  }
+}
+
+/* Aquaponia, mobile: a secao Range of Visual Thinking tem no HTML a ordem do
+   desktop (nitrogenio primeiro, depois as 4 verticais em .stack-columns). Aqui
+   a ordem antiga do mobile e restaurada: sistema, nitrogenio, ciclo, layouts, mvp. */
+@media (max-width: 768px) {
+  .case-range .case-block-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  .case-range .stack-columns {
+    display: contents;
+  }
+  /* em flex as margens nao colapsam: o 16px do h2 somava com o 36px da figura */
+  .case-range .case-block-eyebrow {
+    margin-bottom: 0;
+  }
+  .case-range .stack-figure      { order: 3; }
+  .case-range .stack-figure-wide { order: 1; }
+  .case-range .stack-nitrogen    { order: 2; }
+}
+
+/* Aquaponia, desktop (min-width: 769px) */
+@media (min-width: 769px) {
+  /* a) Hero: imagem de ponta a ponta logo abaixo do header; depois h1,
+     subtitulo e ficha na faixa creme, coluna de 1200px. O padding-top vem do
+     <style> local da pagina (46px); duas classes vencem sem !important. */
+  .case-hero.case-hero--aquaponia {
+    padding-top: 0;
+  }
+  .case-hero--aquaponia .case-hero-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  .case-hero--aquaponia .case-hero-image {
+    order: 1;
+    margin-bottom: 0;
+  }
+  .case-hero--aquaponia .case-hero-title {
+    order: 2;
+    margin: 48px 0 16px;
+  }
+  .case-hero--aquaponia .case-hero-dek {
+    order: 3;
+    margin: 0 0 32px;
+  }
+  .case-hero--aquaponia .case-meta { order: 4; }
+
+  /* b) About + The Book: uma secao, 2 colunas. O fundo branco vai de ponta a
+     ponta; o padding lateral centra o conteudo na coluna de 1200px. */
+  .about-book {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 80px max(40px, calc((100% - 1200px) / 2));
+  }
+  .about-book > .case-block {
+    padding: 0;
+    background: transparent;
+  }
+  .about-book .case-block-eyebrow-book {
+    display: none;
+  }
+  .about-book .touchpoint-gallery img {
+    border-radius: var(--radius-img);
+    outline: 1px solid rgba(0,0,0,0.08);
+    outline-offset: -1px;
+  }
+
+  /* c) Range of Visual Thinking: nitrogenio na coluna de 1200px; as 4
+     verticais em 2 colunas, sem altura fixa nem corte. */
+  .case-range .stack-figure img {
+    outline: 1px solid rgba(0,0,0,0.08);
+    outline-offset: -1px;
+  }
+  .case-range .stack-columns {
+    margin-top: 48px;
+    margin-bottom: -32px;     /* cancela a margem da ultima figura */
+    column-count: 2;
+    column-gap: 32px;
+  }
+  .case-range .stack-columns .stack-figure {
+    margin: 0 0 32px;
+    break-inside: avoid;
+  }
+  .case-range .stack-columns .stack-figure-wide {
+    width: auto;
+    transform: none;
+  }
+  .case-range .stack-columns .stack-figure-wide figcaption {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
