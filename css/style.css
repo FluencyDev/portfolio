@@ -392,6 +392,10 @@ main {
   margin: 0 auto;
 }
 
+.featured-image picture {
+  display: block;
+}
+
 .featured-image img {
   width: 100%;
   display: block;
@@ -1725,12 +1729,22 @@ main {
     height: auto;
   }
 
+  /* Mobile: "Back" e "Next" na mesma linha. A parte longa do texto some
+     (.case-nav-long); o nome completo segue no aria-label de cada link. */
   .case-nav-inner {
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
   }
-  /* Mobile: area de toque confortavel nos links de navegacao entre cases */
+  .case-nav .case-nav-long {
+    display: none;
+  }
+  /* area de toque de pelo menos 44px nos dois links */
   .case-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     padding: 12px 0;
   }
 

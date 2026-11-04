@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=33">
+  <link rel="stylesheet" href="css/style.css?v=35">
 </head>
 <body>
 <!-- HEADER:START - gerado de partials/header.html - nao edite aqui; rode: python3 build.py -->
@@ -105,7 +105,10 @@
     </div>
 
     <div class="featured-image">
-      <img src="assets/images/img_riza_home_1.webp" alt="Riza Sementes aerial view of farm and facilities" loading="lazy">
+      <picture>
+        <source media="(max-width: 768px)" srcset="assets/images/riza-teaser-mobile.webp">
+        <img src="assets/images/riza-teaser-desktop.webp" alt="Three Riza Sementes seed bags, Riza +Mais, Riza Virtus 20 kg and Riza Virtus 10 kg, on a wooden table in front of a green field at sunrise" loading="lazy">
+      </picture>
     </div>
 
     <div class="featured-footer">
