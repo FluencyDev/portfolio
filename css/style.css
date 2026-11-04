@@ -2246,3 +2246,97 @@ main {
 @media (max-width: 768px) {
   .mobile-hide { display: none; }
 }
+
+/* ============================================
+   About (about.html)
+   ============================================ */
+.about-hero { padding: 64px 40px 72px; }
+.about-hero-inner { display: flex; align-items: flex-start; gap: 48px; }
+.about-portrait {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-img);
+  display: block;
+}
+.about-hero-text .case-hero-title { margin-top: 0; }
+.about-principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 8px;
+}
+.about-principle-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #3a3a3a;
+  margin-bottom: 8px;
+}
+.about-statement {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.4;
+  color: #3a3a3a;
+  max-width: 760px;
+  margin-top: 56px;
+}
+.about-work-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  max-width: 680px;
+}
+.about-work-list li { padding: 12px 0; border-top: 1px solid rgba(0,0,0,0.10); }
+.about-work-list li:last-child { border-bottom: 1px solid rgba(0,0,0,0.10); }
+.about-work-list a,
+.about-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #3a3a3a;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.about-work-list a:hover,
+.about-link:hover { color: #b82b2b; }
+.about-art { margin-top: 32px; }
+.about-art:empty { display: none; }
+@media (max-width: 768px) {
+  .about-hero { padding: 32px 20px 48px; }
+  .about-hero-inner { flex-direction: column; gap: 24px; }
+  .about-portrait { width: 120px; height: 120px; }
+  .about-principles { grid-template-columns: 1fr; gap: 28px; }
+  .about-statement { margin-top: 40px; }
+}
+
+/* Paises: linha-resumo no inicio da secao Work + ficha do Aquaponia com 5 itens */
+@media (min-width: 769px) {
+  .case-hero--aquaponia .case-meta { grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 768px) {
+  /* etiqueta longa quebra feio: o pais vai para a linha de baixo, mesmo estilo */
+  .label-country { display: block; }
+  .label-country .lc-sep { display: none; }
+}
+
+/* About: imagem do penhasco como hero, colada ao header */
+.about-edge-hero { line-height: 0; }
+.about-edge-hero img {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 45vh, 440px);
+  object-fit: cover;
+  object-position: 50% 70%;
+  border-radius: 0;
+}
+.about-edge-hero + .about-hero { padding-top: 32px; }
+.about-quote { margin-top: 48px; }
+@media (max-width: 768px) {
+  .about-edge-hero img { height: 260px; object-position: 20% 60%; }
+  .about-edge-hero + .about-hero { padding-top: 24px; }
+  .about-quote { margin-top: 32px; }
+}

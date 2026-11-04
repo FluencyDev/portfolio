@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Renato Waru</title>
-  <meta name="description" content="About Renato Waru, brand designer and creative director. The philosophy behind the work: #designcomsignificado and the SBC method, Structure First, Beauty Always, Consistency Everywhere.">
+  <title>About · Renato Waru</title>
+  <meta name="description" content="Brand designer and art director based in Brazil. I help you decide what your brand has to say before anything gets drawn: structure first, beauty always, consistency everywhere.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="About | Renato Waru">
-  <meta property="og:description" content="About Renato Waru, brand designer and creative director. The philosophy behind the work: #designcomsignificado and the SBC method, Structure First, Beauty Always, Consistency Everywhere.">
+  <meta property="og:title" content="About · Renato Waru">
+  <meta property="og:description" content="Brand designer and art director based in Brazil. I help you decide what your brand has to say before anything gets drawn: structure first, beauty always, consistency everywhere.">
   <meta property="og:url" content="https://renatowaru.com/about.html">
   <meta property="og:image" content="https://renatowaru.com/assets/images/og-home.jpg">
   <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=43">
+  <link rel="stylesheet" href="css/style.css?v=54">
 </head>
 <body>
 
@@ -36,42 +36,76 @@
       <!-- NAV: gerado em 2026-09-06, ver prompts-ajustes-site-renatowaru.md item 1 -->
       <a href="index.html">Home</a>
       <a href="index.html#work">Work</a>
+      <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>
     </nav>
   </div>
 </header>
 <!-- HEADER:END -->
 
-  <section class="case-hero">
-    <div class="case-hero-inner">
-      <div class="featured-label">
-        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
-        <span>About</span>
+  <!-- 0. Hero image -->
+  <div class="about-edge-hero">
+    <picture>
+      <source media="(max-width: 768px)" srcset="assets/images/edge-mobile.webp" width="800" height="257">
+      <img src="assets/images/edge-desktop.webp" width="1593" height="511" alt="A lone figure sitting on a sea cliff above the ocean">
+    </picture>
+  </div>
+
+  <!-- 1. Opening -->
+  <section class="case-hero about-hero">
+    <div class="case-hero-inner about-hero-inner">
+      <!-- TODO: foto. Exportar assets/mobile-src/renato-portrait-src.jpg (400x400) para assets/images/renato-portrait.webp e descomentar:
+      <img class="about-portrait" src="assets/images/renato-portrait.webp" alt="Renato Waru" width="400" height="400">
+      -->
+      <div class="about-hero-text">
+        <h1 class="case-hero-title">Decisions first. Design follows.</h1>
+        <p class="case-block-body">I'm a brand designer and art director based in Brazil, working with clients wherever they are. Before anything gets drawn, I help you decide what your brand has to say, and to whom. The design comes out of that decision, not the other way around.</p>
       </div>
-      <h1 class="case-hero-title">About me</h1>
-      <p class="case-block-body">I have thirty years of brand work behind me, a daily drawing habit, and an essay practice on the edge of design and meaning.</p>
     </div>
   </section>
 
-  <!-- Bio -->
+  <!-- 2. How I work -->
   <section class="case-block">
     <div class="case-block-inner">
-      <p class="case-block-lead">I am a thinking partner, not a vendor.</p>
-      <p class="case-block-body">
-        I am a Brazilian brand designer and art director with 30 years of experience, based in Piracaia, Brazil. I work through my studio, Navemãe Design Multimídia, guided by a philosophy I call #designcomsignificado (design with meaning) and a method I call SBC: Structure First, Beauty Always, Consistency Everywhere. My practice spans brand identity, editorial design, naming and packaging.
-      </p>
+      <h2 class="case-block-eyebrow">How I work</h2>
+      <div class="about-principles">
+        <div>
+          <h3 class="about-principle-title">Structure first.</h3>
+          <p class="case-block-body">I start with the hard questions: who you are, who you're talking to, what has to be true. Form comes after.</p>
+        </div>
+        <div>
+          <h3 class="about-principle-title">Beauty always.</h3>
+          <p class="case-block-body">Clarity is the minimum. Craft is what makes people stay.</p>
+        </div>
+        <div>
+          <h3 class="about-principle-title">Consistency everywhere.</h3>
+          <p class="case-block-body">A brand is only as strong as its weakest touchpoint, from the logo to the delivery van.</p>
+        </div>
+      </div>
+      <p class="about-statement">I work as a thinking partner, not a vendor. That means I'll ask uncomfortable questions early, and sometimes tell you what you don't need.</p>
     </div>
   </section>
 
-  <!-- Personal practice (separate from client work) -->
+  <!-- 3. What I do -->
   <section class="case-block case-block-light">
     <div class="case-block-inner">
-      <h2 class="touchpoint-title">Personal practice</h2>
-      <p class="touchpoint-desc">
-        Alongside the studio work, I keep a personal drawing practice: charcoal, watercolor, colored pencil and graphite portraits. None of it is tied to a client brief. It is a continuous habit, kept for its own sake.
-      </p>
-      <div class="touchpoint-gallery">
-        <!-- TODO: adicionar imagens de arte pessoal -->
+      <h2 class="case-block-eyebrow">What I do</h2>
+      <p class="case-block-body">Brand identity and systems. Editorial design. Naming and packaging. The scope can be a single name or a long partnership:</p>
+      <ul class="about-work-list">
+        <li><a href="riza.html">Seven years as brand lead for Riza Sementes, a national seed company.</a></li>
+        <li><a href="bwt.html">Art direction for a book written by a collective across five continents.</a></li>
+        <li><a href="aquaponia.html">A book I researched, illustrated and crowdfunded into print.</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. Outside the brief -->
+  <section class="case-block">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">Outside the brief</h2>
+      <p class="case-block-body">I draw every day, in charcoal, watercolor and graphite, with no client and no deadline. I write essays on design and meaning in <a class="about-link" href="https://substack.com/@renatowaru" target="_blank" rel="noopener"><em>From the Edge</em></a>, on Substack. The hand keeps the eye honest.</p>
+      <div class="touchpoint-gallery about-art">
+        <!-- TODO: imagens de arte pessoal -->
         <!-- Descomentar quando os arquivos existirem em assets/images/ :
         <img src="assets/images/about-art-charcoal.webp" alt="Charcoal drawing by Renato Waru">
         <img src="assets/images/about-art-watercolor.webp" alt="Watercolor by Renato Waru">
@@ -79,14 +113,7 @@
         <img src="assets/images/about-art-graphite-portrait.webp" alt="Graphite portrait by Renato Waru">
         -->
       </div>
-    </div>
-  </section>
-
-  <!-- Substack: From the Edge -->
-  <section class="case-block">
-    <div class="case-block-inner">
-      <div class="testimonial-content">
-        <h2 class="case-block-eyebrow">From the Edge</h2>
+      <div class="testimonial-content about-quote">
         <blockquote class="testimonial-quote">
           "Design is not the lie told over the truth. It is the bridge that lets the truth be crossed by people who would otherwise turn back."
         </blockquote>
