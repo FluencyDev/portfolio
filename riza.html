@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=58">
+  <link rel="stylesheet" href="css/style.css?v=83">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,13 +62,15 @@
   <!-- 1. Case Hero -->
   <section class="case-hero case-hero--riza">
     <div class="case-hero-inner">
-      <div class="featured-label">
-        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
-        <span>Brand System · Agribusiness</span>
+      <div class="case-hero-head">
+        <div class="featured-label">
+          <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
+          <span>Brand System · Agribusiness</span>
+        </div>
+        <h1 class="case-hero-title">
+          A brand system built to carry a national agribusiness across every surface.
+        </h1>
       </div>
-      <h1 class="case-hero-title">
-        A brand system built to carry a national agribusiness across every surface.
-      </h1>
       <figure class="case-hero-image">
         <img src="assets/images/img_riza_home_1.webp" alt="Riza Sementes hero image">
       </figure>
@@ -95,14 +97,14 @@
   </section>
 
   <!-- 3. The Thinking -->
-  <section class="case-block">
+  <section class="case-block rz-thinking">
     <div class="case-block-inner case-block-split">
       <div>
         <h2 class="case-block-eyebrow">The Thinking</h2>
         <p class="case-block-lead">
           Sementes means "seeds" in Portuguese, so I started there.
         </p>
-        <p class="case-block-body">
+        <p class="case-block-body mobile-hide">
           Rather than default to generic agribusiness cues, I leaned into the sector's own colors, orange and green, sharpened by precise geometry. My signature move: the letter I, reimagined as a seed shape, anchoring the wordmark in the product itself.
         </p>
       </div>
@@ -113,7 +115,7 @@
   </section>
 
   <!-- 3a. The Seed Abstraction -->
-  <section class="case-block">
+  <section class="case-block rz-abstraction">
     <div class="case-block-inner">
       <figure class="abstraction-figure">
         <img class="abstraction-desktop" src="assets/images/test-riza1.png" alt="Visual progression from real seeds to abstract symbol to Riza Sementes logo">
@@ -161,12 +163,21 @@
         <h3 class="touchpoint-title">Packaging &amp; Product</h3>
         <p class="touchpoint-desc">Identity translated into the object itself, where brand meets hand.</p>
         <div class="touchpoint-grid touchpoint-grid-1">
-          <img src="assets/images/riza_package1.webp" alt="Riza seed bag">
+          <img class="package-single" src="assets/images/riza_package1.webp" alt="Riza seed bag">
+          <div class="package-carousel">
+            <img src="assets/images/riza-package-1.webp" width="600" height="901" alt="Riza Virtus 10 kg seed bag, coated" loading="lazy">
+            <img src="assets/images/riza-package-2.webp" width="600" height="901" alt="Riza Virtus 20 kg seed bag, graphite-treated" loading="lazy">
+            <img src="assets/images/riza-package-3.webp" width="600" height="901" alt="Riza +Mais 20 kg seed bag" loading="lazy">
+          </div>
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/images/riza-mix-family-mobile.webp" width="634" height="1104">
+            <img src="assets/images/riza-mix-family-desktop.webp" width="2000" height="416" alt="Riza, Virtus and +Mais logos, the family Riza Mix joins." loading="lazy">
+          </picture>
         </div>
       </article>
 
       <!-- Theme 3: Physical Presence -->
-      <article class="touchpoint-group">
+      <article class="touchpoint-group touchpoint-group--center">
         <h3 class="touchpoint-title">Physical Presence</h3>
         <p class="touchpoint-desc">Fleet, facilities, signage: the brand inhabiting real space.</p>
         <div class="touchpoint-gallery">
@@ -179,8 +190,22 @@
     </div>
   </section>
 
+  <!-- 4b. Testimonial (reusing In their words (testimonials) styles) -->
+  <section class="wall-of-trust">
+    <div class="wall-of-trust-inner">
+      <div class="testimonial-content">
+        <blockquote class="testimonial-quote">
+          “Renato’s work brought a very distinctive way of thinking to our company and helped strengthen our brand. In every unit, wherever it is, I see the designer’s touch in everything, and everything speaks to our purpose.”
+        </blockquote>
+        <p class="testimonial-author">
+          <strong>Régis Ferreira, President,</strong> <span class="highlight">Riza Sementes</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- 5. Infographics & Content Design -->
-  <section class="infographics-section">
+  <section class="infographics-section band-white">
     <div class="infographics-inner">
       <h3 class="touchpoint-title">Infographics &amp; Content Design</h3>
       <p class="touchpoint-desc">Translating agronomic science into clear, ownable visual language for the field.</p>
@@ -192,8 +217,145 @@
     </div>
   </section>
 
+  <!-- 5b. Riza Mix -->
+  <section class="case-block rmx band-cream" aria-labelledby="rmx-title">
+    <div class="case-block-inner rmx-inner">
+
+      <!-- Opening -->
+      <div class="rmx-opening">
+      <figure class="rmx-figure">
+        <!-- Image pending: add assets/images/riza-mix-closing-desktop.webp and riza-mix-closing-mobile.webp, then replace this comment with:
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/images/riza-mix-closing-mobile.webp">
+          <img src="assets/images/riza-mix-closing-desktop.webp" alt="Riza Mix closing image" loading="lazy">
+        </picture>
+        -->
+      </figure>
+        <h2 id="rmx-title" class="rmx-title">One brand, five lines.</h2>
+        <p class="rmx-lead">Riza Mix is the newest member of a family that is already working.</p>
+      </div>
+
+      <!-- Three constraints -->
+      <ol class="rmx-constraints">
+        <li>
+          <h3 class="rmx-con-title">Live alongside the main brand</h3>
+          <p>Be recognised as Riza before Mix.</p>
+        </li>
+        <li>
+          <h3 class="rmx-con-title">Not compete with +Mais and Virtus</h3>
+          <p>Same hierarchical level.</p>
+        </li>
+        <li>
+          <h3 class="rmx-con-title">Hold five sub-lines</h3>
+          <p>Nematoides, Precoce, Pastejo, Eficiência and Café.</p>
+        </li>
+      </ol>
+
+      <!-- Image pending: add assets/images/riza-mix-symbols-desktop.webp and riza-mix-symbols-mobile.webp, then replace this comment with a <figure class="rmx-figure"> wrapping:
+      <picture>
+        <source media="(max-width: 768px)" srcset="assets/images/riza-mix-symbols-mobile.webp">
+        <img src="assets/images/riza-mix-symbols-desktop.webp" alt="The symbols of Riza, Virtus and +Mais" loading="lazy">
+      </picture>
+      -->
+
+      <!-- Guides animation -->
+      <figure class="rmg rmx-guides" data-state="a">
+        <svg class="rmg-svg" viewBox="0 0 500 362" role="img" aria-label="Riza Mix logo with alignment guides showing how the Mix lockup aligns to the Riza wordmark">
+          <g transform="translate(48 56) scale(2.1376)">
+      <path class="o" d="M99.36,76.03h-9.09c-1.04,0-1.88.85-1.88,1.9v30.91c0,1.05.84,1.9,1.88,1.9h9.09c1.04,0,1.88-.85,1.88-1.9v-30.91c0-1.05-.84-1.9-1.88-1.9Z"/>
+      <path class="o" d="M144.97,77.94c-1.26-1.06-3.74-1.91-5.54-1.91h-10.38c-1.81,0-2.25.86-1,1.91l18.91,15.28-19.04,15.4c-1.26,1.06-.81,1.91,1,1.91h10.38c1.81,0,4.29-.86,5.54-1.91l18.74-14.71c.43-.34.43-1.05,0-1.38l-18.6-14.58Z"/>
+      <path class="o" d="M161.23,86.21l10.71-8.27c1.27-1.06,3.78-1.91,5.61-1.91h10.51c1.83,0,2.28.86,1.01,1.91l-19.14,15.28,19.27,15.4c1.27,1.06.82,1.91-1.01,1.91h-10.51c-1.83,0-4.34-.86-5.61-1.91l-10.84-8.39,7.76-6.45c.34-.28.34-.84,0-1.12l-7.76-6.45Z"/>
+      <path class="o" d="M57.46,76.03h-7.1c-.78,0-1.51.25-1.97.66l-15.16,13.66c-1.48,1.34-4.5,1.34-5.98,0l-15.16-13.66c-.46-.41-1.19-.66-1.97-.66H2.44c-1.35,0-2.44.72-2.44,1.61v32.07c0,.51.62.92,1.39.92h10.12c.77,0,1.39-.41,1.39-.92v-18.28l15.09,13.58c.53.47,1.36.75,2.25.75s1.72-.28,2.25-.75l14.72-13.58v18.28c0,.51.62.92,1.39.92h9.91c.77,0,1.39-.41,1.39-.92v-32.07c0-.89-1.09-1.61-2.44-1.61Z"/>
+      <path class="g" d="M11.94,14.97v47.83H0V3.03h23.36c9.89,0,17.9,8.1,17.9,17.99,0,7.25-4.26,13.47-10.49,16.28l11.85,25.58h-12.7l-11.17-23.96v-11.94h4.6c3.32,0,5.97-2.64,5.97-5.97s-2.64-6.05-5.97-6.05h-11.42Z"/>
+      <path class="g" d="M70.5,62.84v-3.41L103.49,14.24h-27.62V3.07h48.94v3.5l-33.08,45.18h31.2v11.08h-52.43Z"/>
+      <path class="g" d="M161.39,3.07l28.22,59.76h-13.21l-17.05-36.32-18.5,36.32h-13.38L157.9,3.07h3.5Z"/>
+      <path class="o" d="M54.83,62.93c-6.93-20.76-6.78-46.97.46-62.25.46-.97,1.87-.88,2.24.12,7.35,20.14,7.77,46.18,1.25,62.25-.73,1.81-3.33,1.72-3.95-.13Z"/>
+    </g>
+          <line class="rmg-line rmg-l1" x1="0" x2="0" y1="0" y2="362"/>
+          <line class="rmg-line rmg-l2" x1="0" x2="0" y1="0" y2="362"/>
+        </svg>
+        <button class="rmg-toggle" type="button" aria-label="Pause animation"><svg class="pp-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="pp-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></button>
+      </figure>
+
+      <!-- Sub-line stage and selector -->
+      <div class="rmx-lines">
+        <h3 class="rmx-lines-title">One shape, recoloured five times</h3>
+
+        <div class="rmx-stage">
+          <div class="rmx-stack">
+            <picture data-line="precoce" class="is-active">
+              <source media="(max-width: 768px)" srcset="assets/images/riza-mix/riza-mix-precoce-v.svg" width="190.23" height="153.71">
+              <img src="assets/images/riza-mix/riza-mix-precoce-h.svg" width="313.36" height="60.64" alt="Riza Mix Precoce">
+            </picture>
+            <picture data-line="nematoides" aria-hidden="true">
+              <source media="(max-width: 768px)" srcset="assets/images/riza-mix/riza-mix-nematoides-v.svg" width="190.28" height="153.43">
+              <img src="assets/images/riza-mix/riza-mix-nematoides-h.svg" width="314.01" height="60.64" alt="Riza Mix Nematoides">
+            </picture>
+            <picture data-line="pastejo" aria-hidden="true">
+              <source media="(max-width: 768px)" srcset="assets/images/riza-mix/riza-mix-pastejo-v.svg" width="189.93" height="153.31">
+              <img src="assets/images/riza-mix/riza-mix-pastejo-h.svg" width="314.06" height="60.64" alt="Riza Mix Pastejo">
+            </picture>
+            <picture data-line="eficiencia" aria-hidden="true">
+              <source media="(max-width: 768px)" srcset="assets/images/riza-mix/riza-mix-eficiencia-v.svg" width="189.93" height="153.42">
+              <img src="assets/images/riza-mix/riza-mix-eficiencia-h.svg" width="314.01" height="60.64" alt="Riza Mix Eficiência">
+            </picture>
+            <picture data-line="cafe" aria-hidden="true">
+              <source media="(max-width: 768px)" srcset="assets/images/riza-mix/riza-mix-cafe-v.svg" width="189.93" height="153.36">
+              <img src="assets/images/riza-mix/riza-mix-cafe-h.svg" width="313.39" height="60.64" alt="Riza Mix Café">
+            </picture>
+          </div>
+          <button type="button" class="rmx-toggle" aria-label="Pause sub-line cycle"><svg class="pp-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="pp-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg></button>
+        </div>
+
+        <div class="rmx-cards">
+          <button type="button" class="rmx-card is-active" data-line="precoce" aria-pressed="true" style="--c: var(--mix-precoce)">
+            <span class="rmx-card-bar" aria-hidden="true"></span>
+            <span class="rmx-card-name">Precoce</span>
+            <span class="rmx-card-hex">#E7B629</span>
+            <span class="rmx-card-desc">Sun gold. Lighter than the orange, it reads as short cycle, early harvest.</span>
+          </button>
+          <button type="button" class="rmx-card" data-line="nematoides" aria-pressed="false" style="--c: var(--mix-nematoides)">
+            <span class="rmx-card-bar" aria-hidden="true"></span>
+            <span class="rmx-card-name">Nematoides</span>
+            <span class="rmx-card-hex">#1F7A8C</span>
+            <span class="rmx-card-desc">Petrol blue. Cool and technical, it contrasts the orange without fighting the green.</span>
+          </button>
+          <button type="button" class="rmx-card" data-line="pastejo" aria-pressed="false" style="--c: var(--mix-pastejo)">
+            <span class="rmx-card-bar" aria-hidden="true"></span>
+            <span class="rmx-card-name">Pastejo</span>
+            <span class="rmx-card-hex">#7AA43F</span>
+            <span class="rmx-card-desc">Grass green. Same family as the brand green, lighter and livelier.</span>
+          </button>
+          <button type="button" class="rmx-card" data-line="eficiencia" aria-pressed="false" style="--c: var(--mix-eficiencia)">
+            <span class="rmx-card-bar" aria-hidden="true"></span>
+            <span class="rmx-card-name">Eficiência</span>
+            <span class="rmx-card-hex">#6B4B96</span>
+            <span class="rmx-card-desc">Deep violet. The furthest tone from the agricultural core, it sets the line apart.</span>
+          </button>
+          <button type="button" class="rmx-card" data-line="cafe" aria-pressed="false" style="--c: var(--mix-cafe)">
+            <span class="rmx-card-bar" aria-hidden="true"></span>
+            <span class="rmx-card-name">Café</span>
+            <span class="rmx-card-hex">#A42F22</span>
+            <span class="rmx-card-desc">Cherry red. Dark enough not to read as orange, it echoes the ripe fruit.</span>
+          </button>
+        </div>
+      </div>
+
+      <figure class="rmx-figure rmx-figure-sack">
+        <img src="assets/images/riza-mix-sack-v2.webp" width="1146" height="1372" alt="Riza Mix 25 kg sack" loading="lazy">
+      </figure>
+
+      <!-- Folder (so no mobile) -->
+      <h3 class="rmx-folder-title">Printed brochure</h3>
+      <figure class="rmx-figure rmx-figure-folder">
+        <img src="assets/images/riza-folder-2.webp" width="2071" height="1000" alt="Riza Sementes folder spread: forage seed varieties and the new Riza Mix ground cover line" loading="lazy">
+      </figure>
+
+    </div>
+  </section>
+
   <!-- 6. The Results -->
-  <section class="case-results mobile-hide">
+  <section class="case-results mobile-hide band-white">
     <div class="case-results-inner">
       <h2 class="case-block-eyebrow">The Results</h2>
       <p class="case-block-lead">Ascent to Market Recognition</p>
@@ -242,7 +404,7 @@
   </section>
 
   <!-- 7. The Strategic Genius -->
-  <section class="case-block mobile-hide">
+  <section class="case-block mobile-hide band-cream">
     <div class="case-block-inner">
       <h2 class="principles-title">Three Principles in One Mark</h2>
       <table class="principles-table">
@@ -274,20 +436,6 @@
     </div>
   </section>
 
-  <!-- 8. Testimonial (reusing In their words (testimonials) styles) -->
-  <section class="wall-of-trust">
-    <div class="wall-of-trust-inner">
-      <div class="testimonial-content">
-        <blockquote class="testimonial-quote">
-          "Renato introduced a distinctive thinking framework that significantly strengthened our brand. Across all our units, his visual language ensures everything aligns with our core purpose. He captured our essence and translated it into a cohesive, impactful identity. I confidently recommend his ability to deliver strategic design solutions."
-        </blockquote>
-        <p class="testimonial-author">
-          <strong>Régis Ferreira, President,</strong> <span class="highlight">Riza Sementes</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- 9. Next Case / Navigation — padrão canônico (ver prompts-ajustes-site-renatowaru.md) -->
   <nav class="case-nav">
     <div class="case-nav-inner">
@@ -316,7 +464,7 @@
 </button>
 <!-- FOOTER:END -->
 
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=8"></script>
 
 </body>
 </html>

@@ -1958,7 +1958,7 @@ main {
   }
 
   .wall-of-trust {
-    padding: 40px 20px;
+    padding: 60px 20px;   /* mesmo respiro das outras faixas (era 40px) */
   }
 
   .testimonial-wrapper {
@@ -2205,6 +2205,18 @@ main {
 }
 
 /* Riza: imagem do hero em largura total, sem cantos arredondados */
+/* Titulo do hero do Riza: laranja da marca (#f48220) sobre faixa verde escura (#0c2a16, mais
+   escura que o #154625 do logo). A faixa vai de ponta a ponta da tela, como a imagem abaixo. */
+.case-hero--riza { padding-top: 0; }
+.case-hero--riza .case-hero-head {
+  display: flow-root;                       /* contem a margem do h1 dentro da faixa */
+  background: #0c2a16;
+  margin: 0 calc(50% - 50vw);
+  padding: 24px calc(50vw - 50%) 0;
+}
+.case-hero--riza .case-hero-title { color: #f48220; }
+.case-hero--riza .featured-label span { color: rgba(255, 255, 255, 0.85); }
+
 .case-hero--riza .case-hero-image {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -2215,6 +2227,13 @@ main {
 }
 @media (max-width: 768px) {
   .case-hero--riza .featured-label { display: none; }
+  /* Foto da sede mais alta: 1,4 x 1,3 x 1,3 = 2,366 vezes a altura original. Proporcao 2674:1192 / 2,366 = 0,948,
+     recortando as laterais com object-fit: cover; o logo no centro da foto continua centralizado. */
+  .case-hero--riza .case-hero-image img {
+    aspect-ratio: 0.948;
+    height: auto;
+    object-position: 50% 50%;
+  }
 }
 
 /* Riza mobile: infograficos em faixa deslizavel (mesmo padrao da home) */
@@ -2364,4 +2383,370 @@ main {
   .hero-container .subtitle .role { font-size: 17px; }
   .hero-container .subtitle .experience { font-size: 14px; line-height: 1.5; margin-top: 4px; }
   .hero-container { padding-bottom: 40px; }
+}
+
+/* -----------------------------------------------------------------
+   Riza Mix (riza.html): faixa branca entre Infographics e Results
+   ----------------------------------------------------------------- */
+.rmx {
+  --mix-precoce:    #e7b629;
+  --mix-nematoides: #1f7a8c;
+  --mix-pastejo:    #7aa43f;
+  --mix-eficiencia: #6b4b96;
+  --mix-cafe:       #a42f22;
+  --mix-green:      #154625;
+}
+.rmx-inner > * + * { margin-top: 72px; }
+
+.rmx-figure { margin: 0; }
+.rmx-figure picture,
+.rmx-figure img { display: block; width: 100%; height: auto; border-radius: var(--radius-img); }
+.rmx-figure figcaption {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.6;
+  color: #5a5a5a;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rmx-opening .rmx-figure { margin-bottom: 40px; }
+/* Embalagem: imagem vertical, largura limitada e centralizada */
+.rmx-figure-sack img {
+  width: min(100%, 546px);          /* 420px + 30% */
+  margin: 0 auto;
+  mix-blend-mode: multiply;         /* o branco do JPG some sobre o fundo da faixa */
+}
+@media (min-width: 769px) {
+  .rmx-inner > .rmx-figure-sack { margin-top: 120px; }   /* era 72px */
+}
+@media (max-width: 768px) {
+  /* 96vw = 80vw + 20%. Maior que o container, entao a margem negativa o mantem centralizado. */
+  .rmx-figure-sack img { width: 96vw; margin: 0 calc(50% - 48vw); }
+}
+.rmx-title {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.25;
+  color: #3a3a3a;
+  margin-bottom: 16px;
+}
+.rmx-lead {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.65;
+  color: #5a5a5a;
+  text-align: center;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rmx-constraints {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+.rmx-constraints li { border-top: 1px solid var(--mix-green); padding-top: 20px; }
+.rmx-con-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.35;
+  color: #3a3a3a;
+  margin-bottom: 8px;
+}
+.rmx-constraints p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5a5a5a;
+}
+
+/* Guias animadas (componente do snippet, CSS sem alteracao) */
+.rmg{position:relative;margin:0;max-width:640px}
+.rmg-svg{display:block;width:100%;height:auto}
+.rmg .g{fill:#154625}.rmg .o{fill:#f48220}
+.rmg-line{stroke:#ff00f5;stroke-width:3;vector-effect:non-scaling-stroke}
+/* three states, 9s loop: A (R to leaf), B (center), C (A to X) */
+.rmg-l1{animation:rmg-l1 9s infinite cubic-bezier(.65,0,.35,1)}
+.rmg-l2{animation:rmg-l2 9s infinite cubic-bezier(.65,0,.35,1)}
+@keyframes rmg-l1{
+  0%,28%{transform:translateX(45px)}
+  36%,61%{transform:translateX(251px)}
+  69%,94%{transform:translateX(324px)}
+  100%{transform:translateX(45px)}}
+@keyframes rmg-l2{
+  0%,28%{transform:translateX(177px)}
+  36%,61%{transform:translateX(251px)}
+  69%,94%{transform:translateX(456px)}
+  100%{transform:translateX(177px)}}
+.rmg[data-paused="true"] .rmg-line{animation-play-state:paused}
+.rmg-toggle{display:block;margin:12px 0 0 auto;font:12px/1 system-ui,sans-serif;padding:8px 12px;border:1px solid #ccc;border-radius:999px;background:#fff;cursor:pointer}
+@media (prefers-reduced-motion:reduce){
+  .rmg-line{animation:none}
+  .rmg-l1{transform:translateX(45px)}.rmg-l2{transform:translateX(177px)}
+  .rmg-toggle{display:none}}
+.rmx-guides { margin: 0 auto; }
+.rmx-guides figcaption {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.6;
+  color: #5a5a5a;
+  text-align: center;
+  margin-top: 8px;
+}
+.rmx-guides .rmg-toggle { min-height: 44px; }
+
+/* Palco + seletor das sublinhas */
+.rmx-lines-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #3a3a3a;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.rmx-stage {
+  position: relative;
+  padding: 56px 0;   /* respiro em volta do logo; o botao Pause/Play fica no canto superior direito */
+}
+/* Uma orientacao por tela: cada <picture> escolhe -h (desktop) ou -v (ate 768px).
+   As 5 ficam empilhadas no mesmo espaco; so a ativa tem opacidade 1. */
+.rmx-stack {
+  display: grid;
+  width: min(100%, 560px);
+  margin: 0 auto;
+}
+.rmx-stack picture {
+  grid-area: 1 / 1;
+  display: block;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.rmx-stack picture.is-active { opacity: 1; }
+.rmx-stack img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.rmx-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 64px;
+  min-height: 44px;
+  padding: 0 16px;
+  font: 600 13px/1 'Inter', sans-serif;
+  color: #3a3a3a;
+  background: #fff;
+  border: 1px solid #c9c5bd;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.rmx-toggle[hidden] { display: none; }
+
+.rmx-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.rmx-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0 0 16px;
+  font-family: 'Inter', sans-serif;
+  color: #3a3a3a;
+  background: #fff;
+  border: 1px solid #d9d5cc;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+.rmx-card-bar {
+  align-self: stretch;
+  height: 64px;
+  margin-bottom: 14px;
+  background: linear-gradient(to bottom, var(--c) calc(100% - 12px), var(--mix-green) calc(100% - 12px));
+}
+.rmx-card-name,
+.rmx-card-hex,
+.rmx-card-desc { padding: 0 14px; }
+.rmx-card-name { font-weight: 700; font-size: 17px; }
+.rmx-card-hex { font-size: 13px; letter-spacing: 0.04em; color: #5a5a5a; margin: 2px 0 8px; }
+.rmx-card-desc { font-size: 14px; line-height: 1.5; color: #5a5a5a; }
+.rmx-card:hover { border-color: #8f8a80; }
+.rmx-card.is-active {
+  border-color: var(--mix-green);
+  box-shadow: 0 0 0 3px var(--mix-green);
+}
+.rmx-card:focus-visible {
+  outline: 3px solid #b82b2b;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rmx-stack picture,
+  .rmx-card { transition: none; }
+}
+
+@media (max-width: 768px) {
+  .rmx-inner > * + * { margin-top: 48px; }
+  .rmx-constraints { display: none; }   /* mobile: as tres restricoes (e os fios) ficam so no desktop */
+  .rmx-stage { padding: 56px 0 40px; }   /* 56px em cima: o botao (44px) ocupa o canto sem tocar o logo */
+  .rmx-stack { width: min(100%, 260px); }
+  .rmx-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .rmx-card { min-height: 56px; }
+  .rmx-card-bar { height: 48px; }
+}
+
+/* Ate 700px: fileira horizontal com scroll-snap, perto do palco */
+@media (max-width: 700px) {
+  .rmx-cards {
+    display: flex;
+    gap: 12px;
+    margin: 12px -20px 0;
+    /* padding lateral simetrico: o primeiro e o ultimo cartao tambem chegam ao centro */
+    padding: 8px max(20px, calc((100% + 40px - min(78vw, 300px)) / 2)) 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .rmx-cards::-webkit-scrollbar { display: none; }
+  .rmx-card {
+    flex: 0 0 min(78vw, 300px);
+    scroll-snap-align: center;
+  }
+}
+
+/* Alternancia de fundo das faixas do case (riza.html): utilitarios aplicados so onde a
+   ordem das secoes pede. Ficam no fim do arquivo para ganhar da cor base de cada secao. */
+.band-white { background: #FFFFFF; }
+.band-cream { background: #efedea; }
+
+/* Riza: bloco Physical Presence centralizado; os irmaos (Brand Foundation, Packaging) seguem a esquerda */
+.touchpoint-group--center { text-align: center; }
+.touchpoint-group--center .touchpoint-desc { margin-left: auto; margin-right: auto; }
+
+/* Imagem em <picture> dentro de .touchpoint-grid-1 (a regra do mobile da .touchpoint-grid img fixa 240px de altura) */
+.touchpoint-grid-1 picture { display: block; }
+.touchpoint-grid-1 picture img { width: 100%; height: auto; object-fit: contain; }
+
+/* Botoes Pause/Play como icone (palco e guias). O nome acessivel vem do aria-label, que o JS atualiza. */
+.rmx-toggle,
+.rmx-guides .rmg-toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  color: #3a3a3a;
+}
+.rmx-toggle svg,
+.rmg-toggle svg { width: 18px; height: 18px; fill: currentColor; pointer-events: none; }
+.rmx-toggle .pp-play,
+.rmg-toggle .pp-play { display: none; }
+.rmx-toggle[data-paused="true"] .pp-pause,
+.rmg[data-paused="true"] .rmg-toggle .pp-pause { display: none; }
+.rmx-toggle[data-paused="true"] .pp-play,
+.rmg[data-paused="true"] .rmg-toggle .pp-play { display: block; }
+@media (prefers-reduced-motion: reduce) {
+  .rmx-guides .rmg-toggle { display: none; }
+}
+
+/* Riza: menos espaco entre a frase de The Thinking e a imagem seguinte (antes 80+80 no desktop, 60+60 no mobile) */
+.case-block.rz-thinking { padding-bottom: 40px; }
+.case-block.rz-abstraction { padding-top: 40px; }
+@media (max-width: 768px) {
+  .case-block.rz-thinking { padding-bottom: 24px; }
+  .case-block.rz-abstraction { padding-top: 24px; }
+}
+
+/* Mobile: logo Riza (The Logo) 10% maior: 80% -> 88% da largura */
+@media (max-width: 768px) {
+  .logo-reveal-figure img { width: 88%; }
+}
+
+/* Mobile: menos espaco acima do logo Riza (The Logo): padding-top 60px -> 0 (o padding-bottom da imagem anterior ja da o respiro) */
+@media (max-width: 768px) {
+  .case-block.logo-reveal { padding-top: 0; }
+}
+
+/* Mobile: menos espaco acima de The Challenge (hero 60px + secao 60px -> so os 60px da secao; mesma cor de fundo, sem emenda visivel) */
+@media (max-width: 768px) {
+  .case-hero--riza { padding-bottom: 0; }
+}
+
+/* Embalagens (Packaging & Product): desktop mostra a imagem unica com as 3 embalagens; mobile troca por
+   um carrossel de 3 imagens, no mesmo padrao dos infograficos (faixa deslizavel com scroll-snap). */
+.package-carousel { display: none; }
+@media (max-width: 768px) {
+  .touchpoint-grid-1 .package-single { display: none; }
+  .touchpoint-grid-1 .package-carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    gap: 8px;
+    margin: 0 -20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .touchpoint-grid-1 .package-carousel::-webkit-scrollbar { display: none; }
+  .touchpoint-grid .package-carousel img {
+    scroll-snap-align: start;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+  }
+}
+
+/* Folder da Riza (assets/folder2.png): so no mobile, logo depois da embalagem Riza Mix */
+.rmx-figure-folder,
+.rmx-folder-title { display: none; }
+@media (max-width: 768px) {
+  .rmx-folder-title {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #3a3a3a;
+    text-align: center;
+  }
+  /* Imagem a 330% da largura da tela (300% + 10%), sem cantos arredondados, numa faixa que desliza para o lado */
+  .rmx-figure-folder {
+    display: block;
+    margin-top: 16px;
+    margin-left: -20px;
+    margin-right: -20px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .rmx-figure-folder::-webkit-scrollbar { display: none; }
+  .rmx-figure-folder img {
+    width: 330%;
+    max-width: none;
+    border-radius: 0;
+  }
 }

@@ -152,3 +152,130 @@
   prev.addEventListener('click', function () { show(current - 1); });
   next.addEventListener('click', function () { show(current + 1); });
 })();
+
+/* -----------------------------------------------------------------
+   Riza Mix: animacao das guias (componente do snippet, logica sem alteracao)
+   ----------------------------------------------------------------- */
+(function () {
+  'use strict';
+  document.querySelectorAll('.rmg').forEach(function(f){
+    var b=f.querySelector('.rmg-toggle');
+    b.addEventListener('click',function(){
+      var p=f.dataset.paused!=='true';
+      f.dataset.paused=p;
+      b.setAttribute('aria-label',p?'Play animation':'Pause animation');
+    });
+  });
+})();
+
+/* -----------------------------------------------------------------
+   Riza Mix: palco com seletor das cinco sublinhas.
+   Ciclo de 4s a partir de Precoce; pausa com hover, foco, clique num cartao
+   ou botao Pause/Play. Sem aria-live. Com prefers-reduced-motion: sem
+   autoplay e sem botao; os cartoes continuam selecionaveis.
+   ----------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  var root = document.querySelector('.rmx-lines');
+  if (!root) return;
+
+  var cards = root.querySelectorAll('.rmx-card');
+  var pics = root.querySelectorAll('.rmx-stack picture');
+  var toggle = root.querySelector('.rmx-toggle');
+  if (!cards.length || !toggle) return;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var INTERVAL = 4000;
+  var current = 0;
+  var timer = null;
+  var userPaused = false;
+  var hovering = false;
+  var focusing = false;
+  var touching = false;
+  var strip = root.querySelector('.rmx-cards');
+
+  function show(index) {
+    current = (index + cards.length) % cards.length;
+    var key = cards[current].getAttribute('data-line');
+    var i;
+    for (i = 0; i < cards.length; i++) {
+      var on = i === current;
+      cards[i].classList.toggle('is-active', on);
+      cards[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+    for (i = 0; i < pics.length; i++) {
+      var match = pics[i].getAttribute('data-line') === key;
+      pics[i].classList.toggle('is-active', match);
+      if (match) pics[i].removeAttribute('aria-hidden');
+      else pics[i].setAttribute('aria-hidden', 'true');
+    }
+    centerActiveCard();
+  }
+
+  /* Mobile: a fileira de cartoes rola na horizontal. Leva o ativo ao centro
+     rolando so o container (scrollIntoView puxaria a pagina na vertical a cada
+     troca do ciclo). Sem animacao com prefers-reduced-motion. */
+  function centerActiveCard() {
+    if (!strip || strip.scrollWidth <= strip.clientWidth + 1) return;
+    var card = cards[current];
+    var left = card.offsetLeft - (strip.clientWidth - card.offsetWidth) / 2;
+    strip.scrollTo({ left: left, behavior: reduce.matches ? 'auto' : 'smooth' });
+  }
+
+  function stop() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  function sync() {
+    stop();
+    if (reduce.matches || userPaused || hovering || focusing || touching) return;
+    timer = setInterval(function () { show(current + 1); }, INTERVAL);
+  }
+
+  function setUserPaused(value) {
+    userPaused = value;
+    toggle.setAttribute('data-paused', value ? 'true' : 'false');
+    toggle.setAttribute('aria-label', value ? 'Play sub-line cycle' : 'Pause sub-line cycle');
+    sync();
+  }
+
+  function applyMotionPreference() {
+    toggle.hidden = reduce.matches;
+    if (reduce.matches) { stop(); show(0); }
+    else sync();
+  }
+
+  for (var i = 0; i < cards.length; i++) {
+    (function (index) {
+      cards[index].addEventListener('click', function () {
+        show(index);
+        setUserPaused(true);
+      });
+    })(i);
+  }
+
+  toggle.addEventListener('click', function () {
+    /* Play explicito vale mesmo com o mouse ou o foco ainda no palco */
+    if (userPaused) { hovering = false; focusing = false; }
+    setUserPaused(!userPaused);
+  });
+
+  /* Nao deixa o ciclo disputar com o gesto de arrastar a fileira no toque */
+  root.addEventListener('touchstart', function () { touching = true; sync(); }, { passive: true });
+  root.addEventListener('touchend', function () { touching = false; sync(); }, { passive: true });
+  root.addEventListener('touchcancel', function () { touching = false; sync(); }, { passive: true });
+
+  root.addEventListener('mouseenter', function () { hovering = true; sync(); });
+  root.addEventListener('mouseleave', function () { hovering = false; sync(); });
+  root.addEventListener('focusin', function (e) {
+    if (e.target.classList.contains('rmx-card')) { focusing = true; sync(); }
+  });
+  root.addEventListener('focusout', function (e) {
+    var next = e.relatedTarget;
+    if (!next || !next.classList || !next.classList.contains('rmx-card')) { focusing = false; sync(); }
+  });
+
+  if (reduce.addEventListener) reduce.addEventListener('change', applyMotionPreference);
+  applyMotionPreference();
+})();
