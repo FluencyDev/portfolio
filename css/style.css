@@ -2289,7 +2289,7 @@ main {
 .about-principle-title {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 26px;   /* +30% (antes 20px) */
   line-height: 1.3;
   color: #3a3a3a;
   margin-bottom: 8px;
@@ -2750,3 +2750,79 @@ main {
     border-radius: 0;
   }
 }
+
+/* About: foto do Pixel Show.
+   Desktop: coluna da direita do hero (texto na esquerda). Mobile: topo da pagina, de ponta a ponta,
+   altura de no maximo 45vh; o penhasco some no mobile. */
+.about-photo { margin: 0; }
+.about-photo picture,
+.about-photo img { display: block; width: 100%; height: auto; }
+.about-photo img { border-radius: var(--radius-img); }
+.about-photo figcaption {
+  margin-top: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  text-align: center;
+}
+@media (min-width: 769px) {
+  .about-hero-inner { align-items: center; }
+  .about-hero-text { flex: 1 1 0; min-width: 0; order: 1; }
+  .about-photo { flex: 0 0 clamp(322px, 43.7%, 529px); order: 2; }   /* +15% (antes 280px / 38% / 460px) */
+  .about-hero .case-block-lead { font-size: clamp(16px, 1.92vw, 22.4px); }   /* -20% (antes 20px / 2.4vw / 28px) */
+}
+@media (max-width: 768px) {
+  .about-edge-hero { display: none; }
+  .about-hero { padding-top: 0; }
+  .about-photo { margin: 0 -20px; align-self: stretch; }   /* de ponta a ponta (o flex-start do hero encolhia a foto) */
+  .about-photo img {
+    aspect-ratio: 1 / 1;
+    max-height: 45vh;
+    object-fit: cover;
+    object-position: 45% 20%;      /* rosto no terco de cima, sem cortar a cabeca */
+    border-radius: 0;
+  }
+  .about-photo figcaption { margin: 10px 20px 0; }
+}
+
+/* About: o h1 vira elemento visual de peso (tipografia grande, entrelinha fechada) */
+.about-hero .case-hero-title {
+  max-width: none;
+  font-size: clamp(36px, 6.016vw, 87px);   /* desktop: -20% de novo (antes 45px / 7.52vw / 108.8px) */
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;               /* evita a palavra sozinha na ultima linha */
+  margin: 0 0 28px;
+}
+@media (max-width: 768px) {
+  .about-hero .case-hero-title {
+    font-size: clamp(46px, 14.5vw, 96px);
+    margin-bottom: 20px;
+  }
+}
+
+/* About: marca-texto azul que varre o titulo ao carregar (some a animacao com prefers-reduced-motion) */
+.about-hero .case-hero-title .hl {
+  padding: 0 0.1em;
+  margin: 0 -0.1em;
+  /* faixa mais baixa que a linha (72%), do topo das maiusculas ate logo abaixo da base: nao cobre a perna do g da linha de cima */
+  background: linear-gradient(#9fcbf2, #9fcbf2) no-repeat 0 54% / 0% 72%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: about-hl-sweep 1.1s cubic-bezier(.65, 0, .35, 1) .35s forwards;
+}
+@keyframes about-hl-sweep { to { background-size: 100% 72%; } }
+@media (prefers-reduced-motion: reduce) {
+  .about-hero .case-hero-title .hl { animation: none; background-size: 100% 72%; }
+}
+
+/* About: "How I work" em fundo escuro, igual ao header (--site-dark) */
+.about-how { background: var(--site-dark); }
+.about-how .case-block-eyebrow { color: #f06292; }          /* o vermelho #b82b2b nao tem contraste sobre o escuro; mesmo rosa do header */
+.about-how .about-principle-title,
+.about-how .about-statement { color: #f6f3ec; }
+.about-how .case-block-body { color: rgba(246, 243, 236, 0.78); }
+.about-principle-title .thin { font-weight: 200; }   /* segunda palavra bem light (Inter 200, ja carregada) */
+

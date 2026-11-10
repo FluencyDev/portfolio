@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=58">
+  <link rel="stylesheet" href="css/style.css?v=70">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -77,46 +77,47 @@
 </header>
 <!-- HEADER:END -->
 
-  <!-- 0. Hero image -->
-  <div class="about-edge-hero">
-    <picture>
-      <source media="(max-width: 768px)" srcset="assets/images/edge-mobile.webp" width="800" height="257">
-      <img src="assets/images/edge-desktop.webp" width="1593" height="511" alt="A lone figure sitting on a sea cliff above the ocean">
-    </picture>
-  </div>
-
   <!-- 1. Opening -->
   <section class="case-hero about-hero">
     <div class="case-hero-inner about-hero-inner">
+      <!-- Foto: Pixel Show (desktop: coluna da direita; mobile: topo da pagina, de ponta a ponta) -->
+    <figure class="about-photo">
+      <picture>
+        <source media="(max-width: 768px)" srcset="assets/images/about-portrait-mobile.webp" width="900" height="900">
+        <img src="assets/images/about-portrait-desktop.webp" width="1366" height="1151" alt="Renato Waru speaking into a microphone in front of a purple mural at Pixel Show 2019">
+      </picture>
+      <figcaption>Speaking on design with meaning at Pixel Show</figcaption>
+    </figure>
       <!-- TODO: foto. Exportar assets/mobile-src/renato-portrait-src.jpg (400x400) para assets/images/renato-portrait.webp e descomentar:
       <img class="about-portrait" src="assets/images/renato-portrait.webp" alt="Renato Waru" width="400" height="400">
       -->
       <div class="about-hero-text">
-        <h1 class="case-hero-title">Decisions first. Design follows.</h1>
-        <p class="case-block-body">I'm a brand designer and creative director based in Brazil, working with clients wherever they are. Before anything gets drawn, I help you decide what your brand has to say, and to whom. The design comes out of that decision, not the other way around.</p>
+        <h1 class="case-hero-title"><span class="hl">Design is a team sport</span></h1>
+        <p class="case-block-lead">Concept, meaning and goals shape each other as we play, and you're on the team the whole way.</p>
+        <p class="case-block-body">I'm Renato Waru, a Creative Director &amp; Brand Designer based in Brazil, working with clients wherever they are. For thirty years I've helped companies find the meaning behind what they do, and give it a shape people recognize and trust.</p>
       </div>
     </div>
   </section>
 
-  <!-- 2. How I work -->
-  <section class="case-block">
+  <!-- 2. How I work (fundo escuro, igual ao header) -->
+  <section class="case-block about-how">
     <div class="case-block-inner">
       <h2 class="case-block-eyebrow">How I work</h2>
       <div class="about-principles">
         <div>
-          <h3 class="about-principle-title">Structure first.</h3>
-          <p class="case-block-body">I start with the hard questions: who you are, who you're talking to, what has to be true. Form comes after.</p>
+          <h3 class="about-principle-title">Structure <span class="thin">first</span></h3>
+          <p class="case-block-body">I start with the hard questions: who you are, who you're talking to, what has to be true. And I keep asking them as the form takes shape.</p>
         </div>
         <div>
-          <h3 class="about-principle-title">Beauty always.</h3>
+          <h3 class="about-principle-title">Beauty <span class="thin">always</span></h3>
           <p class="case-block-body">Clarity is the minimum. Craft is what makes people stay.</p>
         </div>
         <div>
-          <h3 class="about-principle-title">Consistency everywhere.</h3>
+          <h3 class="about-principle-title">Consistency <span class="thin">everywhere</span></h3>
           <p class="case-block-body">A brand is only as strong as its weakest touchpoint, from the logo to the delivery van.</p>
         </div>
       </div>
-      <p class="about-statement">I work as a thinking partner, not a vendor. That means I'll ask uncomfortable questions early, and sometimes tell you what you don't need.</p>
+      <p class="about-statement">I start every project with a conversation. I want to understand your business, your people and where you're heading, and let the design grow from there. I'll share what I see openly, and sometimes that means a simpler path than you expected.</p>
     </div>
   </section>
 
@@ -149,7 +150,7 @@
       </div>
       <div class="testimonial-content about-quote">
         <blockquote class="testimonial-quote">
-          "Design is not the lie told over the truth. It is the bridge that lets the truth be crossed by people who would otherwise turn back."
+          “Design is not the lie told over the truth. It is the bridge that lets the truth be crossed by people who would otherwise turn back.”
         </blockquote>
         <p class="testimonial-author">From the essay <em>The People Who Build the Awe</em></p>
       </div>
@@ -158,6 +159,15 @@
       </div>
     </div>
   </section>
+
+  <!-- Imagem do penhasco: desktop, no fim da pagina (mobile: escondida e nao baixada) -->
+  <div class="about-edge-hero">
+    <picture>
+      <!-- Mobile: a foto do penhasco sai (o wrapper some via CSS). A fonte vazia abaixo faz o navegador nao baixar nenhuma das duas versoes. -->
+      <source media="(max-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <img src="assets/images/edge-desktop.webp" width="1593" height="511" alt="A lone figure sitting on a sea cliff above the ocean">
+    </picture>
+  </div>
 
 <!-- FOOTER:START - gerado de partials/footer.html - nao edite aqui; rode: python3 build.py -->
 <footer class="site-footer" id="contact">
