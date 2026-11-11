@@ -3037,6 +3037,9 @@ main {
 }
 /* How I work da Home em off-white, para nao fundir com o hero escuro */
 .home-how { background: var(--site-paper); }   /* off-white: o hero escuro ja tem peso suficiente */
+@media (min-width: 769px) {
+  .home-how { background: #eee7db; padding-top: 65px; }   /* desktop: bege mais quente; topo 80px -> 65px */
+}
 .home-how .case-block-eyebrow { color: #b82b2b; }
 .home-how .about-principle-title,
 .home-how .about-statement { color: #3a3a3a; }
