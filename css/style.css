@@ -3047,3 +3047,66 @@ main {
 
 /* Home: "In their words" mais claro (so a Home tem o .testimonial-wrapper; o case da Riza reusa .wall-of-trust e fica como esta) */
 .wall-of-trust:has(.testimonial-wrapper) { background: #fefdfb; }
+
+/* -----------------------------------------------------------------
+   Home: Working together com relogios (NY, Sao Paulo em destaque, Sydney) (nov/2026)
+   ----------------------------------------------------------------- */
+.home-together { align-items: center; gap: 48px; padding-top: 48px; margin-top: 56px; }
+.home-together-text { flex: 1 1 0; min-width: 0; }
+.home-together-title {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.home-together-lead { margin-bottom: 24px; }
+.home-together .case-cta, .home-together-text .btn-more { margin-top: 0; }
+
+.home-clocks {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 36px;
+}
+.clock { margin: 0; text-align: center; }
+.clock-face { display: block; width: 92px; height: 92px; margin: 0 auto 14px; overflow: visible; }
+.clock--home .clock-face { width: 148px; height: 148px; }
+
+.clock-rim { fill: none; stroke: rgba(246, 243, 236, 0.28); stroke-width: 1.5; }
+.clock-tick { stroke: rgba(246, 243, 236, 0.35); stroke-width: 1.5; stroke-linecap: round; }
+.clock-tick--major { stroke: rgba(246, 243, 236, 0.6); stroke-width: 2; }
+.clock-hand { stroke: #f6f3ec; stroke-linecap: round; }
+.clock-hand--h { stroke-width: 4; }
+.clock-hand--m { stroke-width: 2.5; }
+.clock-hand--s { display: none; }
+.clock-pin { fill: #f6f3ec; }
+
+.clock--home .clock-rim { fill: rgba(216, 39, 106, 0.10); stroke: #f06292; stroke-width: 2; }
+.clock--home .clock-hand--s { display: block; stroke: #f06292; stroke-width: 1.2; }
+.clock--home .clock-pin { fill: #f06292; }
+
+.clock figcaption { font-family: 'Inter', sans-serif; line-height: 1.35; }
+.clock figcaption strong { display: block; font-size: 14px; font-weight: 700; color: rgba(246, 243, 236, 0.85); }
+.clock-time { display: block; font-size: 13px; color: rgba(246, 243, 236, 0.6); font-variant-numeric: tabular-nums; min-height: 1.35em; }
+.clock-tag {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f06292;
+}
+.clock--home figcaption strong { font-size: 16px; color: #ffffff; }
+.clock--home .clock-time { color: rgba(246, 243, 236, 0.85); }
+
+@media (max-width: 768px) {
+  .home-together { gap: 32px; padding-top: 32px; margin-top: 40px; }
+  .home-clocks { align-self: stretch; justify-content: space-between; gap: 12px; }
+  .clock-face { width: 68px; height: 68px; margin-bottom: 10px; }
+  .clock--home .clock-face { width: 104px; height: 104px; }
+  .clock figcaption strong { font-size: 13px; }
+  .clock--home figcaption strong { font-size: 14px; }
+  .clock-time { font-size: 12px; }
+}

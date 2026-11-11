@@ -279,3 +279,50 @@
   if (reduce.addEventListener) reduce.addEventListener('change', applyMotionPreference);
   applyMotionPreference();
 })();
+
+
+/* -----------------------------------------------------------------
+   Home: relogios do Working together (New York, Sao Paulo, Sydney).
+   Cada <figure class="clock" data-tz="..."> recebe o horario ao vivo do seu fuso.
+   ----------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  var clocks = document.querySelectorAll('.clock[data-tz]');
+  if (!clocks.length || !window.Intl || !Intl.DateTimeFormat) return;
+
+  var items = [];
+  Array.prototype.forEach.call(clocks, function (el) {
+    var tz = el.getAttribute('data-tz');
+    try {
+      items.push({
+        h: el.querySelector('.clock-hand--h'),
+        m: el.querySelector('.clock-hand--m'),
+        s: el.querySelector('.clock-hand--s'),
+        label: el.querySelector('.clock-time'),
+        parts: new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' }),
+        text: new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: '2-digit' })
+      });
+    } catch (e) { /* fuso nao suportado: o relogio fica parado */ }
+  });
+
+  function rotate(line, deg) {
+    if (line) line.setAttribute('transform', 'rotate(' + deg.toFixed(2) + ' 50 50)');
+  }
+
+  function tick() {
+    var now = new Date();
+    items.forEach(function (it) {
+      var p = {};
+      it.parts.formatToParts(now).forEach(function (x) { p[x.type] = parseInt(x.value, 10); });
+      var h = (p.hour || 0) % 12, m = p.minute || 0, s = p.second || 0;
+      rotate(it.h, (h + m / 60) * 30);
+      rotate(it.m, (m + s / 60) * 6);
+      rotate(it.s, s * 6);
+      if (it.label) it.label.textContent = it.text.format(now);
+    });
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
