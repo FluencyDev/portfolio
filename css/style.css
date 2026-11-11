@@ -3149,3 +3149,18 @@ main {
 /* Home: What I Do sem etiqueta, fundo #ede3d7, titulos dos servicos no vermelho-rosado das etiquetas */
 .services-section--light { background: #ede3d7; }
 .services-section--light .service-card h3 { color: #b82b2b; }
+
+/* quebra de linha so no desktop */
+@media (max-width: 768px) { .br-desktop { display: none; } }
+
+/* Home, mobile: servicos sem caixas tambem */
+@media (max-width: 768px) {
+  .services-section--light .services-cards { gap: 28px; }
+  .services-section--light .service-card {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+  .services-section--light .service-card h3 { margin-bottom: 6px; }
+}
