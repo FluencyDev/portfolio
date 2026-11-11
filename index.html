@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Renato Waru - Brand Designer & Creative Director</title>
-  <meta name="description" content="Brand Designer &amp; Creative Director. 30+ years designing with meaning: brand identity, packaging and editorial design for clients around the world.">
+  <title>Renato Waru - Creative Director & Brand Designer</title>
+  <meta name="description" content="Creative Director &amp; Brand Designer. 30+ years designing with meaning: brand identity, packaging and editorial design for clients around the world.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Renato Waru - Brand Designer &amp; Creative Director">
-  <meta property="og:description" content="Brand Designer &amp; Creative Director. 30+ years designing with meaning: brand identity, packaging and editorial design for clients around the world.">
+  <meta property="og:title" content="Renato Waru - Creative Director &amp; Brand Designer">
+  <meta property="og:description" content="Creative Director &amp; Brand Designer. 30+ years designing with meaning: brand identity, packaging and editorial design for clients around the world.">
   <meta property="og:url" content="https://renatowaru.com/">
   <meta property="og:image" content="https://renatowaru.com/assets/images/og-home.jpg">
   <meta property="og:image:width" content="1200">
@@ -19,14 +19,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=95">
+  <link rel="stylesheet" href="css/style.css?v=99">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://renatowaru.com/#renato",
   "name": "Renato Waru",
-  "jobTitle": "Brand Designer and Creative Director",
+  "jobTitle": "Creative Director and Brand Designer",
   "worksFor": {
     "@type": "Organization",
     "name": "Navemãe Design Multimídia"
@@ -77,25 +77,29 @@
 <!-- HEADER:END -->
 
   <!-- Hero: mesma da About (classes e CSS de .about-hero). Hero do polvo arquivada: ver tag home-hero-octopus e assets/mobile-src/archive/home-hero-octopus/ -->
-  <section class="case-hero about-hero">
+  <!-- Desktop: foto do palco de ponta a ponta como fundo (CSS, .home-hero). Mobile: foto quadrada no topo, como antes. -->
+  <section class="case-hero about-hero home-hero">
     <div class="case-hero-inner about-hero-inner">
       <figure class="about-photo">
         <picture>
           <source media="(max-width: 768px)" srcset="assets/images/about-portrait-mobile.webp" width="900" height="900">
+          <!-- Desktop: a foto da coluna some (o fundo da secao assume). A fonte vazia faz o navegador nao baixar a versao desktop. -->
+          <source media="(min-width: 769px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           <img src="assets/images/about-portrait-desktop.webp" width="1366" height="1151" alt="Renato Waru speaking into a microphone in front of a purple mural at Pixel Show 2019">
         </picture>
         <figcaption>Speaking on design with meaning at Pixel Show</figcaption>
       </figure>
       <div class="about-hero-text">
-        <h1 class="case-hero-title"><span class="hl">Design is a team sport</span></h1>
-        <p class="case-block-lead">Concept, meaning and goals shape each other as we play, and you're on the team the whole way.</p>
-        <p class="case-block-body">I'm Renato Waru, a Brand Designer &amp; Creative Director based in Brazil, working worldwide. For thirty years I've helped companies uncover the meaning behind what they do and give it a shape people can recognize.</p>
+        <h1 class="case-hero-title"><span class="hl">Essence, translated.</span></h1>
+        <p class="case-block-lead">Creative Director &amp; Brand Designer.<br>30+ years designing with meaning.</p>
+        <p class="case-block-body">I'm Renato Waru. I help companies find what they truly mean and turn it into brands people recognize, trust and remember.</p>
       </div>
     </div>
+    <p class="home-hero-caption">Speaking on design with meaning at Pixel Show</p>
   </section>
 
   <!-- How I work (faixa escura, mesma da About: classes e CSS de .about-how) -->
-  <section class="case-block about-how">
+  <section class="case-block about-how home-how">
     <div class="case-block-inner">
       <h2 class="case-block-eyebrow">How I work</h2>
       <div class="about-principles">
@@ -472,6 +476,15 @@
           <h3>Naming &amp; Packaging</h3>
           <p>A name, a numeral, a shelf. Made to be remembered.</p>
         </div>
+      </div>
+
+      <!-- Working together (versao curta; a completa fica no About) -->
+      <div class="home-together">
+        <div class="home-together-text">
+          <h3 class="home-together-title">Working together</h3>
+          <p class="home-together-lead">Based in Brazil, 1 to 2 hours ahead of New York. Projects, embedded art direction a few days a week, or an ongoing monthly partnership.</p>
+        </div>
+        <a href="mailto:renato@waru.com.br?subject=Hello%20Renato" class="btn-more">Start a conversation</a>
       </div>
     </div>
   </section>

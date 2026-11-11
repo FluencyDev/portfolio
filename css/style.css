@@ -2827,7 +2827,7 @@ main {
   /* faixa so na parte de baixo das letras, com a borda de baixo na linha de base.
      Caixa inline do Inter = 1.21em (ascendente 0.969 + descendente 0.241): a base fica a 80% do topo.
      Altura 35% da caixa (~0.42em, ~43% da entrelinha de 0.98em); posicao Y 69% => borda de baixo em 0.35 + 0.65 x 0.69 = 80% */
-  background: linear-gradient(#9fcbf2, #9fcbf2) no-repeat 0 69% / 0% 35%;
+  background: linear-gradient(#f3a9c8, #f3a9c8) no-repeat 0 69% / 0% 35%;   /* rosa claro (antes azul #9fcbf2); no hero escuro da Home vira magenta, ver .home-hero */
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   animation: about-hl-sweep 1.1s cubic-bezier(.65, 0, .35, 1) .35s forwards;
@@ -2954,3 +2954,86 @@ main {
   .about-studio-hero img { height: auto; }
   .about-hero.about-intro { padding-top: 28px; }
 }
+
+/* About: legenda sobre a foto do Cabo da Boa Esperanca (so desktop: a foto nao aparece no mobile) */
+.about-edge-hero { position: relative; }
+.about-edge-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  margin: 0;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+
+/* Home: Working together curto, dentro da faixa escura de Services (nov/2026) */
+.home-together {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(246, 243, 236, 0.16);
+}
+.home-together-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.home-together-lead {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(246, 243, 236, 0.78);
+  max-width: 640px;
+  margin: 0;
+}
+.home-together .btn-more { flex: 0 0 auto; }
+@media (max-width: 768px) {
+  .home-together { flex-direction: column; align-items: flex-start; gap: 20px; margin-top: 32px; padding-top: 24px; }
+}
+
+/* -----------------------------------------------------------------
+   Home: hero escuro com a foto do palco de ponta a ponta (so desktop) + How I work roxo (nov/2026)
+   ----------------------------------------------------------------- */
+.home-hero-caption { display: none; }
+@media (min-width: 769px) {
+  .home-hero {
+    position: relative;
+    /* degrade escuro a esquerda protege o texto quando a tela e estreita e a foto chega perto dele */
+    background:
+      linear-gradient(90deg, rgba(9, 8, 14, 0.9) 0%, rgba(9, 8, 14, 0.6) 35%, rgba(9, 8, 14, 0) 55%),
+      #09080e url("../assets/images/home-hero-stage-desktop.webp") no-repeat right center / cover;
+    padding: 0 40px;
+  }
+  .home-hero .about-hero-inner { min-height: clamp(480px, 44vw, 660px); align-items: center; }
+  .home-hero .about-photo { display: none; }
+  .home-hero .about-hero-text { flex: 0 1 44%; }
+  .home-hero .case-hero-title { color: #ffffff; }
+  .home-hero .case-hero-title .hl { background-image: linear-gradient(#d8276a, #d8276a); }
+  .home-hero .case-block-lead { color: #f6f3ec; }
+  .home-hero .case-block-body { color: rgba(246, 243, 236, 0.78); }
+  .home-hero-caption {
+    display: block;
+    position: absolute;
+    right: 40px;
+    bottom: 20px;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.72);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  }
+}
+/* How I work da Home em roxo profundo (puxado da foto do palco), para nao fundir com o hero escuro */
+.home-how { background: #261a3a; }
