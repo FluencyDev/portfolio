@@ -3035,5 +3035,12 @@ main {
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
   }
 }
-/* How I work da Home em roxo profundo (puxado da foto do palco), para nao fundir com o hero escuro */
-.home-how { background: #261a3a; }
+/* How I work da Home em off-white, para nao fundir com o hero escuro */
+.home-how { background: var(--site-paper); }   /* off-white: o hero escuro ja tem peso suficiente */
+.home-how .case-block-eyebrow { color: #b82b2b; }
+.home-how .about-principle-title,
+.home-how .about-statement { color: #3a3a3a; }
+.home-how .case-block-body { color: #5a5a5a; }
+
+/* Home: "In their words" mais claro (so a Home tem o .testimonial-wrapper; o case da Riza reusa .wall-of-trust e fica como esta) */
+.wall-of-trust:has(.testimonial-wrapper) { background: #fefdfb; }
