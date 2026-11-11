@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=84">
+  <link rel="stylesheet" href="css/style.css?v=95">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -76,26 +76,44 @@
 </header>
 <!-- HEADER:END -->
 
-  <div class="container hero-container">
-    <main>
-      <div class="text-content">
-        <div class="headline">
-          <div><span class="bold">Structure </span><span class="light">First</span></div>
-          <div><span class="bold">Beauty </span><span class="light">Always</span></div>
-          <div><span class="bold">Consistency </span><span class="light">Everywhere</span></div>
-        </div>
-        <div class="subtitle">
-          <h1 class="role"><span class="sr-only">Renato Waru, </span>Brand Designer &amp; Creative Director</h1>
-          <div class="experience">30+ Years Designing with Meaning</div>
-          <div class="experience">Based in Brazil. Clients worldwide.</div>
-        </div>
+  <!-- Hero: mesma da About (classes e CSS de .about-hero). Hero do polvo arquivada: ver tag home-hero-octopus e assets/mobile-src/archive/home-hero-octopus/ -->
+  <section class="case-hero about-hero">
+    <div class="case-hero-inner about-hero-inner">
+      <figure class="about-photo">
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/images/about-portrait-mobile.webp" width="900" height="900">
+          <img src="assets/images/about-portrait-desktop.webp" width="1366" height="1151" alt="Renato Waru speaking into a microphone in front of a purple mural at Pixel Show 2019">
+        </picture>
+        <figcaption>Speaking on design with meaning at Pixel Show</figcaption>
+      </figure>
+      <div class="about-hero-text">
+        <h1 class="case-hero-title"><span class="hl">Design is a team sport</span></h1>
+        <p class="case-block-lead">Concept, meaning and goals shape each other as we play, and you're on the team the whole way.</p>
+        <p class="case-block-body">I'm Renato Waru, a Brand Designer &amp; Creative Director based in Brazil, working worldwide. For thirty years I've helped companies uncover the meaning behind what they do and give it a shape people can recognize.</p>
       </div>
+    </div>
+  </section>
 
-      <div class="illustration">
-        <img src="assets/images/img_polvo_hero.webp" alt="Octopus drawn by hand in pen and ink">
+  <!-- How I work (faixa escura, mesma da About: classes e CSS de .about-how) -->
+  <section class="case-block about-how">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">How I work</h2>
+      <div class="about-principles">
+        <div>
+          <h3 class="about-principle-title">Structure <span class="thin">first</span></h3>
+          <p class="case-block-body">Hard questions first, and all the way through: who you are, who you serve, what must be true.</p>
+        </div>
+        <div>
+          <h3 class="about-principle-title">Beauty <span class="thin">always</span></h3>
+          <p class="case-block-body">Clarity is the baseline. Craft is what makes people stop, stay and remember.</p>
+        </div>
+        <div>
+          <h3 class="about-principle-title">Consistency <span class="thin">everywhere</span></h3>
+          <p class="case-block-body">A brand is only as strong as its weakest touchpoint, from the logo to the delivery van.</p>
+        </div>
       </div>
-    </main>
-  </div>
+    </div>
+  </section>
 
   <!-- In their words (testimonials) -->
   <section class="wall-of-trust">
@@ -133,7 +151,6 @@
     <div class="featured-header">
       <div class="featured-header-inner">
         <div class="featured-label">
-          <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
           <span>Brand System &middot; Agribusiness &middot; Brazil</span>
         </div>
         <h2 class="featured-title">Visual Consistency across a massive <br>range of physical and digital touchpoints</h2>
@@ -168,10 +185,9 @@
     <div class="case-header">
       <div class="case-header-inner">
         <div class="featured-label">
-          <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
           <span>Art Direction &middot; Remote Team<span class="label-country"><span class="lc-sep"> &middot; </span>New Zealand</span></span>
         </div>
-        <h2 class="case-title">I brought together talents across 5 continents <br>to deliver one vision</h2>
+        <h2 class="case-title">Art direction for a book made by a team spread across five continents</h2>
         <img src="assets/images/img_flags.png" alt="Flags from 5 continents" class="case-flags">
       </div>
     </div>
@@ -184,8 +200,8 @@
       <div class="case-footer-inner">
         <div class="case-description">
           <h3>The Medium is the Message</h3>
-          <p class="project-desc-full">I art directed Better Work Together, a manifesto from the Enspiral Foundation on the future of work. We made it the way it argues: decentralized, across five continents.</p>
-          <p class="project-desc-short">I art directed a manifesto on the future of work, produced the way it argues.</p>
+          <p class="project-desc-full">A manifesto on the future of work. We made it the way it argues: decentralized</p>
+          <p class="project-desc-short">I art directed Better Work Together, a manifesto from the Enspiral Foundation on the future of work.</p>
         </div>
         <div class="case-details">
           <p><strong>Industry:</strong> Business Community</p>
@@ -204,10 +220,9 @@
     <div class="case-header">
       <div class="case-header-inner">
         <div class="featured-label">
-          <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
           <span>Publishing &middot; Idea to Print &middot; Brazil</span>
         </div>
-        <h2 class="case-title">I handled every editorial step of Introduction to Aquaponics, from research to print.</h2>
+        <h2 class="case-title">Research, editing, layout and print production for Introduction to Aquaponics</h2>
       </div>
     </div>
 
@@ -244,7 +259,6 @@
     <div class="case-header">
       <div class="case-header-inner">
         <div class="featured-label">
-          <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
           <span>Branding, Architecture, Experience Design &middot; Brazil</span>
         </div>
         <div class="case-title-row">
@@ -278,22 +292,22 @@
   <!-- Work in Brief -->
   <section class="quickwins-section work-brief">
     <div class="quickwins-inner">
-      <div class="featured-label">
-        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
-        <span>Work in Brief</span>
-      </div>
-      <h2 class="quickwins-title">Different briefs, <span class="brief-name-line">same care.</span></h2>
-
       <!-- Open Lunar Foundation -->
       <article class="brief-item">
         <p class="brief-cat">Editorial &middot; USA</p>
         <h3 class="brief-name">Open Lunar Foundation, <span class="brief-name-line">Annual Report</span></h3>
         <p class="brief-line">In its own words: "an independent convener for projects and partnerships enabling lunar stewardship."</p>
-        <div class="swipe-strip" style="--strip-ratio: 5 / 7; --strip-cols: 5">
-          <img src="assets/images/openlunar-p01-mobile.webp"
-               srcset="assets/images/openlunar-p01-mobile.webp 800w, assets/images/openlunar-p01-desktop.webp 1268w"
-               sizes="(max-width: 768px) 78vw, 33vw"
-               alt="Open Lunar Foundation Annual Report 2022, cover" loading="lazy">
+        <figure class="brief-hero">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/images/open-lunar-report-hero-mobile.webp" width="900" height="1064">
+            <img src="assets/images/open-lunar-report-hero-1600.webp"
+                 srcset="assets/images/open-lunar-report-hero-1600.webp 1600w, assets/images/open-lunar-report-hero-2400.webp 2400w"
+                 sizes="(max-width: 1280px) calc(100vw - 80px), 1200px"
+                 width="2400" height="1340"
+                 alt="Person holding the Open Lunar Foundation Annual Report 2022 cover" loading="lazy">
+          </picture>
+        </figure>
+        <div class="swipe-strip" style="--strip-ratio: 5 / 7; --strip-cols: 4">
           <img src="assets/images/openlunar-p03-mobile.webp"
                srcset="assets/images/openlunar-p03-mobile.webp 800w, assets/images/openlunar-p03-desktop.webp 1268w"
                sizes="(max-width: 768px) 78vw, 33vw"
@@ -314,7 +328,7 @@
       </article>
 
       <!-- Nau 1500 -->
-      <article class="brief-item">
+      <article class="brief-item brief-item--gap-top">
         <p class="brief-cat">Packaging &middot; Concept &middot; Brazil</p>
         <h3 class="brief-name">Nau 1500, Naming and Label</h3>
         <p class="brief-line">A ship, a year and one oversized numeral, for a wine bridging Portugal and Brazil.</p>
@@ -328,7 +342,7 @@
       </article>
 
       <!-- Rolfsen Bier -->
-      <article class="brief-item">
+      <article class="brief-item brief-item--gap-top">
         <p class="brief-cat">Packaging &middot; Brazil</p>
         <h3 class="brief-name">Rolfsen Bier, Brand and Labels</h3>
         <p class="brief-line">A black and white identity that stands out in a category full of color.</p>
@@ -350,7 +364,7 @@
       </article>
 
       <!-- Starlight Cafe -->
-      <article class="brief-item">
+      <article class="brief-item brief-item--gap-top">
         <p class="brief-cat">Editorial &middot; Australia</p>
         <h3 class="brief-name">Starlight Cafe, Book Cover</h3>
         <p class="brief-line">A collage cover: every time you pick it up, you notice something new.</p>
@@ -376,14 +390,9 @@
   <!-- Selected Brands -->
   <section class="brands-section">
     <div class="brands-inner">
-      <div class="featured-label">
-        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
-        <span>Selected Brands</span>
-      </div>
-      <h2 class="brands-title">One mark, many surfaces.</h2>
 
       <!-- VSI -->
-      <article class="brief-item">
+      <article class="brief-item brief-item--gap-top">
         <p class="brief-cat">Brand Identity &middot; Finance &middot; Brazil</p>
         <h3 class="brief-name">VSI, Veda Structured Investments</h3>
         <p class="brief-line">Solid, modern, elegant: a monogram assembled from modular pieces.</p>
@@ -402,7 +411,7 @@
       </article>
 
       <!-- Madeira Circular -->
-      <article class="brief-item">
+      <article class="brief-item brief-item--gap-top">
         <p class="brief-cat">Brand Identity &middot; Brazil</p>
         <h3 class="brief-name">Madeira Circular, Brand System</h3>
         <p class="brief-line">A continuous-line M for a recycled wood supplier: logo, photo watermark and fleet livery.</p>
@@ -423,7 +432,7 @@
       </article>
 
       <!-- f.seo -->
-      <article class="brief-item">
+      <article class="brief-item brief-item--gap-top">
         <p class="brief-cat">Brand Identity &middot; Brazil</p>
         <h3 class="brief-name">f.seo</h3>
         <p class="brief-line">One rounded monoline wordmark, three moods: gradient on screen, flat on paper, white on black.</p>
@@ -445,10 +454,8 @@
   <section class="services-section">
     <div class="services-inner">
       <div class="featured-label">
-        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
         <span>What I Do</span>
       </div>
-      <h2 class="services-title">Direction, not just design.</h2>
 
       <div class="services-cards">
         <div class="service-card">
@@ -473,7 +480,6 @@
   <section class="craft-section">
     <div class="craft-inner">
       <div class="featured-label">
-        <img src="assets/images/img_red_tag.svg" alt="" class="featured-tag">
         <span>Timeless Craft</span>
       </div>
       <h2 class="craft-title">The hand tunes the eye.</h2>
