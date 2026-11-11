@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=95">
+  <link rel="stylesheet" href="css/style.css?v=97">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,7 +50,9 @@
     "Editorial design",
     "Art direction",
     "Naming",
-    "Packaging"
+    "Packaging",
+    "Creative direction",
+    "Experience design"
   ]
 }
   </script>
@@ -77,29 +79,57 @@
 </header>
 <!-- HEADER:END -->
 
-  <!-- 1. Opening -->
-  <section class="case-hero about-hero">
+  <!-- 1. Opening: foto do estudio de ponta a ponta + apresentacao (a hero da Home fica so na Home) -->
+  <div class="about-studio-hero">
+    <picture>
+      <source media="(max-width: 768px)" srcset="assets/images/about-studio-mobile.webp" width="900" height="675">
+      <img src="assets/images/about-studio-desktop.webp" width="1600" height="900" alt="Renato Waru's studio in Piracaia, Brazil: a desk with screens and a pen display, surrounded by his own drawings and prints">
+    </picture>
+  </div>
+  <section class="case-hero about-hero about-intro">
     <div class="case-hero-inner about-hero-inner">
-      <!-- Foto: Pixel Show (desktop: coluna da direita; mobile: topo da pagina, de ponta a ponta) -->
-    <figure class="about-photo">
-      <picture>
-        <source media="(max-width: 768px)" srcset="assets/images/about-portrait-mobile.webp" width="900" height="900">
-        <img src="assets/images/about-portrait-desktop.webp" width="1366" height="1151" alt="Renato Waru speaking into a microphone in front of a purple mural at Pixel Show 2019">
-      </picture>
-      <figcaption>Speaking on design with meaning at Pixel Show</figcaption>
-    </figure>
-      <!-- TODO: foto. Exportar assets/mobile-src/renato-portrait-src.jpg (400x400) para assets/images/renato-portrait.webp e descomentar:
-      <img class="about-portrait" src="assets/images/renato-portrait.webp" alt="Renato Waru" width="400" height="400">
-      -->
       <div class="about-hero-text">
-        <h1 class="case-hero-title"><span class="hl">Design is a team sport</span></h1>
-        <p class="case-block-lead">Concept, meaning and goals shape each other as we play, and you're on the team the whole way.</p>
-        <p class="case-block-body">I'm Renato Waru, a Brand Designer &amp; Creative Director based in Brazil, working worldwide. For thirty years I've helped companies uncover the meaning behind what they do and give it a shape people can recognize.</p>
+        <h1 class="case-hero-title"><span class="hl">I'm Renato Waru.</span></h1>
+        <p class="case-block-lead">Brand Designer &amp; Creative Director, working from my studio in the mountains of Piracaia, Brazil, with clients worldwide.</p>
+        <p class="case-block-body">For thirty years I've helped companies find the meaning in what they do and give it a form people recognize, trust and remember.</p>
       </div>
     </div>
   </section>
 
-  <!-- 2. How I work (fundo escuro, igual ao header) -->
+  <!-- 2. What I bring -->
+  <section class="case-block about-bring">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">What I bring</h2>
+      <ol class="about-skills">
+        <li>
+          <h3 class="about-skill-title">Brand identity and systems</h3>
+          <p class="case-block-body">Identities built as systems that in-house teams can run without me.</p>
+        </li>
+        <li>
+          <h3 class="about-skill-title">Making complexity clear</h3>
+          <p class="case-block-body">Technical or dense content turned into visual stories people actually want to read.</p>
+        </li>
+        <li>
+          <h3 class="about-skill-title">Art direction across every touchpoint</h3>
+          <p class="case-block-body">Packaging, print, signage, fleets, web and events.</p>
+        </li>
+        <li>
+          <h3 class="about-skill-title">Experience design</h3>
+          <p class="case-block-body">The full journey, from first contact to the goodbye and after.</p>
+        </li>
+        <li>
+          <h3 class="about-skill-title">AI in the workflow, with judgment</h3>
+          <p class="case-block-body">I use AI to explore and build faster (this site was designed and coded with Claude Code), and the final call stays human.</p>
+        </li>
+        <li>
+          <h3 class="about-skill-title">Remote, cross-cultural collaboration</h3>
+          <p class="case-block-body">Clients and teams in New Zealand, Australia, the USA and Brazil.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. How I work (fundo escuro, igual ao header) -->
   <section class="case-block about-how">
     <div class="case-block-inner">
       <h2 class="case-block-eyebrow">How I work</h2>
@@ -121,7 +151,68 @@
     </div>
   </section>
 
-  <!-- 4. Outside the brief -->
+  <!-- 4. Highlights -->
+  <section class="case-block case-block-light about-highlights">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">Highlights</h2>
+      <div class="about-hl-grid">
+        <div class="about-hl-group">
+          <h3 class="about-hl-heading">Personal projects</h3>
+          <ul class="about-hl-list">
+            <li>
+              <strong>Waru Piracaia</strong>
+              <p class="case-block-body">A hospitality experience built from the ground up. I created the concept, modeled the architecture in Blender and built it by hand in one year, with my wife, my sons and a skilled friend. We designed the whole guest journey, from the first message to the goodbye and beyond. Today it ranks in the top 5% of homes on Airbnb, with 170+ five-star reviews.</p>
+            </li>
+            <li>
+              <strong>Contrasts and Opportunities: a learning journey through South Africa</strong>
+              <p class="case-block-body">I co-created a learning immersion for executives exploring the contrasts and opportunities of South Africa. With two partners, I scouted and mapped the destinations in Cape Town and shaped the storytelling and participant experience, with support from the Sustainability Institute.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="about-hl-group">
+          <h3 class="about-hl-heading">Client work</h3>
+          <ul class="about-hl-list">
+            <li>
+              <a class="about-hl-title" href="riza.html">Riza Sementes</a>
+              <p class="case-block-body">One of Brazil's leading agribusiness companies. The relationship grew from brand identity into a strategic partnership. I built the foundations of the identity and set the direction so the in-house team could carry it forward on their own.</p>
+            </li>
+            <li>
+              <a class="about-hl-title" href="bwt.html">Better Work Together (Enspiral Foundation)</a>
+              <p class="case-block-body">Art direction for a book produced by a team spread across five continents, with a foreword by Douglas Rushkoff.</p>
+            </li>
+            <li>
+              <strong>Editora Abril</strong>
+              <p class="case-block-body">Art director at Latin America's largest publishing house.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="about-hl-group">
+          <h3 class="about-hl-heading">Recognition</h3>
+          <ul class="about-hl-list">
+            <li>
+              <strong>Pixel Show 2019</strong>
+              <p class="case-block-body">Speaker on #designcomsignificado (design with meaning) at Latin America's largest creativity festival, in a lineup that included David Carson.</p>
+            </li>
+            <li>
+              <strong>BASF Creator Space Tour Award 2019</strong>
+              <p class="case-block-body">A hackathon on creative approaches to food production. I brought my experience in aquaponics to the team, and together we designed a plan to apply it at industrial scale.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="about-hl-group">
+          <h3 class="about-hl-heading">Education</h3>
+          <ul class="about-hl-list">
+            <li>
+              <strong>Fine Arts, FAAP</strong>
+              <p class="case-block-body">São Paulo, Brazil.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Outside the brief -->
   <section class="case-block">
     <div class="case-block-inner">
       <h2 class="case-block-eyebrow">Outside the brief</h2>
@@ -143,6 +234,23 @@
       </div>
       <div class="case-cta">
         <a href="https://substack.com/@renatowaru" class="btn-more" target="_blank" rel="noopener">Read on Substack</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Working together -->
+  <section class="case-block about-together">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">Working together</h2>
+      <p class="case-block-lead">Based in Brazil, 1 to 2 hours ahead of New York, so my working day overlaps almost entirely with US business hours.</p>
+      <ul class="about-formats">
+        <li><strong>Projects</strong><span>Identity, packaging, editorial.</span></li>
+        <li><strong>Embedded art direction</strong><span>A few days a week, for a defined period.</span></li>
+        <li><strong>Ongoing partnership</strong><span>A monthly retainer.</span></li>
+      </ul>
+      <p class="case-block-body">The best way to start is an email with a few lines about your project.</p>
+      <div class="case-cta">
+        <a href="mailto:renato@waru.com.br?subject=Hello%20Renato" class="btn-more">Start a conversation</a>
       </div>
     </div>
   </section>
