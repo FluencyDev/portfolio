@@ -3110,3 +3110,42 @@ main {
   .clock--home figcaption strong { font-size: 14px; }
   .clock-time { font-size: 12px; }
 }
+
+/* -----------------------------------------------------------------
+   Home: What I Do claro logo depois do hero; Working together sozinho na faixa escura (nov/2026)
+   ----------------------------------------------------------------- */
+.services-section--light { background: var(--site-paper); padding: 64px 40px 72px; }
+.services-section--light .featured-label span { color: #b82b2b; }
+.services-section--light .service-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.services-section--light .service-card h3 { color: #3a3a3a; }
+.services-section--light .service-card p { color: #5a5a5a; }
+
+.services-section--together { padding-top: 64px; padding-bottom: 72px; }
+.services-section--together .home-together { margin-top: 0; padding-top: 0; border-top: 0; }
+
+@media (max-width: 768px) {
+  .services-section--light { padding: 40px 20px 48px; }
+  .services-section.services-section--light .featured-label span { color: #b82b2b; }
+  .services-section--together { padding-top: 40px; padding-bottom: 48px; }
+}
+
+/* Home, desktop: What I Do centralizado e sem caixas nos cards */
+@media (min-width: 769px) {
+  .services-section--light .featured-label { justify-content: center; margin-bottom: 8px; }
+  .services-section--light .service-card {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    padding: 16px 12px 0;
+    text-align: center;
+  }
+  .services-section--light .service-card h3 { margin-bottom: 10px; }
+  .services-section--light .service-card p { max-width: 300px; margin: 0 auto; }
+}
+
+/* Home: What I Do sem etiqueta, fundo #ede3d7, titulos dos servicos no vermelho-rosado das etiquetas */
+.services-section--light { background: #ede3d7; }
+.services-section--light .service-card h3 { color: #b82b2b; }
