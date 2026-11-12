@@ -376,6 +376,7 @@ main {
    mesmo estilo de .brief-cat (ex.: "Editorial · USA") */
 .featured-project .featured-label span,
 .case-enspiral .featured-label span,
+.case-yvy .featured-label span,
 .case-aquaponia .featured-label span {
   font-size: 12px;
   font-weight: 500;
@@ -1561,6 +1562,7 @@ main {
   /* etiqueta discreta: texto pequeno em caixa alta */
   .featured-project .featured-label span,
   .case-enspiral .featured-label span,
+  .case-yvy .featured-label span,
   .case-aquaponia .featured-label span,
   .craft-section .featured-label span,
   .work-brief .featured-label span,
@@ -1575,6 +1577,7 @@ main {
   /* as 3 etiquetas de caso seguem o mesmo 12px do .brief-cat */
   .featured-project .featured-label span,
   .case-enspiral .featured-label span,
+  .case-yvy .featured-label span,
   .case-aquaponia .featured-label span {
     font-size: 12px;
   }
@@ -1603,12 +1606,14 @@ main {
   /* titulo: a quebra manual do desktop atrapalha em tela estreita */
   .featured-title br,
   .case-enspiral .case-title br,
+  .case-yvy .case-title br,
   .case-aquaponia .case-title br {
     display: none;
   }
 
   .featured-title,
   .case-enspiral .case-title,
+  .case-yvy .case-title,
   .case-aquaponia .case-title,
   .craft-title,
   .quickwins-title,
@@ -1622,6 +1627,7 @@ main {
      so uma das duas secoes). */
   .featured-image,
   .case-enspiral .case-image,
+  .case-yvy .case-image,
   .case-aquaponia .case-image {
     --featured-image-width: 100%;
     width: var(--featured-image-width);
@@ -1631,6 +1637,7 @@ main {
 
   .featured-image img,
   .case-enspiral .case-image img,
+  .case-yvy .case-image img,
   .case-aquaponia .case-image img {
     border-radius: 0;
   }
@@ -1642,6 +1649,7 @@ main {
      livro (titulo da capa e logo Enspiral), entao sangra na proporcao
      original. */
   .featured-image img,
+  .case-yvy .case-image img,
   .case-aquaponia .case-image img {
     aspect-ratio: 4 / 3;
     object-fit: cover;
@@ -1672,6 +1680,7 @@ main {
      Os rotulos seguem em negrito pelo <strong> de cada secao. */
   .featured-project .featured-details p,
   .case-enspiral .case-details p,
+  .case-yvy .case-details p,
   .case-aquaponia .case-details p {
     font-size: clamp(14px, 1.4vw, 16px);
     line-height: 1.7;
@@ -3146,8 +3155,8 @@ main {
   .services-section--light .service-card p { max-width: 300px; margin: 0 auto; }
 }
 
-/* Home: What I Do sem etiqueta, fundo #ede3d7, titulos dos servicos no vermelho-rosado das etiquetas */
-.services-section--light { background: #ede3d7; }
+/* Home: What I Do sem etiqueta, fundo #ebe8e4, titulos dos servicos no vermelho-rosado das etiquetas */
+.services-section--light { background: #ebe8e4; }
 .services-section--light .service-card h3 { color: #b82b2b; }
 
 /* quebra de linha so no desktop */
@@ -3163,4 +3172,560 @@ main {
     padding: 0;
   }
   .services-section--light .service-card h3 { margin-bottom: 6px; }
+}
+
+/* Home: What I Do com textura de papel e luz que segue o mouse (nov/2026)
+   fundo    = grao neutro em soft-light (clareia e escurece por igual, o tom continua #ebe8e4)
+   ::before = grade de pontos quase invisivel (fixa, vale no mobile)
+   ::after  = luz suave e pontos no vermelho dos titulos, so ao redor do cursor
+   (o JS so liga o ::after com mouse de verdade e sem prefers-reduced-motion) */
+.services-section--light {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #ebe8e4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0.2 0.2 0.2 0 0.2 0.2 0.2 0.2 0 0.2 0.2 0.2 0.2 0 0.2 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  background-blend-mode: soft-light;
+}
+.services-section--light .services-inner { position: relative; z-index: 2; }
+.services-section--light::before,
+.services-section--light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.services-section--light::before {
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(70, 64, 60, 0.12) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+.services-section--light::after {
+  z-index: 1;
+  background-image:
+    radial-gradient(circle, rgba(184, 43, 43, 0.5) 1.1px, transparent 1.6px),
+    linear-gradient(rgba(255, 255, 254, 0.55), rgba(255, 255, 254, 0.55));
+  background-size: 22px 22px, 100% 100%;
+  -webkit-mask-image: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), #000 0%, rgba(0, 0, 0, 0.35) 45%, transparent 75%);
+          mask-image: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), #000 0%, rgba(0, 0, 0, 0.35) 45%, transparent 75%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.services-section--light.is-lit::after { opacity: 1; }
+
+/* ============================================
+   YVY RECICLAGEM (yvy.html)
+   ============================================ */
+.yvy-page { background: #fff; }
+/* o main global do site e flex (layout antigo); aqui precisa ser bloco */
+.yvy-page main { display: block; margin: 0; }
+.yvy-year { min-width: 0; }
+
+.yvy-kicker {
+  font: 700 12px/1.4 var(--ff-body);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--site-muted);
+  margin: 0 0 14px;
+}
+
+.yvy-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(56px, 9vw, 120px) 40px clamp(40px, 6vw, 80px);
+}
+.yvy-hero h1 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(42px, 6.4vw, 92px);
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  color: var(--site-ink);
+  margin: 0 0 28px;
+}
+.yvy-lede {
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.5;
+  max-width: 34em;
+  color: #2c3540;
+  margin: 0;
+}
+
+/* Capitulo: texto + capa */
+.yvy-chapter {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px clamp(48px, 7vw, 96px);
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+  border-top: 1px solid var(--site-rule);
+  padding-top: clamp(48px, 7vw, 96px);
+}
+.yvy-chapter h2,
+.yvy-process h2 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 52px);
+  line-height: 1.08;
+  color: var(--site-ink);
+  margin: 0 0 24px;
+}
+.yvy-chapter p:not(.yvy-kicker),
+.yvy-process p:not(.yvy-kicker) {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #2c3540;
+  max-width: 36em;
+  margin: 0 0 1em;
+}
+.yvy-chapter-cover { margin: 0; }
+.yvy-chapter-cover img {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  box-shadow: 0 24px 60px rgba(0,0,0,.14);
+}
+
+/* ---------- O ano, mes a mes ----------
+   Padrao (mobile, sem JS, movimento reduzido): faixa com scroll-snap.
+   Desktop com JS: a secao prende na tela e o scroll vertical
+   move a faixa na horizontal (classe .is-pinned). */
+.yvy-year { padding: 8px 0 56px; }
+
+.yvy-year-head {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: var(--max);
+  margin: 0 auto 20px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.yvy-loop svg { display: block; overflow: visible; }
+.yvy-loop-base {
+  fill: none;
+  stroke: rgba(13,31,47,.14);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.yvy-loop-path {
+  fill: none;
+  stroke: var(--site-ink);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 214;
+}
+.yvy-loop-dot {
+  fill: #fff;
+  stroke: rgba(13,31,47,.35);
+  stroke-width: 1.2;
+  transition: fill .25s, stroke .25s;
+}
+.yvy-loop-dot.is-on { fill: var(--c); stroke: var(--c); }
+
+.yvy-loop-label {
+  margin: 0;
+  font: 400 14px/1.5 var(--ff-body);
+  color: var(--site-muted);
+  font-variant-numeric: tabular-nums;
+}
+.yvy-loop-n,
+.yvy-loop-m { color: var(--site-ink); font-weight: 700; }
+.yvy-loop-hint {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  font-size: 13px;
+}
+.yvy-year.is-full .yvy-loop-hint { color: var(--site-ink); }
+
+.yvy-year-track {
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.yvy-year-track::-webkit-scrollbar { display: none; }
+
+.yvy-month {
+  flex: 0 0 84vw;
+  scroll-snap-align: center;
+}
+.yvy-month img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.yvy-month--end img {
+  width: auto;
+  height: 52vw;
+  margin: 0 auto 0 0;
+  box-shadow: 0 16px 40px rgba(0,0,0,.14);
+}
+.yvy-month-cap { padding: 16px 2px 0; max-width: 34em; }
+.yvy-month-n {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+  font: 700 12px/1 var(--ff-body);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--c);
+}
+.yvy-month-n::before {
+  content: "";
+  width: 28px;
+  height: 3px;
+  background: var(--c);
+}
+.yvy-month h3 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(22px, 2.1vw, 30px);
+  line-height: 1.15;
+  color: var(--site-ink);
+  margin: 0 0 4px;
+}
+.yvy-month-pt {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--site-muted);
+  margin: 0 0 10px;
+}
+.yvy-month-txt {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #2c3540;
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .yvy-year-head { padding: 0 40px; }
+  .yvy-year.is-pinned { padding: 0; position: relative; }
+  .yvy-year.is-pinned .yvy-year-pin {
+    position: sticky;
+    top: var(--yvy-top, 0px);
+    height: calc(100vh - var(--yvy-top, 0px));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .yvy-year.is-pinned .yvy-year-head { margin-bottom: 3vh; }
+  .yvy-year.is-pinned .yvy-year-track {
+    overflow: visible;
+    scroll-snap-type: none;
+    width: max-content;
+    padding: 0 max(40px, calc((100vw - var(--max)) / 2 + 40px));
+    gap: 7vw;
+    will-change: transform;
+  }
+  .yvy-year.is-pinned .yvy-month { flex: 0 0 auto; }
+  .yvy-year.is-pinned .yvy-month img { height: 52vh; width: auto; }
+  .yvy-year.is-pinned .yvy-month--end img { height: 52vh; }
+  .yvy-year.is-pinned .yvy-month-cap { max-width: 520px; }
+}
+
+/* Como foi feito */
+.yvy-process {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 112px) 40px;
+  border-top: 1px solid var(--site-rule);
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.yvy-pages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.yvy-pages img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 12px 32px rgba(0,0,0,.12);
+}
+
+
+@media (max-width: 768px) {
+  .yvy-hero, .yvy-chapter, .yvy-process { padding-left: 20px; padding-right: 20px; }
+  .yvy-loop svg { width: 140px; height: 51px; }
+  .yvy-year-head { gap: 12px; }
+  .yvy-loop-label { white-space: nowrap; font-size: 13px; }
+  .yvy-chapter, .yvy-process { grid-template-columns: 1fr; }
+  .yvy-chapter-cover img { max-height: none; }
+  .yvy-pages { gap: 8px; }
+}
+
+/* ---------- 2026: Nossa Terra (faixa verde) ---------- */
+.yvy-earth { background: #1f2718; color: #efe6cf; }
+.yvy-earth-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(64px, 9vw, 128px) 40px;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+}
+.yvy-earth .yvy-kicker { color: #d2a262; }
+.yvy-earth h2 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(36px, 4.4vw, 64px);
+  line-height: 1.05;
+  color: #f4ead2;
+  margin: 0 0 24px;
+}
+.yvy-earth-text p:not(.yvy-kicker) {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(239,230,207,.82);
+  max-width: 34em;
+  margin: 0 0 1em;
+}
+.yvy-reveal-btn {
+  margin: 8px 0 28px;
+  padding: 11px 22px;
+  border: 1px solid #d2a262;
+  border-radius: 999px;
+  background: transparent;
+  color: #f4ead2;
+  font: 600 14px/1 var(--ff-body);
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: background .25s, color .25s;
+}
+.yvy-reveal-btn:hover,
+.yvy-reveal-btn[aria-pressed="true"] { background: #d2a262; color: #1f2718; }
+.yvy-reveal-btn:focus-visible { outline: 2px solid #f4ead2; outline-offset: 3px; }
+
+.yvy-earth-art { margin: 0; }
+.yvy-art { position: relative; }
+.yvy-art img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity .9s ease;
+}
+/* o logo mora no vazio do desenho: posicao medida sobre a arte original */
+.yvy-art-logo {
+  position: absolute;
+  left: 28.13%;
+  top: 42.27%;
+  width: 46.59%;
+  height: 15.74%;
+  background: #e8bf75;
+  -webkit-mask: url(../assets/images/yvy/yvy-nb-logo-mask.png) center / 100% 100% no-repeat;
+          mask: url(../assets/images/yvy/yvy-nb-logo-mask.png) center / 100% 100% no-repeat;
+  opacity: 0;
+  transition: opacity .9s ease .1s;
+}
+.yvy-art.is-revealed img { opacity: .22; }
+.yvy-art.is-revealed .yvy-art-logo { opacity: 1; }
+@media (hover: hover) {
+  .yvy-art:hover img { opacity: .22; }
+  .yvy-art:hover .yvy-art-logo { opacity: 1; }
+}
+
+.yvy-process--earth { align-items: start; }
+.yvy-mockup { margin: 0; }
+.yvy-mockup img { display: block; width: 100%; height: auto; }
+.yvy-mockup figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--site-muted);
+}
+.yvy-pages--four {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: clamp(24px, 4vw, 56px);
+}
+
+@media (max-width: 768px) {
+  .yvy-earth-inner { grid-template-columns: 1fr; padding-left: 20px; padding-right: 20px; }
+  .yvy-pages--four { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ajustes de proporcao */
+.yvy-art { max-width: calc(78vh / 1.3664); margin: 0 auto; }
+.yvy-process--earth { grid-template-columns: 1.2fr .8fr; }
+.yvy-mockup { max-width: 460px; justify-self: end; }
+@media (max-width: 768px) {
+  .yvy-art { max-width: none; }
+  .yvy-process--earth { grid-template-columns: 1fr; }
+  .yvy-mockup { justify-self: stretch; max-width: none; }
+}
+.yvy-art { max-width: calc(72vh / 1.3664); }
+.yvy-earth-art { display: flex; flex-direction: column; align-items: center; }
+.yvy-earth-art .yvy-reveal-btn { margin: 22px 0 0; }
+@media (max-width: 768px) { .yvy-art { max-width: none; } }
+
+/* O site da Yvy */
+.yvy-site {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 96px) 40px;
+  border-top: 1px solid var(--site-rule);
+}
+.yvy-site-text { max-width: 36em; margin-bottom: clamp(28px, 4vw, 48px); }
+.yvy-site h2 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 52px);
+  line-height: 1.08;
+  color: var(--site-ink);
+  margin: 0 0 24px;
+}
+.yvy-site-text p:not(.yvy-kicker) {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #2c3540;
+  margin: 0 0 1em;
+}
+.yvy-site-grid { display: grid; gap: clamp(16px, 2.4vw, 32px); align-items: start; }
+.yvy-site-grid--three { grid-template-columns: repeat(3, 1fr); }
+.yvy-site-grid--two { grid-template-columns: repeat(2, 1fr); margin-top: clamp(16px, 2.4vw, 32px); }
+.yvy-site figure { margin: 0; }
+.yvy-site figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--site-rule);
+  box-shadow: 0 12px 32px rgba(0,0,0,.08);
+}
+.yvy-site figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--site-muted);
+}
+@media (max-width: 768px) {
+  .yvy-site { padding-left: 20px; padding-right: 20px; }
+  .yvy-site-grid--three, .yvy-site-grid--two { grid-template-columns: 1fr; }
+}
+
+/* Yvy: hero com foto */
+.yvy-hero--photo {
+  position: relative;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: clamp(520px, 80vh, 820px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #1b1411;
+}
+.yvy-hero-bg { position: absolute; inset: 0; }
+.yvy-hero-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 40%;
+}
+.yvy-hero--photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14,10,8,.86) 0%, rgba(14,10,8,.55) 42%, rgba(14,10,8,.12) 78%, rgba(14,10,8,.28) 100%);
+  pointer-events: none;
+}
+.yvy-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px clamp(40px, 6vw, 80px);
+  box-sizing: border-box;
+}
+.yvy-hero--photo .yvy-kicker { color: rgba(255,255,255,.82); }
+.yvy-hero--photo h1 { color: #fff; margin-bottom: 24px; text-shadow: 0 2px 24px rgba(0,0,0,.35); }
+.yvy-hero--photo .yvy-lede { color: rgba(255,255,255,.92); }
+@media (max-width: 768px) {
+  .yvy-hero--photo { min-height: min(86vh, 640px); }
+  .yvy-hero-inner { padding: 0 20px 36px; }
+  .yvy-hero-bg img { object-position: 50% 30%; }
+}
+
+/* Yvy: diagramas */
+.yvy-diagrams {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+.yvy-diagrams figure { margin: 0; }
+.yvy-diagrams img { display: block; width: 100%; height: auto; }
+/* os diagramas sao desenho, nao print de tela: sem a moldura de .yvy-site figure img */
+.yvy-site .yvy-diagrams img { border: 0; box-shadow: none; }
+.yvy-diagrams figcaption { margin-top: 10px; font-size: 13px; color: var(--site-muted); }
+@media (max-width: 768px) {
+  .yvy-diagrams { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* Card do Yvy na home (entre Enspiral e Aquaponia): faixa escura, azul-marinho
+   tirado do azul da marca Yvy (como o verde escuro do card da Riza).
+   Cores de texto iguais as do .featured-project. */
+.case-yvy { background: #17222b; color: #ffffff; }
+.case-yvy .featured-label span { color: rgba(255, 255, 255, 0.75); }
+.case-yvy .case-title,
+.case-yvy .case-description h3,
+.case-yvy .case-details strong { color: #ffffff; }
+.case-yvy .case-description p,
+.case-yvy .case-details p { color: #d4d4d4; }
+
+/* Yvy: stand e guia do visitante */
+.yvy-fair {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 96px) 40px;
+  border-top: 1px solid var(--site-rule);
+}
+.yvy-fair-text { max-width: 36em; margin-bottom: clamp(28px, 4vw, 48px); }
+.yvy-fair h2 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 52px);
+  line-height: 1.08;
+  color: var(--site-ink);
+  margin: 0 0 24px;
+}
+.yvy-fair p:not(.yvy-kicker) {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #2c3540;
+  margin: 0 0 1em;
+}
+.yvy-fair figure { margin: 0; }
+.yvy-fair img { display: block; width: 100%; height: auto; }
+.yvy-fair figcaption { margin-top: 10px; font-size: 13px; color: var(--site-muted); }
+.yvy-fair-guide {
+  display: grid;
+  grid-template-columns: .75fr 1.25fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  margin-top: clamp(48px, 7vw, 96px);
+}
+.yvy-fair-guide-text p:not(.yvy-kicker) { max-width: 26em; }
+@media (max-width: 768px) {
+  .yvy-fair { padding-left: 20px; padding-right: 20px; }
+  .yvy-fair-guide { grid-template-columns: 1fr; gap: 20px; }
 }
