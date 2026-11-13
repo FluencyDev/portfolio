@@ -3563,7 +3563,7 @@ main {
 
 /* ajustes de proporcao */
 .yvy-art { max-width: calc(78vh / 1.3664); margin: 0 auto; }
-.yvy-process--earth { grid-template-columns: .8fr 1.2fr; }
+.yvy-process--earth { grid-template-columns: 1fr; }
 .yvy-mockup { justify-self: stretch; }
 @media (max-width: 768px) {
   .yvy-art { max-width: none; }
@@ -3903,3 +3903,22 @@ main {
 .yvy-page .wall-of-trust .testimonial-quote { color: rgba(255,255,255,.88); }
 .yvy-page .wall-of-trust .testimonial-author { color: #fff; }
 .yvy-page .wall-of-trust .testimonial-author .highlight { color: #f28b7f; }
+
+@media (min-width: 769px) {
+  .yvy-process--earth { gap: clamp(28px, 3.5vw, 48px); }
+  .yvy-process--earth .yvy-mockup { order: -1; }
+}
+
+/* Yvy: foto da mão desenhando ao lado do texto */
+.yvy-hand { margin: 0; }
+.yvy-hand img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.yvy-hand figcaption { margin-top: 10px; font-size: .8125rem; opacity: .75; }
+@media (max-width: 768px) {
+  .yvy-hand { max-width: 420px; }
+}
+@media (min-width: 769px) {
+  .yvy-process--earth { grid-template-columns: 1.15fr .85fr; align-items: center; }
+  .yvy-process--earth .yvy-mockup { grid-column: 1 / -1; }
+  .yvy-process--earth .yvy-process-text { grid-column: 1; }
+  .yvy-process--earth .yvy-hand { grid-column: 2; }
+}
