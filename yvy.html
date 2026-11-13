@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=109">
+  <link rel="stylesheet" href="css/style.css?v=112">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,50 +69,82 @@
       <h1>Urban mining,<br> made visible.</h1>
       <p class="yvy-lede">For six years I have helped one of Brazil's most specialized recycling companies show what it does: online, at trade shows, in print, and in the gift its partners receive at the end of each year.</p>
     </div>
-    <p class="yvy-hero-credit">Photo: Yvy Reciclagem. All rights reserved.</p>
+    <p class="yvy-hero-credit">Photo: Berg Studio</p>
   </section>
 
   <section class="yvy-site" aria-labelledby="yvy-site-title">
     <div class="yvy-site-text">
-      <p class="yvy-kicker">The website</p>
+      <p class="yvy-kicker">The website · Content and infographics</p>
       <h2 id="yvy-site-title">One company, two conversations</h2>
-      <p>The brand was already in place when Yvy hired me to build its website. My part was to make a technical business easy to understand.</p>
-      <p>Yvy talks every day with two very different people: those who generate waste and those who need recycled raw material. The site gives each one a door of their own, with a color taken from the logo, and keeps the LME quotation one click away.</p>
-      <p>I drew two diagrams to explain how it works: who Yvy serves, and what it offers.</p>
+      <p>Yvy's website was the first thing they hired me for. The logo was already in place. I defined the structure, curated and wrote the content, designed the infographics, and directed the senior developer who built it.</p>
+      <div class="yvy-more" id="yvy-more-site">
+        <p>Yvy talks every day with two very different people: those who generate waste and those who need recycled raw material. The site gives each one a door of their own, with a color taken from the logo, and keeps the LME quotation one click away.</p>
+        <p>Years and several updates later, including new languages, that base still holds. The infographics now work in four languages, Chinese included, translated by Yvy's team, so a buyer on the other side of the world understands Yvy at a glance.</p>
+      </div>
+      <button class="yvy-more-btn" type="button" aria-expanded="true" aria-controls="yvy-more-site" hidden>More</button>
     </div>
-    <div class="yvy-diagrams">
-      <figure>
-        <img src="assets/images/yvy/yvy-diagram-flow-en.webp" alt="Diagram: Yvy at the center between providers on the left and customers on the right, with the flows of revenue, correct destination, recycled raw material and research between them" width="918" height="499" loading="lazy">
-        <figcaption>Providers and customers, around Yvy</figcaption>
+
+    <figure class="yvy-laptop">
+      <div class="yvy-laptop-lid">
+        <div class="yvy-laptop-screen" id="yvy-laptop-screen" aria-live="polite">
+          <img class="is-active" data-screen="home" src="assets/images/yvy/yvy-site-home-en.webp" alt="Yvy website home page in English: Integrated Recycling Solution, with the LME quotation below" width="1268" height="728" loading="lazy">
+          <img data-screen="suppliers" src="assets/images/yvy/yvy-site-suppliers.webp" alt="Suppliers page of the Yvy website, in orange: solutions for those who generate waste" width="1268" height="620" loading="lazy">
+          <img data-screen="customers" src="assets/images/yvy/yvy-site-customers.webp" alt="Customers page of the Yvy website, in yellow: solutions for those who need recycled raw material" width="1268" height="620" loading="lazy">
+          <img data-screen="lme" src="assets/images/yvy/yvy-site-lme.webp" alt="LME quote page of the Yvy website, with daily, weekly and monthly zinc price charts" width="1268" height="785" loading="lazy">
+          <img data-screen="zh" src="assets/images/yvy/yvy-site-home-zh.webp" alt="Yvy website home page in Chinese" width="1268" height="677" loading="lazy">
+        </div>
+      </div>
+      <div class="yvy-laptop-base" aria-hidden="true"></div>
+      <figcaption>
+        <span class="yvy-laptop-tabs" aria-label="Pages of the Yvy website">
+          <button type="button" data-screen="home" aria-pressed="true" aria-controls="yvy-laptop-screen">Home</button>
+          <button type="button" data-screen="suppliers" aria-pressed="false" aria-controls="yvy-laptop-screen">Suppliers</button>
+          <button type="button" data-screen="customers" aria-pressed="false" aria-controls="yvy-laptop-screen">Customers</button>
+          <button type="button" data-screen="lme" aria-pressed="false" aria-controls="yvy-laptop-screen">LME quote</button>
+          <button type="button" data-screen="zh" aria-pressed="false" aria-controls="yvy-laptop-screen" lang="zh">中文</button>
+        </span>
+      </figcaption>
+    </figure>
+
+    <div class="yvy-info-head">
+      <h3>Complexity, at a glance</h3>
+      <p class="yvy-info-hint"><span class="yvy-hint-hover">Hover over an infographic to read it in Chinese.</span><span class="yvy-hint-touch">Tap 中文 to read it in Chinese.</span></p>
+    </div>
+    <div class="yvy-infos">
+      <figure class="yvy-info yvy-info--wide">
+        <div class="yvy-info-stack">
+          <img class="yvy-info-en" src="assets/images/yvy/yvy-info-people-en.webp" alt="Infographic: Yvy at the center, with providers on the left and customers on the right, and the flows of revenue, correct destination, recycled raw material and research between them" width="982" height="529" loading="lazy">
+          <img class="yvy-info-zh" src="assets/images/yvy/yvy-info-people-zh.webp" alt="The same infographic in Chinese" width="982" height="529" loading="lazy" lang="zh">
+        </div>
+        <figcaption><span>Who Yvy serves</span><button class="yvy-lang-btn" type="button" aria-pressed="false" aria-label="Show in Chinese"><span lang="en">EN</span> / <span lang="zh">中文</span></button></figcaption>
       </figure>
-      <figure>
-        <img src="assets/images/yvy/yvy-diagram-offer-en.webp" alt="Diagram: Yvy's services above and its products below, linked by the supply of recycled raw material and the collection of productive waste" width="824" height="859" loading="lazy">
-        <figcaption>Services and products</figcaption>
+      <figure class="yvy-info">
+        <div class="yvy-info-stack">
+          <img class="yvy-info-en" src="assets/images/yvy/yvy-info-cycle-en.webp" alt="Infographic: the cycle of extraction, production, consumption and destination, with Yvy turning waste back into raw material, new production models and responsible disposal" width="619" height="705" loading="lazy">
+          <img class="yvy-info-zh" src="assets/images/yvy/yvy-info-cycle-zh.webp" alt="The same infographic in Chinese" width="619" height="705" loading="lazy" lang="zh">
+        </div>
+        <figcaption><span>Where Yvy fits in the cycle</span><button class="yvy-lang-btn" type="button" aria-pressed="false" aria-label="Show in Chinese"><span lang="en">EN</span> / <span lang="zh">中文</span></button></figcaption>
+      </figure>
+      <figure class="yvy-info">
+        <div class="yvy-info-stack">
+          <img class="yvy-info-en" src="assets/images/yvy/yvy-info-offer-en.webp" alt="Infographic: Yvy's services above and its products below, linked by the supply of recycled raw material and the collection of productive waste" width="755" height="798" loading="lazy">
+          <img class="yvy-info-zh" src="assets/images/yvy/yvy-info-offer-zh.webp" alt="The same infographic in Chinese" width="755" height="798" loading="lazy" lang="zh">
+        </div>
+        <figcaption><span>What Yvy offers</span><button class="yvy-lang-btn" type="button" aria-pressed="false" aria-label="Show in Chinese"><span lang="en">EN</span> / <span lang="zh">中文</span></button></figcaption>
       </figure>
     </div>
-    <div class="yvy-site-grid yvy-site-grid--three">
-      <figure>
-        <img src="assets/images/yvy/yvy-site-suppliers.webp" alt="Suppliers page of the Yvy website, in orange: solutions for those who generate waste" width="1268" height="620" loading="lazy">
-        <figcaption>Suppliers + Yvy</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/images/yvy/yvy-site-customers.webp" alt="Customers page of the Yvy website, in yellow: solutions for those who need recycled raw material" width="1268" height="620" loading="lazy">
-        <figcaption>Customers + Yvy</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/images/yvy/yvy-site-lme.webp" alt="LME quote page of the Yvy website, with daily, weekly and monthly zinc price charts" width="1268" height="785" loading="lazy">
-        <figcaption>LME quote</figcaption>
-      </figure>
-    </div>
-    <div class="yvy-site-grid yvy-site-grid--two">
-      <figure>
-        <img src="assets/images/yvy/yvy-site-home-en.webp" alt="Yvy website home page in English: Integrated Recycling Solution" width="1268" height="728" loading="lazy">
-        <figcaption>Home, in English</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/images/yvy/yvy-site-home-zh.webp" alt="Yvy website home page in Chinese" width="1268" height="677" loading="lazy">
-        <figcaption>Home, in Chinese</figcaption>
-      </figure>
+  </section>
+
+  <section class="wall-of-trust">
+    <div class="wall-of-trust-inner">
+      <div class="testimonial-content">
+        <blockquote class="testimonial-quote">
+          “Renato’s design gave Yvy clarity, identity and communication far more aligned with its purpose. In a field as complex as the circular economy, he turned technical ideas into something simple and engaging, helping strengthen both how Yvy is seen and how it grows.”
+        </blockquote>
+        <p class="testimonial-author">
+          <strong>Vinícius Sparvoli, Operations Manager,</strong> <span class="highlight">Yvy Reciclagem</span>
+        </p>
+      </div>
     </div>
   </section>
 
@@ -130,17 +162,62 @@
       <figcaption>The stand as built. Original photo restored with AI, people added.</figcaption>
     </figure>
     <div class="yvy-fair-guide">
+      <figure class="yvy-guide">
+        <div class="yvy-guide-stack">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/images/yvy/yvy-guide-mobile.webp">
+            <img src="assets/images/yvy/yvy-guide-desktop.webp" alt="Visitor guide for the Yvy plant, a folded leaflet with a site map, safety rules and protective equipment icons" width="2000" height="1116" loading="lazy">
+          </picture>
+          <img class="yvy-guide-map" src="assets/images/yvy/yvy-guide-map.webp" alt="The site map from the guide: the upper floor offices and the plant, with exit routes, exits and the meeting point" width="2000" height="1116" loading="lazy">
+        </div>
+        <figcaption><span>Visitor guide. Mockup simulated with AI. <span class="yvy-hint-hover">Hover to see the map.</span></span><button class="yvy-lang-btn yvy-guide-btn" type="button" aria-pressed="false" aria-label="Show the site map"><span data-v="off">Guide</span> / <span data-v="on">Map</span></button></figcaption>
+      </figure>
       <div class="yvy-fair-guide-text">
         <p>For people who visit the plant, I designed a folded guide: a site map with the exit route, emergency contacts, traffic rules and the protective equipment to wear.</p>
       </div>
-      <figure>
-        <picture>
-          <source media="(max-width: 768px)" srcset="assets/images/yvy/yvy-guide-mobile.webp">
-          <img src="assets/images/yvy/yvy-guide-desktop.webp" alt="Visitor guide for the Yvy plant, a folded leaflet with a site map, safety rules and protective equipment icons" width="2000" height="1116" loading="lazy">
-        </picture>
-        <figcaption>Visitor guide. Mockup simulated with AI.</figcaption>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="yvy-earth" aria-labelledby="yvy-earth-title">
+    <div class="yvy-earth-inner">
+      <div class="yvy-earth-text">
+        <p class="yvy-kicker">Year-end gift 2026 · Hand first</p>
+        <h2 id="yvy-earth-title">Nossa Terra</h2>
+        <p>Yvy is the Tupi-Guarani word for land, and the company reads its name as Nossa Terra, our land. The brief was to explore that name, so this gift starts with the land itself: Brazilian fauna and flora, from the araucaria to the anteater, drawn entirely by hand.</p>
+        <div class="yvy-more" id="yvy-more-earth">
+          <p>Look at the center. Between the toucan, the hummingbird and the leaves, the empty space spells YVY. The logo is not drawn: it is what the drawing leaves untouched.</p>
+          <p>The art is printed in gold on deep green, to treat Brazilian nature as something precious. The first page says it plainly: illustration made entirely by hand, without artificial intelligence.</p>
+        </div>
+        <button class="yvy-more-btn" type="button" aria-expanded="true" aria-controls="yvy-more-earth" hidden>More</button>
+      </div>
+      <figure class="yvy-earth-art">
+        <div class="yvy-art" role="img" aria-label="Brazilian fauna and flora drawn by hand in gold on green. The empty space at the center forms the Yvy logo.">
+          <span class="yvy-art-logo"></span>
+          <img src="assets/images/yvy/yvy-nb-art.webp" alt="" width="1400" height="1913" loading="lazy">
+        </div>
+        <button class="yvy-reveal-btn" type="button" aria-pressed="false">Find the logo</button>
       </figure>
     </div>
+  </section>
+
+  <section class="yvy-process yvy-process--earth">
+    <div class="yvy-process-text">
+      <p class="yvy-kicker">How it was made</p>
+      <h2>By hand, on purpose</h2>
+      <p>Every line was drawn by hand, the way I learned to draw on paper, now on the iPad with vector brushes in Adobe Fresco. The notebook was laid out in InDesign, with the 2027 and 2028 calendars, lined pages with small drawings in the corners, and a back cover framed by the words Nossa terra.</p>
+      <p>AI appears only at the end, to simulate the gold finish in a mockup for approval.</p>
+    </div>
+    <figure class="yvy-mockup">
+      <picture>
+        <source media="(min-width: 769px)" srcset="assets/images/yvy/yvy-nb-mockup-desktop.webp" width="1600" height="901">
+        <img src="assets/images/yvy/yvy-nb-mockup.webp" alt="Mockup of the notebook with the illustration in gold foil on a green cover" width="896" height="1195" loading="lazy">
+      </picture>
+      <figcaption>Finish simulated with AI for approval.</figcaption>
+    </figure>
   </section>
 
   <section class="yvy-chapter">
@@ -148,8 +225,11 @@
       <p class="yvy-kicker">Year-end gift 2025 · AI first</p>
       <h2>From linear to circular</h2>
       <p>Yvy recovers value from what cities throw away. Its year-end gift had to say the same thing, and not become one more thing to throw away.</p>
-      <p>The answer was a 2026 calendar that teaches one principle of the circular economy each month, from design for disassembly to urban mining, the term Yvy uses for its own work. Every month is a word under construction: three letters built, welded, painted or taken apart by a miniature crew, the way Yvy's people handle material every day.</p>
-      <p>The object follows its own advice. The back of every sheet is lined for notes, and when the year ends, the stand becomes a clipboard or a picture frame.</p>
+      <div class="yvy-more" id="yvy-more-calendar">
+        <p>The answer was a 2026 calendar that teaches one principle of the circular economy each month, from design for disassembly to urban mining, the term Yvy uses for its own work. Every month is a word under construction: three letters built, welded, painted or taken apart by a miniature crew, the way Yvy's people handle material every day.</p>
+        <p>The object follows its own advice. The back of every sheet is lined for notes, and when the year ends, the stand becomes a clipboard or a picture frame.</p>
+      </div>
+      <button class="yvy-more-btn" type="button" aria-expanded="true" aria-controls="yvy-more-calendar" hidden>More</button>
     </div>
     <figure class="yvy-chapter-cover"><img src="assets/images/yvy/yvy-cal-cover.webp" alt="Calendar cover: the number 2026 built from recycled materials by a miniature crew" width="1100" height="1561"></figure>
   </section>
@@ -303,62 +383,13 @@
       <p class="yvy-kicker">How it was made</p>
       <h2>AI first, direction throughout</h2>
       <p>Each image was generated with image AI tools, five to ten iterations per month until it belonged to the same world: one scale, one light, one crew. Every image was then corrected in Photoshop, and the calendar was laid out in InDesign, with holidays, moon phases and the previous and next months on every page.</p>
-      <p>By hand, I could not have reached this look. With AI, the work moved to direction: choosing the principle, the material and the scene for each month, and discarding every result that did not belong.</p>
+      <p>With AI, the work moved to direction: choosing the principle, the material and the scene for each month, and discarding every result that did not belong.</p>
+      <p>A year apart, the two gifts took opposite paths. The calendar asked for a look I could not reach by hand. The notebook asked for the hand, and says so in print. Knowing when not to use AI is part of using it well.</p>
     </div>
     <div class="yvy-pages">
       <img src="assets/images/yvy/yvy-cal-page-jan.webp" alt="January page with the calendar grid, holidays and moon phases" width="1100" height="1561" loading="lazy">
       <img src="assets/images/yvy/yvy-cal-page-sep.webp" alt="September page, Urban mining" width="1100" height="1561" loading="lazy">
       <img src="assets/images/yvy/yvy-cal-page-dec.webp" alt="December page, Made to begin again" width="1100" height="1561" loading="lazy">
-    </div>
-  </section>
-
-  <section class="yvy-earth" aria-labelledby="yvy-earth-title">
-    <div class="yvy-earth-inner">
-      <div class="yvy-earth-text">
-        <p class="yvy-kicker">Year-end gift 2026 · Hand first</p>
-        <h2 id="yvy-earth-title">Nossa Terra</h2>
-        <p>Yvy is the Tupi-Guarani word for land, and the company reads its name as Nossa Terra, our land. The brief was to explore that name, so this gift starts with the land itself: Brazilian fauna and flora, from the araucaria to the anteater, drawn by hand on the iPad.</p>
-        <p>Look at the center. Between the toucan, the hummingbird and the leaves, the empty space spells YVY. The logo is not drawn: it is what the drawing leaves untouched.</p>
-        <p>The art is printed in gold on deep green, to treat Brazilian nature as something precious. The first page says it plainly: illustration made entirely by hand, without artificial intelligence.</p>
-      </div>
-      <figure class="yvy-earth-art">
-        <div class="yvy-art" role="img" aria-label="Brazilian fauna and flora drawn by hand in gold on green. The empty space at the center forms the Yvy logo.">
-          <span class="yvy-art-logo"></span>
-          <img src="assets/images/yvy/yvy-nb-art.webp" alt="" width="1400" height="1913" loading="lazy">
-        </div>
-        <button class="yvy-reveal-btn" type="button" aria-pressed="false">Find the logo</button>
-      </figure>
-    </div>
-  </section>
-
-  <section class="yvy-process yvy-process--earth">
-    <div class="yvy-process-text">
-      <p class="yvy-kicker">How it was made</p>
-      <h2>The opposite path</h2>
-      <p>The illustration was drawn by hand on the iPad and the notebook laid out in InDesign, with the 2027 and 2028 calendars, lined pages with small drawings in the corners, and a back cover framed by the words Nossa terra. AI appears only at the end, to simulate the gold finish in a mockup for approval.</p>
-      <p>Last year, AI opened a look I could not reach by hand. This year, the idea asked for the hand, and the gift says so in print. Knowing when not to use AI is part of using it well.</p>
-    </div>
-    <figure class="yvy-mockup">
-      <img src="assets/images/yvy/yvy-nb-mockup.webp" alt="Mockup of the notebook with the illustration in gold foil on a green cover" width="896" height="1195" loading="lazy">
-      <figcaption>Finish simulated with AI for approval.</figcaption>
-    </figure>
-    <div class="yvy-pages yvy-pages--four">
-      <img src="assets/images/yvy/yvy-nb-intro.webp" alt="Opening page: Nossa terra does not end, it transforms" width="800" height="1093" loading="lazy">
-      <img src="assets/images/yvy/yvy-nb-calendar.webp" alt="2027 calendar page" width="800" height="1093" loading="lazy">
-      <img src="assets/images/yvy/yvy-nb-page.webp" alt="Lined page with a small drawing of a sloth" width="800" height="1093" loading="lazy">
-      <img src="assets/images/yvy/yvy-nb-back.webp" alt="Back cover framed by the words Nossa terra" width="800" height="1093" loading="lazy">
-    </div>
-  </section>
-  <section class="wall-of-trust">
-    <div class="wall-of-trust-inner">
-      <div class="testimonial-content">
-        <blockquote class="testimonial-quote">
-          “Renato’s design gave Yvy clarity, identity and communication far more aligned with its purpose. In a field as complex as the circular economy, he turned technical ideas into something simple and engaging, helping strengthen both how Yvy is seen and how it grows.”
-        </blockquote>
-        <p class="testimonial-author">
-          <strong>Vinícius Sparvoli, Chief Operating Officer,</strong> <span class="highlight">Yvy Reciclagem</span>
-        </p>
-      </div>
     </div>
   </section>
 
@@ -390,6 +421,6 @@
 </button>
 <!-- FOOTER:END -->
 
-<script src="js/main.js?v=12"></script>
+<script src="js/main.js?v=14"></script>
 </body>
 </html>

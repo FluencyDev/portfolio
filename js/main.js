@@ -497,3 +497,70 @@
   });
   sec.addEventListener('pointerleave', function () { sec.classList.remove('is-lit'); });
 })();
+
+/* Yvy: textos com "More / Less". Sem JS o texto aparece inteiro. */
+(function () {
+  var btns = document.querySelectorAll('.yvy-more-btn');
+  Array.prototype.forEach.call(btns, function (btn) {
+    var box = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!box) return;
+    function set(open) {
+      box.hidden = !open;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Less' : 'More';
+    }
+    set(false);
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      set(btn.getAttribute('aria-expanded') !== 'true');
+    });
+  });
+})();
+
+/* Yvy: abas do notebook trocam a pagina do site na tela */
+(function () {
+  var fig = document.querySelector('.yvy-laptop');
+  if (!fig) return;
+  var imgs = fig.querySelectorAll('.yvy-laptop-screen img');
+  var tabs = fig.querySelectorAll('.yvy-laptop-tabs button');
+  Array.prototype.forEach.call(tabs, function (tab) {
+    tab.addEventListener('click', function () {
+      var k = tab.getAttribute('data-screen');
+      Array.prototype.forEach.call(tabs, function (t) {
+        t.setAttribute('aria-pressed', t === tab ? 'true' : 'false');
+      });
+      Array.prototype.forEach.call(imgs, function (im) {
+        var on = im.getAttribute('data-screen') === k;
+        im.classList.toggle('is-active', on);
+        if (on) im.loading = 'eager';
+      });
+    });
+  });
+  fig.classList.add('is-ready');
+})();
+
+/* Yvy: infograficos alternam entre ingles e chines (mouse por cima ou botao) */
+(function () {
+  var figs = document.querySelectorAll('.yvy-info');
+  Array.prototype.forEach.call(figs, function (fig) {
+    var btn = fig.querySelector('.yvy-lang-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var on = !fig.classList.contains('is-zh');
+      fig.classList.toggle('is-zh', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  });
+})();
+
+/* Yvy: guia do visitante alterna entre o mockup e o mapa */
+(function () {
+  var fig = document.querySelector('.yvy-guide');
+  if (!fig) return;
+  var btn = fig.querySelector('.yvy-guide-btn');
+  btn.addEventListener('click', function () {
+    var on = !fig.classList.contains('is-map');
+    fig.classList.toggle('is-map', on);
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+})();
