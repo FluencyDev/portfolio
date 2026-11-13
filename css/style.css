@@ -3922,3 +3922,22 @@ main {
   .yvy-process--earth .yvy-process-text { grid-column: 1; }
   .yvy-process--earth .yvy-hand { grid-column: 2; }
 }
+
+/* yvy-earth-bg: "By hand" com o mesmo fundo de Nossa Terra */
+.yvy-process--earth { background: #1f2718; color: rgba(255,255,255,.86); }
+.yvy-process--earth h2, .yvy-process--earth h3 { color: #fff; }
+.yvy-process--earth p { color: rgba(255,255,255,.86); }
+.yvy-process--earth .yvy-process-text > :not(h2):not(h3):not(p) { color: rgba(255,255,255,.6); }
+.yvy-process--earth figcaption { color: rgba(255,255,255,.65); opacity: 1; }
+
+/* yvy-earth-fullbleed */
+.yvy-process--earth {
+  --yvy-earth-bg: #1f2718;
+  box-shadow: 0 0 0 100vmax var(--yvy-earth-bg);
+  clip-path: inset(0 -100vmax);
+}
+.yvy-process--earth h2,
+.yvy-process--earth h3 { color: #fff !important; }
+.yvy-process--earth p,
+.yvy-process--earth .yvy-process-text p { color: rgba(255,255,255,.92) !important; }
+.yvy-process--earth figcaption { color: rgba(255,255,255,.7) !important; }
