@@ -7,6 +7,8 @@
   --site-dark:   #272624;   /* fundo do header e do footer */
   --radius-img:  16px;      /* canto das imagens (Nau, faixas no desktop, Rolfsen/Starlight no mobile) */
   --site-accent: #d8276a;
+  --site-pink:   #f06292;   /* rosa do item atual do menu */
+  --site-pink-hover: #f27aa2;   /* o mesmo rosa 15% mais claro (so fundos escuros) */
   --site-ink:    #0d1f2f;
   --site-muted:  #5a6b7a;
   --site-rule:   rgba(21,49,75,0.16);
@@ -67,6 +69,67 @@ body {
   display: block;
   height: 30.6px;   /* 36px -15% */
   width: auto;
+}
+
+/* ---------- Logo RW com glitch (SVG inline, 3 camadas) ----------
+   Mesmo tamanho visual do PNG antigo (que continua no CSS acima, .site-wordmark img):
+   30.6px de altura no desktop, 25.5px no mobile (ver @media). Glitch de 500ms, uma vez,
+   no carregamento, no hover (mouse) e no toque; sem loop. O JS (js/main.js) so liga e
+   desliga .is-glitch. Deslocamentos em unidades do viewBox (638 de largura).
+   Cor da camada da frente: --rw-front. Header escuro = branco; num fundo claro, use a
+   classe .rw-logo--on-light (escuro do site). */
+.rw-logo {
+  --rw-back: #ec008c;
+  --rw-mid:  #91d8f1;
+  --rw-front: #ffffff;
+  display: block;
+  height: 30.6px;
+  width: auto;
+  aspect-ratio: 638.62 / 413.27;
+  overflow: visible;
+}
+.rw-logo--on-light { --rw-front: var(--site-ink); }
+.rw-l--back  { fill: var(--rw-back); }
+.rw-l--mid   { fill: var(--rw-mid); }
+.rw-l--front { fill: var(--rw-front); }
+.site-wordmark { -webkit-tap-highlight-color: transparent; }
+.site-wordmark:focus-visible { outline: 2px solid var(--site-paper); outline-offset: 4px; border-radius: 2px; }
+
+.rw-logo.is-glitch .rw-l--back  { animation: rw-back  500ms steps(1, end) 1; }
+.rw-logo.is-glitch .rw-l--mid   { animation: rw-mid   500ms steps(1, end) 1; }
+.rw-logo.is-glitch .rw-l--front { animation: rw-front 500ms steps(1, end) 1; }
+@keyframes rw-back {
+  0%   { transform: translate(0, 0); }
+  12%  { transform: translate(-22px, 8px); }
+  30%  { transform: translate(14px, -10px); }
+  48%  { transform: translate(-28px, 5px); }
+  68%  { transform: translate(10px, -6px); }
+  86%  { transform: translate(-5px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes rw-mid {   /* direcoes opostas ao magenta */
+  0%   { transform: translate(0, 0); }
+  12%  { transform: translate(22px, -8px); }
+  30%  { transform: translate(-14px, 10px); }
+  48%  { transform: translate(28px, -5px); }
+  68%  { transform: translate(-10px, 6px); }
+  86%  { transform: translate(5px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes rw-front { /* 3 cortes horizontais rapidos */
+  0%   { clip-path: inset(0 0 0 0) fill-box; transform: translate(0, 0); }
+  18%  { clip-path: inset(18% 0 58% 0) fill-box; transform: translate(-10px, 0); }
+  26%  { clip-path: inset(0 0 0 0) fill-box;     transform: translate(0, 0); }
+  52%  { clip-path: inset(62% 0 12% 0) fill-box; transform: translate(12px, 0); }
+  60%  { clip-path: inset(0 0 0 0) fill-box;     transform: translate(0, 0); }
+  78%  { clip-path: inset(4% 0 82% 0) fill-box;  transform: translate(-6px, 0); }
+  86%  { clip-path: inset(0 0 0 0) fill-box;     transform: translate(0, 0); }
+  100% { clip-path: inset(0 0 0 0) fill-box;     transform: translate(0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rw-logo.is-glitch .rw-l--back,
+  .rw-logo.is-glitch .rw-l--mid,
+  .rw-logo.is-glitch .rw-l--front { animation: none; }
 }
 .site-nav {
   display: flex; gap: 32px;
@@ -338,8 +401,8 @@ main {
 
 /* Featured Project */
 .featured-project {
-  background: #283224;
-  color: #ffffff;
+  background: #e4e3d9;
+  color: #3a3a3a;
   /* O header e sticky, entao a ancora #work pararia com o label atras dele.
      Medido: header de 58px no desktop e 69px no mobile - 68px cobre os dois
      com folga (o .featured-header ainda soma 40px de padding-top). */
@@ -369,7 +432,7 @@ main {
 }
 
 .featured-project .featured-label span {
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 /* Etiquetas de categoria das 3 secoes de caso (Riza, Enspiral, Aquaponia):
@@ -393,7 +456,7 @@ main {
   font-weight: 700;
   font-size: clamp(24px, 3vw, 36px);
   line-height: 1.3;
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 .featured-image {
@@ -429,7 +492,7 @@ main {
   font-weight: 400;
   font-size: clamp(14px, 1.4vw, 16px);
   line-height: 1.7;
-  color: #d4d4d4;
+  color: #5a5a5a;
   max-width: 560px;
 }
 
@@ -447,12 +510,12 @@ main {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.8;
-  color: #d4d4d4;
+  color: #5a5a5a;
 }
 
 .featured-details strong {
   font-weight: 700;
-  color: #ffffff;
+  color: #3a3a3a;
 }
 
 .featured-cta {
@@ -466,13 +529,8 @@ main {
 }
 
 .case-enspiral {
-  background: #edeeee;
-}
-/* Desktop: fundo branco no BWT da home (no mobile continua #edeeee) */
-@media (min-width: 769px) {
-  .case-enspiral {
-    background: #ffffff;
-  }
+  background: #0b202f;
+  color: var(--site-paper);
 }
 
 .case-header {
@@ -582,6 +640,70 @@ main {
 .case-cta {
   text-align: center;
   margin-top: 30px;
+}
+
+/* BWT na home: faixa azul-marinho escura, textos em off-white (--site-paper).
+   Escopado em .case-enspiral porque .case-title/.case-description/.case-details
+   sao reusados por Yvy e Aquaponia. Mesmo esquema de textos do .case-yvy. */
+.case-enspiral .featured-label span { color: rgba(255, 255, 255, 0.75); }
+.case-enspiral .case-title,
+.case-enspiral .case-description h3,
+.case-enspiral .case-details strong { color: var(--site-paper); }
+.case-enspiral .case-description p,
+.case-enspiral .case-details p { color: #d4d4d4; }
+
+/* Botao "More +" dos cards de case da home (BWT, Riza, Yvy, Aquaponia e o
+   Waru, hoje oculto): so texto no rosa do item atual do menu (--site-pink),
+   fundo transparente, sem contorno. Hover/focus: sublinhado; nos cards
+   escuros (BWT, Yvy) o rosa tambem clareia (--site-pink-hover). Outline de
+   foco: claro nos fundos escuros, escuro nos claros. No mobile a area de
+   toque e de 44px (min-height + padding, sem borda visivel). */
+.case-enspiral .btn-more,
+.featured-project .btn-more,
+.case-yvy .btn-more,
+.case-aquaponia .btn-more,
+.case-waru .btn-more {
+  background: transparent;
+  color: var(--site-pink);
+  transition: color 0.2s;
+}
+.case-enspiral .btn-more:hover,
+.featured-project .btn-more:hover,
+.case-yvy .btn-more:hover,
+.case-aquaponia .btn-more:hover,
+.case-waru .btn-more:hover,
+.case-enspiral .btn-more:focus-visible,
+.featured-project .btn-more:focus-visible,
+.case-yvy .btn-more:focus-visible,
+.case-aquaponia .btn-more:focus-visible,
+.case-waru .btn-more:focus-visible {
+  background: transparent;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.case-enspiral .btn-more:hover,
+.case-yvy .btn-more:hover,
+.case-enspiral .btn-more:focus-visible,
+.case-yvy .btn-more:focus-visible { color: var(--site-pink-hover); }
+.case-enspiral .btn-more:focus-visible,
+.case-enspiral .case-image a:focus-visible,
+.case-yvy .btn-more:focus-visible { outline: 2px solid var(--site-paper); outline-offset: 3px; }
+.featured-project .btn-more:focus-visible,
+.case-aquaponia .btn-more:focus-visible,
+.case-waru .btn-more:focus-visible { outline: 2px solid var(--site-ink); outline-offset: 3px; }
+@media (max-width: 768px) {
+  .case-enspiral .btn-more,
+  .featured-project .btn-more,
+  .case-yvy .btn-more,
+  .case-aquaponia .btn-more,
+  .case-waru .btn-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 /* Timeless Craft */
@@ -1503,6 +1625,7 @@ main {
   .site-wordmark img {
     height: 25.5px;   /* 30px -15% */
   }
+  .rw-logo { height: 25.5px; }   /* mesmo tamanho do PNG antigo no mobile */
   /* Sem header fixo no mobile, a ancora #work nao precisa mais de folga no topo */
   .featured-project {
     scroll-margin-top: 0;
@@ -1582,9 +1705,10 @@ main {
     font-size: 12px;
   }
 
-  /* a cor muda: fundo escuro no Featured Project, claro no Editorial */
+  /* a cor muda: fundo claro no Featured Project (Riza), escuro no BWT.
+     No Riza, 85% e nao 70%: sobre o #e4e3d9, 70% cai para ~4.0:1. */
   .featured-project .featured-label span {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(58, 58, 58, 0.85);
   }
 
   .services-section .featured-label span {
@@ -1592,7 +1716,7 @@ main {
   }
 
   .case-enspiral .featured-label span {
-    color: rgba(58, 58, 58, 0.7);
+    color: rgba(255, 255, 255, 0.75);
   }
 
   /* 0.85 e nao 0.7: sobre o #efedea e o #e4e1da destas duas secoes,
@@ -3044,6 +3168,12 @@ main {
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
   }
 }
+/* Hero da home: a frase fica sempre em duas linhas ("I give shape to ideas that matter" /
+   "but are hard to explain."): o span vira bloco, sem <br>. balance em cada linha evita
+   palavra sozinha em telas muito estreitas (360px). */
+.home-hero .hero-break { display: block; }
+.home-hero .case-block-lead,
+.home-hero .hero-break { text-wrap: balance; }
 /* How I work da Home em off-white, para nao fundir com o hero escuro */
 .home-how { background: var(--site-paper); }   /* off-white: o hero escuro ja tem peso suficiente */
 @media (min-width: 769px) {
@@ -3213,6 +3343,41 @@ main {
   transition: opacity 0.6s ease;
 }
 .services-section--light.is-lit::after { opacity: 1; }
+
+/* Home: rotulo "WHAT I DO" (h2 da secao). Mobile: a esquerda, alinhado aos titulos; desktop:
+   centralizado acima das tres colunas. Mesmo estilo nos dois. No mobile a secao tambem ganha
+   fundo branco liso (sem grao nem pontinhos) e menos espaco depois da frase da hero.
+   O fundo com pontinhos do desktop nao muda. */
+.services-section--light .services-label.sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0 0 24px;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: left;
+  color: #5a5a5a;   /* o rosa #f06292 da 3.06:1 sobre branco; #5a5a5a da 6.9:1 (5.6:1 sobre o #ebe8e4 do desktop) */
+}
+@media (min-width: 769px) {
+  .services-section--light .services-label.sr-only { text-align: center; margin-bottom: 8px; }
+}
+@media (max-width: 768px) {
+  .home-hero.about-hero { padding-bottom: 20px; }          /* era 48px */
+  .services-section--light {
+    background-color: #ffffff;
+    background-image: none;
+    padding-top: 20px;                                      /* era 40px: frase da hero > rotulo de 88px para ~40px */
+  }
+  .services-section--light::before,
+  .services-section--light::after { display: none; }       /* grade de pontos e luz do mouse */
+}
 
 /* ============================================
    YVY RECICLAGEM (yvy.html)
@@ -3467,7 +3632,7 @@ main {
   .yvy-year-head { gap: 12px; }
   .yvy-loop-label { white-space: nowrap; font-size: 13px; }
   .yvy-chapter, .yvy-process { grid-template-columns: 1fr; }
-  .yvy-chapter-cover img { max-height: none; }
+  .yvy-chapter-cover img { max-height: none; height: auto; }   /* height:auto: o atributo height=1561 criava a caixa alta com object-fit:contain (faixas em cima e embaixo) */
   .yvy-pages { gap: 8px; }
 }
 
@@ -3878,6 +4043,13 @@ main {
 @media (max-width: 768px) {
   .yvy-fair { padding-left: 20px; padding-right: 20px; }
   .yvy-fair-guide { gap: 20px; }
+  /* foto do stand e guia do visitante de ponta a ponta: anulam o padding
+     lateral de 20px da secao (largura total da viewport, altura proporcional);
+     as legendas voltam ao recuo de 20px */
+  .yvy-fair .yvy-fair-stand,
+  .yvy-fair .yvy-guide { margin-left: -20px; margin-right: -20px; }
+  .yvy-fair .yvy-fair-stand figcaption,
+  .yvy-fair .yvy-guide figcaption { padding-left: 20px; padding-right: 20px; }
 }
 
 /* Yvy: guia do visitante, mockup com o mapa real por baixo (mouse por cima ou botao) */
@@ -3903,6 +4075,9 @@ main {
 .yvy-page .wall-of-trust .testimonial-quote { color: rgba(255,255,255,.88); }
 .yvy-page .wall-of-trust .testimonial-author { color: #fff; }
 .yvy-page .wall-of-trust .testimonial-author .highlight { color: #f28b7f; }
+@media (max-width: 768px) {
+  .yvy-page .wall-of-trust .testimonial-author .highlight { display: block; }
+}
 
 @media (min-width: 769px) {
   .yvy-process--earth { gap: clamp(28px, 3.5vw, 48px); }

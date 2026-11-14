@@ -564,3 +564,29 @@
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
   });
 })();
+
+
+/* -----------------------------------------------------------------
+   LOGO RW com glitch: dispara a animacao CSS (.is-glitch) uma vez no
+   carregamento, no hover (mouse) e no toque. Sem loop. Respeita
+   prefers-reduced-motion. O efeito em si esta em css/style.css (.rw-logo).
+   ----------------------------------------------------------------- */
+(function () {
+  'use strict';
+  var link = document.querySelector('.site-wordmark');
+  var logo = link && link.querySelector('.rw-logo');
+  if (!logo) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function play() {
+    if (reduce.matches) return;
+    logo.classList.remove('is-glitch');
+    void logo.getBoundingClientRect();           // reflow: reinicia a animacao
+    logo.classList.add('is-glitch');
+  }
+  logo.addEventListener('animationend', function (e) {
+    if (e.target.classList.contains('rw-l--front')) logo.classList.remove('is-glitch');
+  });
+  link.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') play(); });
+  link.addEventListener('pointerdown',  function (e) { if (e.pointerType !== 'mouse') play(); });
+  window.setTimeout(play, 400);                  // uma vez no carregamento
+})();
