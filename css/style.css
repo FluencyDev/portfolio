@@ -690,6 +690,7 @@ main {
 .case-enspiral .case-image a:focus-visible,
 .case-yvy .btn-more:focus-visible { outline: 2px solid var(--site-paper); outline-offset: 3px; }
 .featured-project .btn-more:focus-visible,
+.featured-project .featured-image a:focus-visible,
 .case-aquaponia .btn-more:focus-visible,
 .case-waru .btn-more:focus-visible { outline: 2px solid var(--site-ink); outline-offset: 3px; }
 @media (max-width: 768px) {
