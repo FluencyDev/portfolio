@@ -27,6 +27,13 @@ REGIONS = {
     "FOOTER": PARTIALS / "footer.html",
 }
 
+# versao em portugues: as paginas de pt/ usam partials/header.pt.html e
+# partials/footer.pt.html (mesmos marcadores, caminhos com ../)
+REGIONS_PT = {
+    "HEADER": PARTIALS / "header.pt.html",
+    "FOOTER": PARTIALS / "footer.pt.html",
+}
+
 # texto fixo que o build escreve no marcador START (o regex abaixo aceita
 # qualquer texto ali, entao editar isso a mao nao quebra o build)
 START_HINT = {
@@ -58,10 +65,17 @@ def main():
         if not path.is_file():
             sys.exit("ERRO: " + str(path.relative_to(ROOT)) + " nao encontrado.")
         bodies[name] = path.read_text(encoding="utf-8")
+    bodies_pt = {}
+    for name, path in REGIONS_PT.items():
+        if not path.is_file():
+            sys.exit("ERRO: " + str(path.relative_to(ROOT)) + " nao encontrado.")
+        bodies_pt[name] = path.read_text(encoding="utf-8")
 
     changed = []
     scanned = 0
-    for html in sorted(ROOT.glob("*.html")):
+    targets = [(h, bodies) for h in sorted(ROOT.glob("*.html"))]
+    targets += [(h, bodies_pt) for h in sorted((ROOT / "pt").glob("*.html"))]
+    for html, bodies in targets:
         scanned += 1
         original = html.read_text(encoding="utf-8")
         text = original
@@ -71,13 +85,14 @@ def main():
                 print("  aviso: " + html.name + " sem marcadores " + name
                       + ":START/END - regiao ignorada")
                 continue
-            text = rx.sub(lambda m, n=name: canonical(n, bodies[n]), text, count=1)
+            text = rx.sub(lambda m, n=name: canonical(n, bodies[n].replace("{{PAGE}}", html.name)), text, count=1)
         if text != original:
             html.write_text(text, encoding="utf-8")
-            changed.append(html.name)
-            print("updated " + html.name)
+            label = html.relative_to(ROOT).as_posix()
+            changed.append(label)
+            print("updated " + label)
         else:
-            print("ok      " + html.name)
+            print("ok      " + html.relative_to(ROOT).as_posix())
 
     print("")
     if changed:

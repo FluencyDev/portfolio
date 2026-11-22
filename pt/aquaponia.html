@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introdução à Aquaponia: Estudo de Caso | Renato Waru</title>
+  <meta name="description" content="Aprendi aquaponia sozinho e depois escrevi, ilustrei e diagramei um livro de 160 páginas em português, e financiei a tiragem por financiamento coletivo.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Introdução à Aquaponia: Estudo de Caso | Renato Waru">
+  <meta property="og:description" content="Aprendi aquaponia sozinho e depois escrevi, ilustrei e diagramei um livro de 160 páginas em português, e financiei a tiragem por financiamento coletivo.">
+  <meta property="og:url" content="https://renatowaru.com/pt/aquaponia.html">
+  <link rel="canonical" href="https://renatowaru.com/pt/aquaponia.html">
+  <link rel="alternate" hreflang="en" href="https://renatowaru.com/aquaponia.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://renatowaru.com/pt/aquaponia.html">
+  <link rel="alternate" hreflang="x-default" href="https://renatowaru.com/aquaponia.html">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://renatowaru.com/assets/images/og-aquaponia.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.ico" sizes="32x32">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@200;400;700&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=133">
+
+  <style>
+    /* aquaponia.html - estilos locais. Tudo o mais reaproveita o sistema de case
+       study que ja existe em css/style.css. */
+
+    .case-hero-dek {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.7;
+      color: #5a5a5a;
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+
+    /* Sem a etiqueta no topo: 46px + 16px de margem do h1 = 62px do header
+       ate o titulo, o mesmo respiro do riza.html (que tem etiqueta) */
+    .case-hero {
+      padding-top: 46px;
+    }
+
+    .case-hero-image picture {
+      display: block;
+    }
+
+    /* Desktop: primeira imagem de ponta a ponta da janela, sem canto.
+       100vw + margem negativa sai da coluna de 1200px; o overflow-x: hidden
+       do body evita barra lateral quando a barra de rolagem ocupa espaco. */
+    @media (min-width: 769px) {
+      .case-hero-image {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+      }
+      .case-hero-image img {
+        border-radius: 0;
+      }
+    }
+
+    /* espacamento entre paragrafos .case-block-body consecutivos (nao existe no style.css) */
+    .case-block-body + .case-block-body {
+      margin-top: 20px;
+    }
+
+    /* Figuras empilhadas full-width, com legenda. Nunca cortadas. */
+    .stack-figure {
+      margin-top: 48px;
+    }
+
+    .stack-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    .stack-figure figcaption {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #797979;
+      margin-top: 14px;
+    }
+
+    /* Peca principal da secao, com espaco alem da coluna de 1200px */
+    .stack-figure-wide {
+      width: min(1400px, calc(100vw - 80px));
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .stack-figure-wide figcaption {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Creditos: discretos de proposito */
+    .case-credits {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .case-credits p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #797979;
+    }
+
+    @media (max-width: 768px) {
+      .stack-figure {
+        margin-top: 36px;
+      }
+
+      .stack-figure-wide {
+        width: calc(100vw - 40px);
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Introdução à Aquaponia",
+  "description": "Aprendi aquaponia sozinho e depois escrevi, ilustrei e diagramei um livro de 160 páginas em português, e financiei a tiragem por financiamento coletivo.",
+  "url": "https://renatowaru.com/pt/aquaponia.html",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://renatowaru.com/#renato",
+    "name": "Renato Waru",
+    "url": "https://renatowaru.com"
+  },
+  "image": "https://renatowaru.com/assets/images/og-aquaponia.jpg"
+}
+  </script>
+</head>
+<body>
+
+<!-- HEADER:START - gerado de partials/header.html - nao edite aqui; rode: python3 build.py -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-wordmark" aria-label="Renato Waru, início">
+      <!-- LOGO ANTIGO (PNG). Para voltar a ele: apague o <svg> abaixo, descomente esta linha e rode python3 build.py
+      <img src="../assets/images/logo-rw.png" alt="" width="300" height="186">
+      -->
+      <svg class="rw-logo" viewBox="0 0 638.62 413.27" width="638.62" height="413.27" aria-hidden="true" focusable="false">
+        <g class="rw-l rw-l--back"><path d="M505.98,405.21c-8.34.25-15.15-3.1-20.25-9.97l-.66-.89-89.6-171.35-75.97,176.68c-3.48,8.1-11.73,13.17-22.05,13.57h-.32c-12.16.36-19.08-7.93-21.35-10.65l-131.41-157.4-31.77-37.59c-5.04-5.96-6.65-14.62-4.01-21.54,3.06-8,10.8-13.71,19.27-14.21l39.97-2.36c19.5-1.15,42.43-10.34,47.03-23.74,3.54-10.3,4.03-21.74,1.42-33.06-2.25-9.77-8.2-16.57-17.69-20.2-10.59-4.06-20.3-5.86-29.69-5.5l-85.91,3.28,8.85,228.48c.49,12.74-9.73,22.83-23.79,23.48l-41.25,1.93L15.43,47.96c-.47-12.51,11.31-21.7,22.18-22.12l122.61-4.73,7.89.6c.36-.02.72-.03,1.08-.05,26.18-1.01,50.28,4.65,69.7,16.37,21.9,13.22,36.58,33.51,42.47,58.68,3.38,14.46,4.38,29.07,3.05,44.66-1.85,21.62-10.57,41.35-25.23,57.06-12,12.86-27.22,22.24-44.44,27.49l56.22,67.35c6.84,8.19,19.91,6.29,24.13-3.51l71.97-167.06c4.2-9.75,13.62-16.22,24.23-16.63h0c10.69-.42,20.65,5.39,25.55,14.89l71.44,138.4c3.06,5.93,11.75,5.22,13.81-1.12l30.34-93.19,41.85-122.67c3.05-8.93,11.19-15.12,20.61-15.66l12.31-.71c8.65-.5,17.08,2.8,23.09,9.03h0c7.71,7.99,10.32,19.6,6.78,30.12l-109.79,325.86c-2.8,8.34-10.87,13.78-21.06,14.17h-.24Z"/></g>
+        <g class="rw-l rw-l--mid"><path d="M471.61,377.47c-8.31-.44-14.82-3.99-19.35-10.55l-.59-.85-75.58-160.8-89.45,152.44c-4.1,6.98-12.7,10.88-23,10.42l-.32-.02c-12.11-.65-18.34-8.63-20.39-11.26l-118.26-151.61-28.62-36.24c-4.54-5.75-5.46-13.64-2.29-19.64,3.67-6.93,11.82-11.44,20.27-11.22l39.92,1.06c19.48.52,43-5.91,48.63-17.56,4.33-8.96,5.72-19.18,4.01-29.54-1.47-8.94-6.85-15.51-15.99-19.53-10.21-4.48-19.72-6.87-29.09-7.29l-85.67-3.88-9.2,205.63c-.51,11.47-11.48,19.71-25.5,19.17l-41.16-1.55L12.02,18.1C12.54,6.84,24.97-.46,35.82.02l122.28,5.49,7.8,1.17c.36.01.72.03,1.08.04,26.11,1.17,49.63,8.16,68.01,20.22,20.73,13.6,33.73,32.96,37.6,56,2.22,13.24,2.06,26.42-.49,40.3-3.54,19.25-13.77,36.25-29.58,49.18-12.94,10.58-28.81,17.79-46.35,21.13l50.59,64.87c6.15,7.89,19.3,7.22,24.27-1.23l84.72-144.13c4.94-8.41,14.82-13.46,25.4-12.99h0c10.66.47,20.11,6.47,24.23,15.39l60.13,129.81c2.57,5.56,11.27,5.62,13.82.09l37.5-81.18,51.28-106.71c3.73-7.76,12.32-12.67,21.73-12.41l12.3.34c8.63.24,16.76,3.87,22.25,9.93h0c7.03,7.77,8.72,18.4,4.36,27.55l-134.83,283.56c-3.44,7.26-11.89,11.49-22.05,11.04h-.24Z"/></g>
+        <g class="rw-l rw-l--front"><path d="M487.94,406.02c-8.34-.07-15.02-3.69-19.85-10.74l-.62-.91-82.91-174.69-82.74,173.61c-3.79,7.96-12.23,12.7-22.56,12.7h-.32c-12.16-.12-18.76-8.67-20.92-11.48l-125.23-162.36-30.29-38.79c-4.81-6.15-6.08-14.87-3.17-21.68,3.36-7.88,11.32-13.28,19.8-13.45l40.03-.81c19.53-.4,42.79-8.7,47.91-21.91,3.93-10.16,4.87-21.56,2.69-32.98-1.87-9.85-7.56-16.87-16.89-20.87-10.42-4.47-20.06-6.64-29.46-6.64l-85.97-.04.02,228.65c0,12.75-10.61,22.44-24.68,22.54l-41.29.33.07-296.42c.01-12.52,12.14-21.24,23.02-21.24h122.7s7.86.91,7.86.91c.36,0,.72,0,1.08,0,26.2,0,50.06,6.59,69.02,19.06,21.37,14.06,35.26,34.9,40.17,60.27,2.82,14.58,3.25,29.22,1.32,44.75-2.68,21.53-12.16,40.91-27.42,56.04-12.49,12.38-28.06,21.18-45.47,25.75l53.57,69.48c6.51,8.45,19.65,7.05,24.24-2.57l78.37-164.16c4.57-9.58,14.24-15.68,24.85-15.68h0c10.69,0,20.42,6.18,24.96,15.87l66.04,141.06c2.83,6.04,11.54,5.67,13.85-.59l33.91-91.95,46.56-120.96c3.39-8.8,11.77-14.68,21.2-14.85l12.33-.23c8.66-.16,16.96,3.46,22.72,9.92h0c7.39,8.28,9.56,19.99,5.61,30.36l-122.3,321.38c-3.12,8.23-11.39,13.35-21.59,13.35h-.24Z"/></g>
+      </svg>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <!-- NAV: gerado em 2026-09-06, ver prompts-ajustes-site-renatowaru.md item 1 -->
+      <a href="index.html">Home</a>
+      <a href="index.html#work">Portfólio</a>
+      <a href="about.html">Sobre</a>
+      <a href="index.html#contact">Contato</a>
+      <span class="lang-switch" role="group" aria-label="Idioma">
+        <a class="lang-link" href="../aquaponia.html" hreflang="en" lang="en" aria-label="View in English">EN</a><span class="lang-sep" aria-hidden="true">|</span><span class="lang-current" aria-current="true">PT</span>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- HEADER:END -->
+
+  <!-- 1. Case Hero -->
+  <section class="case-hero case-hero--aquaponia">
+    <div class="case-hero-inner">
+      <h1 class="case-hero-title">
+        Um guia para iniciantes sobre como criar peixes e plantas juntos.
+      </h1>
+      <p class="case-hero-dek">
+        Pesquisa, ilustração, redação, diagramação e impressão, de ponta a ponta.
+      </p>
+      <figure class="case-hero-image">
+        <picture>
+          <source media="(max-width: 768px)" srcset="../assets/images/aquaponia-cover-mobile.webp" width="848" height="1264">
+          <img src="../assets/images/aquaponia-hero-desktop.webp" alt="Introdu&ccedil;&atilde;o &agrave; Aquaponia, o livro autoral, mostrado como objeto impresso">
+        </picture>
+      </figure>
+      <dl class="case-meta">
+        <div><dt>Ano</dt><dd>2017</dd></div>
+        <div><dt>Tipo</dt><dd>Livro autoral, 160 páginas</dd></div>
+        <div><dt>Função</dt><dd>Da ideia à impressão</dd></div>
+        <div><dt>Financiamento</dt><dd>Financiamento coletivo</dd></div>
+        <div><dt>Setor</dt><dd>Editorial · Brasil</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 2 e 3. About the Project + The Book: no desktop viram uma secao em 2 colunas (.about-book) -->
+  <div class="about-book">
+  <section class="case-block">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">Sobre o Projeto</h2>
+      <p class="case-block-body">
+        Eu queria produzir alimentos no Waru, então aprendi aquaponia sozinho e construí um sistema à mão.
+      </p>
+      <p class="case-block-body">
+        Não existia nada legível em português. Com um técnico da área, escrevi, ilustrei e diagramei o livro e conduzi o financiamento coletivo que o pagou.
+      </p>
+    </div>
+  </section>
+
+  <!-- The Book -->
+  <section class="case-block case-block-light">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow case-block-eyebrow-book">O Livro</h2>
+      <div class="touchpoint-gallery">
+        <img src="../assets/images/aquaponia-mockup-sifao.webp" alt="O livro aberto nas duas mãos, mostrando a anatomia do sifão de sino em uma página ilustrada roxa e uma página de texto">
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- 4. Range of Visual Thinking -->
+  <section class="case-block case-range">
+    <div class="case-block-inner">
+      <h2 class="case-block-eyebrow">Pensar em desenho</h2>
+
+      <figure class="stack-figure stack-nitrogen">
+        <img src="../assets/images/aquaponia-info-nitrgenio-2000.webp" alt="Diagrama do ciclo do nitrogênio na aquaponia, mostrando a amônia passando pelas bactérias até o nitrato absorvido pelas plantas">
+        <figcaption>Como o nitrogênio circula pelo sistema, do resíduo ao nutriente.</figcaption>
+      </figure>
+
+      <div class="stack-columns">
+        <figure class="stack-figure stack-figure-wide">
+          <img src="../assets/images/aquaponia-info-sistema.webp" alt="Grande ilustração isométrica de um sistema aquapônico completo, com tanque de peixes, canteiros, bomba e tubulação desenhados em três dimensões">
+          <figcaption>O sistema central, mapeado como um corpo: coração, pulmões, artérias.</figcaption>
+        </figure>
+
+        <figure class="stack-figure">
+          <img src="../assets/images/aquaponia-info-ciclo.webp" alt="Ilustração em escala de paisagem do mesmo ciclo de nutrientes, desenhado através de peixes, água, plantas e solo">
+          <figcaption>O mesmo ciclo, em escala de paisagem.</figcaption>
+        </figure>
+
+        <figure class="stack-figure">
+          <img src="../assets/images/aquaponia-info-layouts.webp" alt="Comparação de opções de layout aquapônico, mostrando diferentes arranjos de tanques e canteiros">
+          <figcaption>Opções de layout para diferentes estratégias de cultivo.</figcaption>
+        </figure>
+
+        <figure class="stack-figure">
+          <img src="../assets/images/aquaponia-info-mvp.webp" alt="Guia de montagem de um sistema mínimo funcional, com peças hidráulicas anotadas, medidas e montagem do sifão de sino">
+          <figcaption>O menor sistema que funciona, desenhado peça por peça com medidas reais.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Credits (discretos, rodape do case) -->
+  <section class="case-block case-block-light case-credits">
+    <div class="case-block-inner">
+      <p>Escrito em coautoria com Claudio Alfaro (responsável técnico). Seção pedagógica em coautoria com Maga Miranda.</p>
+    </div>
+  </section>
+
+  <!-- 6. Case nav -->
+  <!-- padrão canônico (ver prompts-ajustes-site-renatowaru.md) -->
+  <nav class="case-nav">
+    <div class="case-nav-inner">
+      <a href="index.html" aria-label="Voltar ao Portfólio">&larr; Voltar<span class="case-nav-long"> ao Portfólio</span></a>
+      <a href="riza.html" aria-label="Próximo case: Riza Sementes">Próximo<span class="case-nav-long"> Case: Riza Sementes</span> &rarr;</a>
+    </div>
+  </nav>
+
+<!-- FOOTER:START - gerado de partials/footer.html - nao edite aqui; rode: python3 build.py -->
+<footer class="site-footer" id="contact">
+  <div class="site-footer-inner">
+    <a href="mailto:renato@waru.com.br?subject=Ol%C3%A1%20Renato" class="footer-email">renato@waru.com.br</a>
+    <nav class="footer-links">
+      <a href="https://wa.me/5511996293050" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/renatowaru" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://substack.com/@renatowaru" target="_blank" rel="noopener">Substack</a>
+      <a href="https://www.linkedin.com/in/renato-waru/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Renato Waru Design<br>Designed in Figma and Adobe Creative Cloud.<br>Built with Claude Code.</p>
+  </div>
+</footer>
+<button type="button" class="back-to-top" aria-label="Voltar ao topo" hidden>
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+    <path d="M10 16V4M4.5 9.5L10 4l5.5 5.5" stroke="#F6F3EC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+<!-- FOOTER:END -->
+
+  <script src="../js/main.js?v=18"></script>
+</body>
+</html>

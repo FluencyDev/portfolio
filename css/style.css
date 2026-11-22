@@ -151,6 +151,26 @@ body {
   font-weight: 700;
 }
 
+/* Seletor de idioma EN | PT (o idioma atual nao e link) */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  padding-left: 32px;
+  border-left: 1px solid rgba(246,243,236,0.25);
+  font-family: var(--ff-body);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--site-paper);
+}
+.lang-switch .lang-current {
+  color: #f06292;   /* mesmo rosa do item de menu atual */
+  font-weight: 700;
+}
+.lang-switch .lang-sep { opacity: 0.4; }
+
 /* ---------  MOBILE NAV (hambúrguer)  --------- */
 .nav-toggle {
   display: none;                 /* desktop: escondido */
@@ -214,6 +234,13 @@ body {
     border-bottom: 1px solid rgba(246,243,236,0.12);
   }
   .site-nav a:last-child { border-bottom: 0; }
+  .site-nav .lang-switch {
+    margin: 0;
+    padding: 16px 2px 0;
+    border-left: 0;
+    font-size: 13px;
+  }
+  .site-nav .lang-switch a { padding: 0; border-bottom: 0; }
 }
 
 /* ARQUIVADA, ver tag home-hero-octopus: main, .text-content, .headline, .subtitle, .illustration (hero do polvo, nao usada na Home) */

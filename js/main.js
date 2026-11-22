@@ -1,3 +1,6 @@
+/* Idioma da pagina: a versao em portugues (pasta pt/) usa <html lang="pt-BR"> */
+var RW_PT = (document.documentElement.getAttribute('lang') || '').toLowerCase().indexOf('pt') === 0;
+
 // Waru Portfolio - Main JavaScript
 
 /* -----------------------------------------------------------------
@@ -21,7 +24,7 @@
   function openNav() {
     nav.classList.add('is-open');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close menu');
+    toggle.setAttribute('aria-label', (RW_PT ? 'Fechar menu' : 'Close menu'));
     document.addEventListener('click', onOutsideClick, true);
     document.addEventListener('keydown', onKeydown);
   }
@@ -29,7 +32,7 @@
   function closeNav() {
     nav.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu');
+    toggle.setAttribute('aria-label', (RW_PT ? 'Abrir menu' : 'Open menu'));
     document.removeEventListener('click', onOutsideClick, true);
     document.removeEventListener('keydown', onKeydown);
   }
@@ -76,6 +79,7 @@
   var here = window.location.pathname.split('/').pop() || 'index.html';
   var links = nav.querySelectorAll('a');
   for (var i = 0; i < links.length; i++) {
+    if (links[i].classList.contains('lang-link')) continue;   // seletor de idioma
     var href = links[i].getAttribute('href') || '';
     var hasHash = href.indexOf('#') > -1;
     var file = href.split('#')[0].split('/').pop();
@@ -163,7 +167,7 @@
     b.addEventListener('click',function(){
       var p=f.dataset.paused!=='true';
       f.dataset.paused=p;
-      b.setAttribute('aria-label',p?'Play animation':'Pause animation');
+      b.setAttribute('aria-label',p?(RW_PT ? 'Reproduzir animação' : 'Play animation'):(RW_PT ? 'Pausar animação' : 'Pause animation'));
     });
   });
 })();
@@ -236,7 +240,7 @@
   function setUserPaused(value) {
     userPaused = value;
     toggle.setAttribute('data-paused', value ? 'true' : 'false');
-    toggle.setAttribute('aria-label', value ? 'Play sub-line cycle' : 'Pause sub-line cycle');
+    toggle.setAttribute('aria-label', value ? (RW_PT ? 'Retomar a troca de frases' : 'Play sub-line cycle') : (RW_PT ? 'Pausar a troca de frases' : 'Pause sub-line cycle'));
     sync();
   }
 
@@ -300,8 +304,8 @@
         m: el.querySelector('.clock-hand--m'),
         s: el.querySelector('.clock-hand--s'),
         label: el.querySelector('.clock-time'),
-        parts: new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' }),
-        text: new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: '2-digit' })
+        parts: new Intl.DateTimeFormat(RW_PT ? 'pt-BR' : 'en-US', { timeZone: tz, hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' }),
+        text: new Intl.DateTimeFormat(RW_PT ? 'pt-BR' : 'en-US', { timeZone: tz, hour: 'numeric', minute: '2-digit' })
       });
     } catch (e) { /* fuso nao suportado: o relogio fica parado */ }
   });
@@ -460,7 +464,7 @@
     var on = !art.classList.contains('is-revealed');
     art.classList.toggle('is-revealed', on);
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    btn.textContent = on ? 'Show the drawing' : 'Find the logo';
+    btn.textContent = on ? (RW_PT ? 'Mostrar o desenho' : 'Show the drawing') : (RW_PT ? 'Encontrar o logo' : 'Find the logo');
   });
 })();
 
@@ -507,7 +511,7 @@
     function set(open) {
       box.hidden = !open;
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.textContent = open ? 'Less' : 'More';
+      btn.textContent = open ? (RW_PT ? 'Menos' : 'Less') : (RW_PT ? 'Mais' : 'More');
     }
     set(false);
     btn.hidden = false;
